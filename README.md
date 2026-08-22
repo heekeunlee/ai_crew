@@ -26,23 +26,26 @@ work/scout/                산출물이 쌓이는 곳
   test.yml                 푸시할 때마다 점검
 ```
 
-## 설치
+## 인증 — API 크레딧이 들지 않습니다
+
+Anthropic API 키가 아니라 **Claude 구독**으로 돌아갑니다.
+모델 호출은 Claude Code를 headless(`claude -p`)로 띄워서 합니다.
+
+- 로컬: 이미 `claude`에 로그인돼 있으면 그대로 됩니다
+- Actions: `CLAUDE_CODE_OAUTH_TOKEN` 시크릿이 필요합니다
+
+외부 npm 패키지 의존성은 없습니다.
+
+## 아무것도 안 쓰고 먼저 확인하기
 
 ```bash
-npm install
-```
-
-## API 키 없이 먼저 확인하기
-
-```bash
-npm run scout:dry     # 토큰 0원. 파일이 제대로 생기는지만 본다
+npm run scout:dry     # Claude 호출 없음. 파일이 제대로 생기는지만 본다
 npm test              # 기억 병합 로직 단위 테스트
 ```
 
 ## 실제로 한 번 돌려보기
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
 npm run scout
 ```
 
@@ -50,10 +53,20 @@ npm run scout
 
 ## GitHub에 올린 뒤 해야 할 일
 
-1. **Settings → Secrets and variables → Actions**에서
-   `ANTHROPIC_API_KEY`를 등록합니다. (공개 저장소여도 시크릿은 노출되지 않습니다)
-2. **Actions 탭 → 리서처 근무 → Run workflow**로 한 번 수동 실행해봅니다.
-3. 잘 돌면 그다음부터는 매일 아침 알아서 커밋됩니다.
+1. 로컬에서 토큰을 발급합니다.
+   ```bash
+   claude setup-token
+   ```
+2. 저장소 **Settings → Secrets and variables → Actions → New repository secret**
+   - Name: `CLAUDE_CODE_OAUTH_TOKEN`
+   - Secret: 1단계에서 나온 토큰
+
+   공개 저장소여도 시크릿 값은 노출되지 않습니다.
+3. **Actions 탭 → 리서처 근무 → Run workflow**로 한 번 수동 실행해봅니다.
+4. 잘 돌면 그다음부터는 매일 아침 알아서 커밋됩니다.
+
+> 구독 사용량을 쓰므로, 평소 Claude를 많이 쓰시는 날엔 한도에 영향이 있을 수 있습니다.
+> 토큰은 만료되면 `claude setup-token`으로 다시 발급해 시크릿을 갱신하세요.
 
 ## 주제 바꾸기
 
@@ -63,7 +76,7 @@ npm run scout
 
 - `pull_request_target` 트리거는 쓰지 않습니다. 포크에서 온 코드에 시크릿이 넘어갑니다.
 - 워크플로 권한은 `contents: read`가 기본이고, 커밋이 필요한 잡에만 `write`를 줍니다.
-- Anthropic 콘솔에서 지출 한도와 알림을 걸어두세요.
+- `crew.json`의 `maxBudgetUsd`가 폭주 방지 상한입니다 (환산 기준).
 
 ## 다음 단계
 

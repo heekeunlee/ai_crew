@@ -1,5 +1,6 @@
 {
   "$comment": "로스터 단일 원본. 워크플로·실행 스크립트·화면이 전부 이 파일만 읽습니다.",
+  "auth": "claude-subscription",
   "agents": [
     {
       "id": "scout",
@@ -7,19 +8,21 @@
       "emoji": "🔭",
       "color": "#3B36C4",
       "model": "claude-haiku-4-5-20251001",
-      "maxTokens": 4000,
       "schedule": "0 22 * * *",
       "scheduleNote": "UTC 기준. 22:00 UTC = 다음날 07:00 KST",
       "desk": [2, 1],
       "output": "work/scout",
-      "webSearch": true,
-      "maxSearches": 6,
+      "tools": ["WebSearch", "WebFetch"],
+      "maxSearches": 8,
+      "maxBudgetUsd": 1.0,
+      "$maxBudgetUsd": "폭주 방지용 상한. 구독 토큰이면 실제 청구가 아니라 환산 기준입니다.",
 
       "$topics": "◀ 여기만 고치면 수집 주제가 바뀝니다",
       "topics": [
-        "AI 에이전트 프레임워크와 실무 적용 사례",
-        "개발 자동화 · CI/CD에 LLM을 붙이는 방법",
-        "Claude / OpenAI / Google 모델 업데이트"
+        "개발자 도구·오픈소스 신규 릴리스 (GitHub 트렌드, 주요 프레임워크 업데이트)",
+        "미국 증시·빅테크 실적 (전일 마감 기준 주요 움직임과 그 이유)",
+        "한국 증시·주요 공시 (코스피·코스닥 특이 종목, DART 주요 공시)",
+        "소셜에서 화제가 된 AI 활용 '결과물' (Threads·X·레딧에서 사람들이 실제로 만들어 올린 산출물과 프롬프트·워크플로. 플랫폼의 신규 기능 발표나 사용자 수 같은 회사 뉴스는 이 주제가 아니다)"
       ]
     }
   ]

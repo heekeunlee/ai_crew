@@ -4,14 +4,18 @@
  *
  *   node scripts/run-agent.mjs scout
  *
+ * 모델 호출은 Claude Code를 headless(-p)로 띄워서 한다. Anthropic API 키가
+ * 아니라 Claude 구독 토큰(CLAUDE_CODE_OAUTH_TOKEN)으로 인증하므로 API 크레딧이
+ * 들지 않는다. 대신 구독 사용량을 쓴다.
+ *
  * 읽는 것 : crew.json, agents/<id>/{SOUL,TASK,memory}.md
  * 쓰는 것 : work/<id>/YYYY-MM-DD.md, agents/<id>/memory.md
  */
 
-import Anthropic from "@anthropic-ai/sdk";
 import { mergeMemory } from "./lib/memory.mjs";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
+import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,13 +30,14 @@ const die = (msg) => { console.error(`✗ ${msg}`); process.exit(1); };
 const agentId = process.argv[2];
 if (!agentId) die("에이전트 id가 필요합니다.  예: node scripts/run-agent.mjs scout");
 
-// DRY_RUN=1 이면 API를 부르지 않고 가짜 응답으로 배관만 확인한다 (토큰 0원)
+// DRY_RUN=1 이면 Claude를 부르지 않고 가짜 응답으로 배관만 확인한다 (사용량 0)
 const DRY = process.env.DRY_RUN === "1";
 
-if (!DRY && !process.env.ANTHROPIC_API_KEY) {
-  die("ANTHROPIC_API_KEY가 없습니다.\n" +
-      "  로컬: export ANTHROPIC_API_KEY=sk-ant-...\n" +
-      "  Actions: 저장소 Settings → Secrets → Actions 에 등록");
+// CI에서는 반드시 토큰이 있어야 한다. 로컬은 이미 로그인돼 있으면 그대로 쓴다.
+if (!DRY && process.env.CI && !process.env.CLAUDE_CODE_OAUTH_TOKEN) {
+  die("CLAUDE_CODE_OAUTH_TOKEN이 없습니다.\n" +
+      "  1) 로컬에서 `claude setup-token` 실행\n" +
+      "  2) 출력된 토큰을 저장소 Settings → Secrets → Actions 에 등록");
 }
 
 const crew = JSON.parse(await readFile(path.join(ROOT, "crew.json"), "utf8"));
@@ -51,86 +56,89 @@ const [soul, task, memory] = await Promise.all([
 ]);
 
 // KST 기준 날짜 — 워크플로는 UTC로 돌지만 사람은 한국 시간으로 읽는다
-const kst = new Date(Date.now() + 9 * 3600 * 1000);
-const today = kst.toISOString().slice(0, 10);
+const today = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
 
-/* ---------------- 호출 ---------------- */
+/* ---------------- Claude Code 호출 ---------------- */
 
-const client = DRY ? null : new Anthropic();
+// Claude Code는 코딩 에이전트라 놔두면 파일부터 읽으려 든다. 필요한 내용은
+// 전부 프롬프트에 넣고, 파일 접근이 불가능하다는 걸 명시해야 헤매지 않는다.
+const GUARD =
+  "너는 파일 시스템에 접근할 수 없다. 필요한 정보는 전부 이 프롬프트 안에 있다.\n" +
+  "결과물을 파일로 저장하려 하지 말고 응답 본문으로 출력해라. 저장은 호출한 쪽이 한다.";
 
 const system =
-  `${soul}\n\n---\n\n` +
-  `오늘은 ${today} (KST)입니다.\n` +
-  `다루는 주제:\n${(agent.topics ?? []).map((t) => `- ${t}`).join("\n")}`;
+  `${soul}\n\n---\n\n${GUARD}\n\n---\n\n` +
+  `오늘은 ${today} (KST)입니다.\n\n` +
+  `다루는 주제:\n${(agent.topics ?? []).map((t, i) => `${i + 1}. ${t}`).join("\n")}`;
 
-const messages = [{
-  role: "user",
-  content: `${task}\n\n---\n\n# 내 기억 (memory.md)\n\n${memory}`
-}];
+const prompt = `${task}\n\n---\n\n# 내 기억\n\n${memory}`;
 
-const searchTool = {
-  type: "web_search_20250305",
-  name: "web_search",
-  max_uses: agent.maxSearches ?? 6
-};
+function runClaude() {
+  const args = [
+    "-p",
+    "--output-format", "json",
+    "--model", agent.model,
+    "--system-prompt", system,
+    "--permission-mode", "dontAsk",
+    "--allowedTools", ...(agent.tools ?? ["WebSearch", "WebFetch"]),
+  ];
+  if (agent.maxBudgetUsd) args.push("--max-budget-usd", String(agent.maxBudgetUsd));
 
-async function converse(tools) {
-  let turns = 0;
-  for (;;) {
-    if (++turns > 12) die("응답 루프가 12회를 넘었습니다. 중단합니다.");
-
-    const res = await client.messages.create({
-      model: agent.model,
-      max_tokens: agent.maxTokens ?? 4000,
-      system,
-      messages,
-      ...(tools ? { tools } : {})
+  return new Promise((resolve, reject) => {
+    const child = spawn("claude", args, {
+      cwd: ROOT,
+      env: process.env,
+      stdio: ["pipe", "pipe", "pipe"],
     });
 
-    // 서버 도구가 오래 돌면 pause_turn으로 끊어 보낸다 → 이어서 계속
-    if (res.stop_reason === "pause_turn") {
-      messages.push({ role: "assistant", content: res.content });
-      continue;
-    }
-    return res;
-  }
+    let out = "", err = "";
+    child.stdout.on("data", (d) => (out += d));
+    child.stderr.on("data", (d) => (err += d));
+
+    child.on("error", (e) =>
+      reject(new Error(
+        e.code === "ENOENT"
+          ? "claude 명령을 찾을 수 없습니다.  npm install -g @anthropic-ai/claude-code"
+          : e.message
+      ))
+    );
+
+    child.on("close", (code) => {
+      if (code !== 0) return reject(new Error(`claude 종료 코드 ${code}\n${err.trim()}`));
+      try {
+        resolve(JSON.parse(out));
+      } catch {
+        reject(new Error(`JSON 파싱 실패. 원본 앞부분:\n${out.slice(0, 400)}`));
+      }
+    });
+
+    // 프롬프트가 길 수 있으니 argv 대신 stdin으로 넘긴다
+    child.stdin.end(prompt, "utf8");
+  });
 }
 
 const dryResponse = () => ({
-  content: [{
-    type: "text",
-    text: `# ${today} 리서치\n\n> DRY_RUN 모드 — 실제 호출 없이 배관만 확인한 결과입니다.\n\n` +
-          `## 1. 예시 항목\n\n이 문서는 API를 부르지 않고 만들어졌습니다. ` +
-          `여기까지 파일이 생겼다면 crew.json 읽기, brain 파일 읽기, 저장 경로, ` +
-          `기억 갱신까지 전부 정상입니다.\n\n출처: (없음)\n\n` +
-          `${MEMORY_MARK}\n- DRY_RUN 테스트`
-  }],
-  usage: { input_tokens: 0, output_tokens: 0 }
+  is_error: false,
+  num_turns: 0,
+  result:
+    `# ${today} 리서치\n\n> DRY_RUN 모드 — 실제 호출 없이 배관만 확인한 결과입니다.\n\n` +
+    `## 1. 예시 항목\n\n이 문서는 Claude를 부르지 않고 만들어졌습니다. 여기까지 파일이 ` +
+    `생겼다면 crew.json 읽기, brain 파일 읽기, 저장 경로, 기억 갱신까지 전부 정상입니다.\n\n` +
+    `출처: (없음)\n\n${MEMORY_MARK}\n- DRY_RUN 테스트`,
+  usage: {},
 });
 
 let res;
 try {
-  res = DRY ? dryResponse() : await converse(agent.webSearch ? [searchTool] : undefined);
-} catch (err) {
-  const msg = String(err?.message ?? err);
-  if (agent.webSearch && /web_search|tool|not.*(enabled|allowed|support)/i.test(msg)) {
-    console.warn("⚠ 웹 검색 도구를 쓸 수 없어 검색 없이 진행합니다.");
-    console.warn(`  (${msg.split("\n")[0]})`);
-    console.warn("  Anthropic 콘솔에서 web search를 활성화하면 해결됩니다.");
-    messages.length = 1;
-    res = await converse(undefined);
-  } else {
-    die(`API 호출 실패: ${msg}`);
-  }
+  res = DRY ? dryResponse() : await runClaude();
+} catch (e) {
+  die(String(e.message ?? e));
 }
 
-const text = res.content
-  .filter((b) => b.type === "text")
-  .map((b) => b.text)
-  .join("")
-  .trim();
+if (res.is_error) die(`Claude가 오류로 끝났습니다: ${res.result ?? res.subtype ?? "원인 불명"}`);
 
-if (!text) die("모델이 빈 응답을 돌려줬습니다.");
+const text = (res.result ?? "").trim();
+if (!text) die("빈 응답을 받았습니다.");
 
 /* ---------------- 저장 ---------------- */
 
@@ -153,8 +161,10 @@ if (note) {
   );
 }
 
-const usage = res.usage ?? {};
 console.log(`✓ ${agent.emoji} ${agent.name} 근무 완료`);
 console.log(`  → ${path.relative(ROOT, outFile)} (${body.length}자)`);
 if (note) console.log(`  → memory.md 갱신`);
-console.log(`  토큰 in ${usage.input_tokens ?? "?"} / out ${usage.output_tokens ?? "?"}`);
+console.log(`  턴 ${res.num_turns ?? "?"} · ${((res.duration_ms ?? 0) / 1000).toFixed(0)}초`);
+if (res.total_cost_usd != null) {
+  console.log(`  환산 $${res.total_cost_usd.toFixed(4)} (구독 토큰 사용 시 실제 청구 아님)`);
+}

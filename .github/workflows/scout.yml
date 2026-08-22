@@ -19,7 +19,7 @@ concurrency:
 jobs:
   work:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     permissions:
       contents: write
 
@@ -29,13 +29,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: npm
 
-      - run: npm ci
+      - name: Claude Code 설치
+        run: npm install -g @anthropic-ai/claude-code
 
       - name: 리서처 실행
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # API 키가 아니라 Claude 구독 토큰. `claude setup-token`으로 발급.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
         run: node scripts/run-agent.mjs scout
 
       - name: 결과 커밋
@@ -47,5 +48,5 @@ jobs:
             echo "변경 없음 — 커밋 건너뜀"
             exit 0
           fi
-          git commit -m "🔭 리서처: $(date -u -d '+9 hours' +%Y-%m-%d) 리서치"
+          git commit -m "🔭 리서처: $(TZ=Asia/Seoul date +%Y-%m-%d) 리서치"
           git push
