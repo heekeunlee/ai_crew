@@ -46,16 +46,18 @@ const MEETING = [
 ];
 const SOFA = [{ x: 22, y: 190 }, { x: 46, y: 190 }, { x: 70, y: 190 }, { x: 94, y: 190 }];
 const BOARD = [{ x: 204, y: 88 }, { x: 231, y: 88 }, { x: 258, y: 88 }, { x: 285, y: 88 }];
-const COFFEE = [{ x: 100, y: 96 }, { x: 122, y: 96 }];
+// 탕비실 안, 카운터 앞에 서는 자리
+const PANTRY = [{ x: 18, y: 98 }, { x: 44, y: 98 }, { x: 70, y: 98 }, { x: 96, y: 98 }];
+// 탕비실(x<150, y<104)과 가구를 피한 자리만 골랐다
 const WANDER = [
-  { x: 44, y: 82 }, { x: 150, y: 88 }, { x: 186, y: 80 }, { x: 300, y: 92 },
+  { x: 170, y: 84 }, { x: 196, y: 78 }, { x: 300, y: 92 }, { x: 250, y: 96 },
   { x: 40, y: 152 }, { x: 138, y: 158 }, { x: 148, y: 200 }, { x: 300, y: 198 },
   { x: 70, y: 150 }, { x: 296, y: 150 },
 ];
 
 // 클릭에 반응하는 소품. 반응이 있으면 화면을 한 번 더 들여다보게 된다.
 const PROPS = {
-  coffee: { x: 94, y: 56, w: 48, h: 30 },
+  coffee: { x: 8, y: 52, w: 140, h: 52 },   // 탕비실 전체가 클릭 대상
   plant:  { x: 310, y: 138, w: 26, h: 46 },
   clock:  { x: 146, y: 12, w: 30, h: 30 },
 };
@@ -133,6 +135,37 @@ const deskX = (i, n) =>
 
 /* ---------------- 캐릭터 ---------------- */
 
+// 셔츠 색만으로는 픽셀 크기에서 구분이 어렵다. 머리에 다른 것을 하나씩 씌워
+// 멀리서도 누가 누군지 알아보게 한다. 로스터 순서를 따르므로 인원이 늘면
+// 다시 처음부터 돈다.
+function drawHeadgear(x, y, i, color, face) {
+  const at = (c, r, w, h, col) => px(x + (face < 0 ? 11 - c - (w - 1) : c), y + r, w, h, col);
+  switch (i % 4) {
+    case 0: // 캡 모자 — 챙이 보는 쪽으로
+      at(3, 1, 6, 2, color);
+      at(2, 2, 8, 1, color);
+      at(8, 3, 4, 1, shade(color, 0.75));
+      break;
+    case 1: // 뒤로 묶은 머리
+      at(3, 1, 6, 2, "#5A3A2A");
+      at(9, 3, 2, 4, "#5A3A2A");
+      at(9, 7, 2, 2, shade("#5A3A2A", 0.8));
+      break;
+    case 2: // 안경
+      at(3, 5, 3, 2, "#2A2A34");
+      at(7, 5, 3, 2, "#2A2A34");
+      at(6, 5, 1, 1, "#2A2A34");
+      break;
+    case 3: // 헤드셋
+      at(3, 0, 6, 1, "#2E2E38");
+      at(2, 1, 1, 3, "#2E2E38");
+      at(9, 1, 1, 3, "#2E2E38");
+      at(1, 3, 2, 3, color);
+      at(9, 3, 2, 3, color);
+      break;
+  }
+}
+
 function drawSprite(x, y, a, phase, walking, face) {
   const map = { H: a.hair, S: SKIN, E: EYE, C: a.color, D: shade(a.color, 0.75), P: PANTS };
   const rows = SPRITE.slice();
@@ -147,6 +180,7 @@ function drawSprite(x, y, a, phase, walking, face) {
       if (ch === ".") continue;
       px(x + (face < 0 ? 11 - c : c), y + r, 1, 1, map[ch]);
     }
+  drawHeadgear(x, y, a.desk, a.color, face);
 }
 
 /* ---------------- 방 ---------------- */
@@ -211,15 +245,55 @@ function drawRoom(key) {
   // 대기 중인 지시는 빨간 핀으로
   for (let i = 0; i < Math.min(key.queued, 4); i++) px(301, 17 + i * 6, 4, 4, "#D9483B");
 
-  // 커피바
-  px(94, 66, 46, 16, "#8A6A4A");
-  px(94, 66, 46, 4, "#A47F5C");
-  px(96, 80, 42, 4, "#6A4E34");
-  px(100, 58, 10, 10, "#4A4A56");
-  px(102, 60, 6, 4, "#2A2A34");
-  px(103, 66, 4, 2, "#7A6A5A");
-  px(118, 60, 5, 6, "#D9CFC0");
-  px(126, 61, 5, 5, "#D9CFC0");
+  // ── 탕비실 ──────────────────────────────────
+  // 바닥을 타일로 갈아 사무실과 구분한다
+  px(8, 56, 140, 44, night ? "#B2B0A6" : "#CFCCC0");
+  for (let x = 8; x < 148; x += 12) px(x, 56, 1, 44, night ? "#A5A399" : "#C2BFB2");
+  for (let y = 56; y < 100; y += 12) px(8, y, 140, 1, night ? "#A5A399" : "#C2BFB2");
+  // 오른쪽 칸막이
+  px(146, 54, 4, 46, "#8A8578");
+  px(146, 54, 4, 3, "#A39D8E");
+  px(144, 96, 8, 4, "#6E6A5E");
+
+  // 상부장
+  px(12, 56, 74, 9, "#7E6A52");
+  px(12, 63, 74, 2, "#5E4E3C");
+  px(28, 58, 1, 5, "#5E4E3C"); px(52, 58, 1, 5, "#5E4E3C");
+
+  // 카운터
+  px(12, 70, 92, 8, "#B9B3A4");
+  px(12, 70, 92, 2, "#D2CDBE");
+  px(12, 78, 92, 10, "#8A8378");
+  px(12, 86, 92, 2, "#6E6A5E");
+
+  // 커피 머신
+  px(16, 60, 12, 12, "#3E3E4A");
+  px(18, 62, 8, 5, "#22222C");
+  px(19, 68, 6, 2, "#7A6A5A");
+  px(20, 70, 4, 2, "#5A4A3A");
+  // 주전자
+  px(34, 62, 9, 10, "#C9C4B8");
+  px(43, 65, 3, 3, "#9A958A");
+  px(36, 60, 5, 2, "#9A958A");
+  // 컵 세 개
+  px(52, 66, 5, 6, "#EFE9D8"); px(60, 67, 5, 5, "#E8CFC0"); px(68, 66, 5, 6, "#D8E4EF");
+  // 싱크
+  px(80, 71, 20, 6, "#9AA0A6");
+  px(82, 72, 16, 4, "#7A8087");
+  px(88, 64, 2, 8, "#B5BAC0");
+  px(88, 63, 6, 2, "#B5BAC0");
+
+  // 냉장고
+  px(112, 56, 26, 40, "#DCDCD4");
+  px(112, 56, 26, 3, "#EFEFE8");
+  px(112, 74, 26, 2, "#B8B8B0");
+  px(134, 66, 2, 6, "#8A8A82");
+  px(134, 80, 2, 6, "#8A8A82");
+  px(116, 60, 6, 5, "#E86A8A");
+
+  // 스툴 둘
+  px(30, 88, 10, 3, "#7D5C7A"); px(33, 91, 4, 6, "#5E4A5C");
+  px(56, 88, 10, 3, "#7D5C7A"); px(59, 91, 4, 6, "#5E4A5C");
 
   // 회의 탁자
   px(192, 182, 68, 18, "#6A4E34");
@@ -244,8 +318,15 @@ function drawRoom(key) {
   px(16, 186, 92, 6, "#664A63");
   px(16, 172, 6, 18, "#664A63");   px(102, 172, 6, 18, "#664A63");
 
-  // 밤에는 전체를 눌러 어둡게. 대신 스탠드 불빛이 도드라진다.
+  // 밤에는 전체를 눌러 어둡게. 대신 조명이 도드라진다.
   if (sky.tint) { rc.fillStyle = sky.tint; rc.fillRect(0, 54, LW, LH - 54); }
+  if (night) {
+    px(74, 56, 8, 3, "#FFE9A8");          // 탕비실 등
+    rc.globalAlpha = 0.14;
+    rc.fillStyle = "#FFD98A";
+    rc.fillRect(10, 58, 136, 40);
+    rc.globalAlpha = 1;
+  }
   P = oc;
 }
 
@@ -289,11 +370,11 @@ function drawDesk(i, n, lit, night) {
 function drawSteam() {
   if (reduced) return;
   for (let i = 0; i < 3; i++) {
-    const ph = (t / 14 + i * 7) % 22;
-    const sy = 56 - ph;
+    const ph = (t / 14 + i * 7) % 20;
+    const sy = 60 - ph;
     if (sy < 44) continue;
     oc.globalAlpha = Math.max(0, 0.5 - ph / 44);
-    px(104 + Math.round(Math.sin((ph + i * 3) / 3) * 2), sy, 2, 2, "#FFFFFF");
+    px(20 + Math.round(Math.sin((ph + i * 3) / 3) * 2), sy, 2, 2, "#FFFFFF");
     oc.globalAlpha = 1;
   }
 }
@@ -417,7 +498,7 @@ function decide(act, now) {
   }
 
   if (now < coffeeUntil) {
-    goTo(act, COFFEE[act.desk % COFFEE.length]);
+    goTo(act, PANTRY[act.desk % PANTRY.length]);
     act.nextAt = now + 3000 + Math.random() * 2000;
     if (Math.random() < 0.5) say(act, lineFor(act, "coffee"), 3);
     return;
@@ -441,7 +522,7 @@ function decide(act, now) {
 
   const roll = Math.random();
   const target = roll < 0.3 ? SOFA[act.desk % SOFA.length]
-               : roll < 0.45 ? pick(COFFEE)
+               : roll < 0.45 ? pick(PANTRY)
                : pick(WANDER);
   goTo(act, target);
   act.nextAt = now + 5000 + Math.random() * 7000;
@@ -515,16 +596,32 @@ function render() {
 
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
+
+  // 책상에는 이름만 흐리게 남긴다. 자리 주인이 누구인지 알려주는 명패일 뿐,
+  // 지금 거기 있다는 뜻이 아니다.
   for (let i = 0; i < n; i++) {
     const act = actors.find((a) => a.desk === i);
     if (!act) continue;
-    const cx2 = (deskX(i, n) + DESK_W / 2) * S;
-    ctx.font = `800 ${Math.round(7.2 * S)}px "Gothic A1", sans-serif`;
-    ctx.fillStyle = night ? "#241F18" : "#2E2A22";
-    ctx.fillText(act.name, cx2, (DESK_TOP + 24) * S);
-    ctx.font = `500 ${Math.round(6.2 * S)}px "Gothic A1", sans-serif`;
-    ctx.fillStyle = night ? "#6E6555" : "#5E564A";
-    ctx.fillText(STATUS[act.st].label, cx2, (DESK_TOP + 34) * S);
+    ctx.font = `700 ${Math.round(6.4 * S)}px "Gothic A1", sans-serif`;
+    ctx.fillStyle = night ? "rgba(60,54,42,0.55)" : "rgba(70,64,52,0.45)";
+    ctx.fillText(act.name, (deskX(i, n) + DESK_W / 2) * S, (DESK_TOP + 24) * S);
+  }
+
+  // 진짜 이름표는 캐릭터를 따라다닌다. 돌아다니는 동안에도 누가 누구인지
+  // 알 수 있어야 하므로 항상 켜 둔다.
+  for (const act of order) {
+    const label = act.name;
+    ctx.font = `800 ${Math.round(6.4 * S)}px "Gothic A1", sans-serif`;
+    const tw = ctx.measureText(label).width;
+    const bw = tw + 5 * S, bh = 9.5 * S;
+    const bx = Math.max(1 * S, Math.min(LW * S - bw - 1 * S, (act.x + 6) * S - bw / 2));
+    const by = (act.y + 2) * S;
+    ctx.fillStyle = "rgba(24,20,16,0.78)";
+    ctx.fillRect(bx, by, bw, bh);
+    ctx.fillStyle = act.color;
+    ctx.fillRect(bx, by, bw, 1.4 * S);
+    ctx.fillStyle = "#F6F2E6";
+    ctx.fillText(label, bx + bw / 2, by + 1.8 * S);
   }
   ctx.textAlign = "left";
   ctx.font = `700 ${Math.round(6.2 * S)}px "Gothic A1", sans-serif`;
@@ -534,6 +631,8 @@ function render() {
   ctx.fillStyle = night ? "#B9AE96" : "#7A705E";
   ctx.fillText("대기 구역", 14 * S, 204 * S);
   ctx.fillText("회의 탁자", 194 * S, 202 * S);
+  ctx.fillStyle = night ? "#9A9488" : "#6E6A5E";
+  ctx.fillText("탕비실", 12 * S, 95 * S);
 
   for (const act of order) drawBubble(act, S);
 }
