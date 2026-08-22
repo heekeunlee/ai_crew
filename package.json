@@ -7,7 +7,7 @@
   "scripts": {
     "scout": "node scripts/run-agent.mjs scout",
     "scout:dry": "DRY_RUN=1 node scripts/run-agent.mjs scout",
-    "test": "node --test scripts/memory.test.mjs"
+    "test": "node --test scripts/memory.test.mjs scripts/output.test.mjs"
   },
   "engines": {
     "node": ">=20"

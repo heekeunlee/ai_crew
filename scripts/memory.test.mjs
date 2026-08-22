@@ -61,3 +61,20 @@ test("헤딩이 없는 파일에도 새로 만들어 붙인다", () => {
   assert.match(out, new RegExp(HEADING));
   assert.match(out, /- 2026-08-22 주제/);
 });
+
+test("모델이 메모에 날짜를 직접 적어도 중복되지 않는다", () => {
+  const out = mergeMemory(base, "- 2026-08-23 GitHub Copilot Slack 통합", "2026-08-23");
+  assert.match(out, /- 2026-08-23 GitHub Copilot Slack 통합/);
+  assert.doesNotMatch(out, /2026-08-23 2026-08-23/);
+});
+
+test("날짜 뒤 구분자도 함께 걷어낸다", () => {
+  for (const sep of [" ", ": ", " · ", " - "]) {
+    const out = mergeMemory(base, `2026-08-23${sep}주제 A`, "2026-08-23");
+    assert.match(out, /- 2026-08-23 주제 A$/m, `구분자 "${sep}" 실패`);
+  }
+});
+
+test("날짜만 있고 내용이 없는 줄은 버린다", () => {
+  assert.equal(mergeMemory(base, "2026-08-23", "2026-08-23"), base);
+});

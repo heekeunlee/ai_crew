@@ -13,6 +13,7 @@
  */
 
 import { mergeMemory } from "./lib/memory.mjs";
+import { stripPreamble } from "./lib/output.mjs";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { spawn } from "node:child_process";
@@ -143,7 +144,7 @@ if (!text) die("빈 응답을 받았습니다.");
 /* ---------------- 저장 ---------------- */
 
 const cut = text.indexOf(MEMORY_MARK);
-const body = (cut === -1 ? text : text.slice(0, cut)).trim();
+const body = stripPreamble(cut === -1 ? text : text.slice(0, cut));
 const note = cut === -1 ? "" : text.slice(cut + MEMORY_MARK.length).trim();
 
 if (cut === -1) console.warn(`⚠ ${MEMORY_MARK} 블록이 없어 기억을 갱신하지 않습니다.`);

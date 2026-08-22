@@ -14,7 +14,12 @@ export function mergeMemory(current, note, today, keep = 30) {
     .split("\n")
     .map((l) => l.trim())
     .filter(Boolean)
-    .map((l) => `- ${today} ${l.replace(/^-\s*/, "")}`);
+    .map((l) => l.replace(/^-\s*/, ""))
+    // 모델이 메모 앞에 날짜를 직접 적어 오는 일이 있다. 그대로 두면
+    // "- 2026-08-23 2026-08-23 ..." 처럼 두 번 찍힌다.
+    .map((l) => l.replace(/^\d{4}-\d{2}-\d{2}[\s:·-]*/, ""))
+    .filter(Boolean)
+    .map((l) => `- ${today} ${l}`);
 
   if (entries.length === 0) return current;
 
