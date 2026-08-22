@@ -16,7 +16,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      issues: write
     uses: ./.github/workflows/_agent.yml
     with:
       agent: quill

@@ -15,11 +15,11 @@ jobs:
     # 재사용 워크플로에 넘길 권한은 여기서 정한다
     permissions:
       contents: write
-      pull-requests: write
       issues: write
     uses: ./.github/workflows/_agent.yml
     with:
       agent: mechanic
       emoji: "🔧"
+      issues: true
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

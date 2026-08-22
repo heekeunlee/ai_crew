@@ -16,6 +16,10 @@ on:
         description: "commit(기본) | pull-request — 산출물을 main에 바로 넣을지 PR로 올릴지"
         type: string
         default: commit
+      issues:
+        description: "true면 ===ISSUE=== 블록을 이슈로 올린다. 호출자가 issues:write를 줘야 한다."
+        type: boolean
+        default: false
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN:
         required: true
@@ -115,8 +119,10 @@ jobs:
           }
 
       # ---- 점검 결과가 있으면 이슈로 ----
+      # inputs.issues를 함께 보는 이유: 권한을 에이전트별로 좁혀놨기 때문에,
+      # issues:write가 없는 에이전트가 이 단계에 들어오면 그냥 실패한다.
       - name: 이슈 등록
-        if: hashFiles('.ci/issue.md') != ''
+        if: inputs.issues && hashFiles('.ci/issue.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

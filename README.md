@@ -33,11 +33,13 @@ agents/scout/
   TASK.md                  근무 지시와 출력 형식
   memory.md                누적 기억 (에이전트가 스스로 갱신)
 scripts/
-  run-agent.mjs            실행기
-  lib/memory.mjs           기억 병합 (순수 함수)
-  memory.test.mjs          단위 테스트
-  lib/state.mjs            상태 판정 (순수 함수)
+  run-agent.mjs            실행기 — 네 명 공통
   build-state.mjs          site/state.json 생성기
+  lib/memory.mjs           기억 병합 (순수 함수)
+  lib/output.mjs           모델 응답 서두 제거 (순수 함수)
+  lib/sections.mjs         본문과 ===MEMORY=== / ===ISSUE=== 분리 (순수 함수)
+  lib/state.mjs            상태 판정·요약 추출 (순수 함수)
+  *.test.mjs               lib/ 모듈별 단위 테스트 4종
 work/scout/                산출물이 쌓이는 곳
 site/
   index.html               오피스 화면
@@ -122,7 +124,10 @@ npm run scout
 ## 공개 저장소 주의사항
 
 - `pull_request_target` 트리거는 쓰지 않습니다. 포크에서 온 코드에 시크릿이 넘어갑니다.
-- 워크플로 권한은 `contents: read`가 기본이고, 커밋이 필요한 잡에만 `write`를 줍니다.
+- 워크플로 권한은 에이전트마다 **실제로 쓰는 것만** 줍니다.
+  리서처·아키비스트는 `contents: write`, 라이터는 `+ pull-requests: write`,
+  메카닉은 `+ issues: write`. 재사용 워크플로는 호출자보다 넓은 권한을
+  가질 수 없으므로 선언은 호출하는 쪽 잡에 둡니다.
 - `crew.json`의 `maxBudgetUsd`가 폭주 방지 상한입니다 (환산 기준).
 
 ## 에이전트 추가하기
