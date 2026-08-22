@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T22:29:20.275Z",
+  "generatedAt": "2026-08-22T22:31:23.026Z",
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
   "agents": [
@@ -10,9 +10,9 @@
       "color": "#3B36C4",
       "desk": 0,
       "schedule": "0 22 * * *",
-      "status": "done",
-      "startedAt": null,
-      "lastRunAt": "2026-08-23T07:28:08+09:00",
+      "status": "working",
+      "startedAt": "2026-08-22T22:31:23.026Z",
+      "lastRunAt": "2026-08-23T07:30:34+09:00",
       "total": 1,
       "recent": [
         {
@@ -45,11 +45,11 @@
       "schedule": "0 14 * * *",
       "status": "done",
       "startedAt": null,
-      "lastRunAt": "2026-08-22T22:29:20Z",
+      "lastRunAt": "2026-08-23T07:30:34+09:00",
       "total": 1,
       "recent": [
         {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "summary": "2026-08-23 갱신 · 자료 2건 · 항목 3건",
           "items": 5,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/archive/INDEX.md"
@@ -65,7 +65,7 @@
       "schedule": "0 0 * * 1",
       "status": "done",
       "startedAt": null,
-      "lastRunAt": "2026-08-23T07:28:08+09:00",
+      "lastRunAt": "2026-08-23T07:30:34+09:00",
       "total": 1,
       "recent": [
         {
