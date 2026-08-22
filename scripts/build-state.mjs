@@ -13,6 +13,7 @@ import { summarizeWork, deriveStatus, STALE_MS } from "./lib/state.mjs";
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -144,6 +145,24 @@ const state = {
 
 await mkdir(path.dirname(OUT), { recursive: true });
 await writeFile(OUT, JSON.stringify(state, null, 2) + "\n", "utf8");
+
+// GitHub Pages는 파일마다 10분씩 캐시한다. HTML과 JS가 따로 만료되면
+// "새 HTML + 옛 JS" 조합이 생겨 화면이 조용히 깨진다. 스크립트 주소에
+// 내용 해시를 박아 그 틈을 없앤다.
+const INDEX = path.join(ROOT, "site", "index.html");
+const JS = path.join(ROOT, "site", "office.js");
+if (existsSync(INDEX) && existsSync(JS)) {
+  const ver = createHash("sha256")
+    .update(await readFile(JS))
+    .digest("hex")
+    .slice(0, 8);
+  const html = await readFile(INDEX, "utf8");
+  const next = html.replace(/office\.js\?v=[a-z0-9]+/i, `office.js?v=${ver}`);
+  if (next !== html) {
+    await writeFile(INDEX, next, "utf8");
+    console.log(`✓ index.html 스크립트 버전 → ${ver}`);
+  }
+}
 
 console.log(`✓ site/state.json 생성`);
 for (const a of agents) {

@@ -27,6 +27,11 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # 스크립트 버전 스탬프를 최신 내용으로 맞춘 뒤 배포한다
+      - run: node scripts/build-state.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
