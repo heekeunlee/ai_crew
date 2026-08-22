@@ -156,8 +156,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)
-          FILE=$(ls -1 work/${{ inputs.agent }}/*-i${{ inputs.fromIssue }}.md 2>/dev/null | tail -1)
+          # 실행기가 남긴 경로를 쓴다. outputMode가 dated냐 single이냐에 따라
+          # 위치가 달라지므로 여기서 추측하면 틀린다.
+          FILE=$(cat .ci/last-output.txt 2>/dev/null || true)
+          [ -f "$FILE" ] || FILE=""
           {
             echo "${{ inputs.emoji }} **${{ inputs.agent }}** 근무를 마쳤습니다."
             echo

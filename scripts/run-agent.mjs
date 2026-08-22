@@ -219,6 +219,13 @@ if (note) {
   await writeFile(dest(memRel), mergeMemory(memory, note, today, MEMORY_KEEP), "utf8");
 }
 
+// 산출물이 어디로 갔는지 워크플로에 알려준다. outputMode에 따라 경로가
+// 달라지므로 워크플로가 셸로 추측하게 두면 틀린다.
+if (!DRY) {
+  await mkdir(path.join(ROOT, ".ci"), { recursive: true });
+  await writeFile(path.join(ROOT, ".ci", "last-output.txt"), outRel + "\n", "utf8");
+}
+
 // 이슈로 올릴 내용이 있으면 워크플로가 집어갈 수 있게 남긴다
 if (issue && !DRY) {
   const p = path.join(ROOT, ".ci", "issue.md");
