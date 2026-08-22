@@ -20,17 +20,13 @@ on:
       CLAUDE_CODE_OAUTH_TOKEN:
         required: true
 
-permissions:
-  contents: read
+# 권한은 호출하는 쪽 잡에서 준다. 재사용 워크플로는 호출자보다 넓은 권한을
+# 가질 수 없으므로 여기서 선언해봐야 무시되거나 시작 자체가 실패한다.
 
 jobs:
   work:
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
 
     steps:
       - uses: actions/checkout@v4
@@ -97,10 +93,15 @@ jobs:
           else
             git commit -m "${{ inputs.emoji }} ${{ inputs.agent }}: $DATE"
             git push -u origin "$BRANCH"
+            {
+              echo "자동 생성된 초안입니다. 읽어보고 병합하거나 닫아주세요."
+              echo
+              echo "- 에이전트: ${{ inputs.agent }}"
+              echo "- 실행 로그: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            } > /tmp/pr-body.md
             gh pr create \
               --title "${{ inputs.emoji }} ${{ inputs.agent }}: $DATE" \
-              --body "$(printf '자동 생성된 초안입니다. 읽어보고 병합하거나 닫아주세요.\n\n- 에이전트: `%s`\n- 실행: [%s](%s/%s/actions/runs/%s)\n' \
-                    "${{ inputs.agent }}" "$DATE" "${{ github.server_url }}" "${{ github.repository }}" "${{ github.run_id }}")" \
+              --body-file /tmp/pr-body.md \
               --base main --head "$BRANCH"
           fi
 
