@@ -10,6 +10,7 @@
  */
 
 import { summarizeWork, deriveStatus, STALE_MS } from "./lib/state.mjs";
+import { nextRun } from "./lib/schedule.mjs";
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
@@ -58,6 +59,31 @@ const repo = (() => {
     return null;
   }
 })();
+
+/** 라벨이 붙은 열린 이슈 = 아직 처리되지 않은 지시 */
+function openInstructions() {
+  try {
+    const raw = execFileSync("gh", [
+      "issue", "list", "--state", "open", "--limit", "20",
+      "--json", "number,title,labels",
+    ], { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
+
+    return JSON.parse(raw)
+      .map((i) => ({
+        number: i.number,
+        title: i.title,
+        agent: (i.labels ?? [])
+          .map((l) => l.name)
+          .find((n) => n.startsWith("agent:"))?.slice(6) ?? null,
+      }))
+      .filter((i) => i.agent);
+  } catch {
+    // gh가 없거나 인증이 안 됐을 수 있다. 화면은 이슈 없이도 멀쩡히 돈다.
+    return [];
+  }
+}
+
+const issues = openInstructions();
 
 const now = Date.now();
 const todayKST = new Date(now + 9 * 3600 * 1000).toISOString().slice(0, 10);
@@ -128,6 +154,8 @@ for (const [i, a] of crew.agents.entries()) {
     desk: i,
     schedule: a.schedule ?? null,
     scheduleNote: a.scheduleNote ?? null,
+    nextRunAt: a.schedule ? new Date(nextRun(a.schedule, now) ?? now).toISOString() : null,
+    queued: issues.filter((i) => i.agent === a.id),
     status: deriveStatus({ startedAt, lastRunAt }, now),
     startedAt,
     lastRunAt,
@@ -140,6 +168,7 @@ const state = {
   generatedAt: new Date(now).toISOString(),
   repo,
   officeTitle: crew.officeTitle ?? "AI CREW",
+  queued: issues.length,
   agents,
 };
 
@@ -166,5 +195,6 @@ if (existsSync(INDEX) && existsSync(JS)) {
 
 console.log(`✓ site/state.json 생성`);
 for (const a of agents) {
-  console.log(`  ${a.emoji} ${a.name.padEnd(6)} ${a.status.padEnd(8)} 산출물 ${a.total}건`);
+  const q = a.queued.length ? ` · 대기 지시 ${a.queued.length}건` : "";
+  console.log(`  ${a.emoji} ${a.name.padEnd(6)} ${a.status.padEnd(8)} 산출물 ${a.total}건${q}`);
 }

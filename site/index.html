@@ -83,6 +83,32 @@
   .zone-n i { width:.6rem; height:.6rem; display:inline-block; }
   .zone p { margin:.1rem 0 0; font-size:.78rem; color:var(--muted); }
 
+  .stagewrap { position:relative; min-width:0; }
+  #toast {
+    position:absolute; left:50%; bottom:.7rem; transform:translateX(-50%);
+    margin:0; padding:.35rem .8rem; background:rgba(20,18,26,.92); color:#F4F1E6;
+    font-family:"Gothic A1",sans-serif; font-weight:700; font-size:.82rem;
+    border:2px solid #6A6480; white-space:nowrap; pointer-events:none;
+  }
+  #help {
+    position:absolute; inset:.5rem; background:rgba(18,16,24,.95); color:#EDEAF6;
+    border:2px solid #6A6480; padding:.9rem 1.1rem; overflow:auto;
+    font-size:.82rem; line-height:1.9;
+  }
+  #help b { font-family:"Gothic A1",sans-serif; font-size:.92rem; }
+  #help ul { margin:.4rem 0 0; padding-left:1.1rem; }
+  kbd {
+    font-family:"DM Mono",monospace; font-size:.75em; background:#3A3550;
+    border:1px solid #6A6480; padding:0 .3em; border-radius:2px;
+  }
+  .queued {
+    display:block; font-size:.78rem; color:var(--accent); text-decoration:none;
+    padding:.3rem .5rem; background:var(--recess); margin-bottom:2px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .queued:hover { text-decoration:underline; }
+  #queued { color:#E0A0A0; }
+
   #error { background:#4A1A1A; color:#FFD9D0; padding:.8rem 1rem; font-size:.85rem; }
   footer { font-size:.78rem; color:var(--muted); border-top:1px solid var(--hairline); padding-top:1rem; }
   footer a { color:var(--accent); }
@@ -101,11 +127,25 @@
   <div class="stage">
     <div class="screen">
       <div class="chrome">
-        <span>◉ <span id="count">…</span></span>
+        <span>◉ <span id="count">…</span> <span id="queued"></span></span>
         <a id="repo" href="#" hidden target="_blank" rel="noopener">저장소 →</a>
         <span class="right" id="updated"></span>
       </div>
-      <canvas id="office" tabindex="0" aria-label="AI 크루 오피스 현황"></canvas>
+      <div class="stagewrap">
+        <canvas id="office" tabindex="0" aria-label="AI 크루 오피스 현황"></canvas>
+        <p id="toast" hidden></p>
+        <div id="help" hidden>
+          <b>단축키와 숨은 것들</b>
+          <ul>
+            <li><kbd>←</kbd> <kbd>→</kbd> 직원 넘기기</li>
+            <li><kbd>C</kbd> 또는 커피머신 클릭 — 커피 타임</li>
+            <li>화분 클릭 — 화분이 자랍니다</li>
+            <li>벽시계 클릭 — 지금 한국 시각</li>
+            <li>코나미 코드 — ↑↑↓↓←→←→BA</li>
+            <li><kbd>?</kbd> 이 창 · <kbd>Esc</kbd> 닫기</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <aside class="panel">
@@ -116,9 +156,10 @@
       <div class="statline">
         <span class="dot" id="p-dot"></span><span id="p-status"></span><span id="p-total"></span>
       </div>
+      <div id="p-queued" hidden></div>
       <span class="lbl">최근 산출물</span>
       <div class="worklist" id="p-work"></div>
-      <p class="hint">캐릭터를 클릭하면 바뀝니다. 항목을 누르면 저장소로 이동합니다.</p>
+      <p class="hint">캐릭터를 클릭하면 바뀝니다. <kbd>?</kbd>를 누르면 숨은 것들이 나옵니다.</p>
     </aside>
   </div>
 
@@ -146,6 +187,6 @@
   </footer>
 
 </div>
-<script src="office.js?v=6caee4ab"></script>
+<script src="office.js?v=4fe72663"></script>
 </body>
 </html>
