@@ -164,8 +164,21 @@ for (const [i, a] of crew.agents.entries()) {
   });
 }
 
+// 최근 7일 산출물 — 벽 액자의 막대그래프가 이걸 그린다
+const daily = [];
+for (let d = 6; d >= 0; d--) {
+  const day = new Date(now + 9 * 3600 * 1000 - d * 86400000).toISOString().slice(0, 10);
+  let count = 0;
+  for (const a of agents) for (const r of a.recent) if (r.date === day) count++;
+  daily.push({ date: day, count });
+}
+
 const state = {
   generatedAt: new Date(now).toISOString(),
+  totals: {
+    outputs: agents.reduce((n, a) => n + a.total, 0),
+    daily,
+  },
   repo,
   officeTitle: crew.officeTitle ?? "AI CREW",
   queued: issues.length,
