@@ -126,6 +126,7 @@ for (const [i, a] of crew.agents.entries()) {
     color: a.color,
     desk: i,
     schedule: a.schedule ?? null,
+    scheduleNote: a.scheduleNote ?? null,
     status: deriveStatus({ startedAt, lastRunAt }, now),
     startedAt,
     lastRunAt,
