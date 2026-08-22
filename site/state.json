@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T16:07:34.827Z",
+  "generatedAt": "2026-08-22T16:12:12.187Z",
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
   "agents": [
@@ -12,7 +12,7 @@
       "schedule": "0 22 * * *",
       "status": "done",
       "startedAt": null,
-      "lastRunAt": "2026-08-23T00:45:35+09:00",
+      "lastRunAt": "2026-08-23T01:11:39+09:00",
       "total": 1,
       "recent": [
         {
@@ -43,9 +43,9 @@
       "color": "#B07D0C",
       "desk": 2,
       "schedule": "0 14 * * *",
-      "status": "idle",
+      "status": "done",
       "startedAt": null,
-      "lastRunAt": null,
+      "lastRunAt": "2026-08-23T01:11:39+09:00",
       "total": 1,
       "recent": [
         {
@@ -63,8 +63,8 @@
       "color": "#2F7A5C",
       "desk": 3,
       "schedule": "0 0 * * 1",
-      "status": "idle",
-      "startedAt": null,
+      "status": "working",
+      "startedAt": "2026-08-22T16:12:12.187Z",
       "lastRunAt": null,
       "total": 0,
       "recent": []
