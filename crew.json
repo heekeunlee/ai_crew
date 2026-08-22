@@ -1,0 +1,26 @@
+{
+  "$comment": "로스터 단일 원본. 워크플로·실행 스크립트·화면이 전부 이 파일만 읽습니다.",
+  "agents": [
+    {
+      "id": "scout",
+      "name": "리서처",
+      "emoji": "🔭",
+      "color": "#3B36C4",
+      "model": "claude-haiku-4-5-20251001",
+      "maxTokens": 4000,
+      "schedule": "0 22 * * *",
+      "scheduleNote": "UTC 기준. 22:00 UTC = 다음날 07:00 KST",
+      "desk": [2, 1],
+      "output": "work/scout",
+      "webSearch": true,
+      "maxSearches": 6,
+
+      "$topics": "◀ 여기만 고치면 수집 주제가 바뀝니다",
+      "topics": [
+        "AI 에이전트 프레임워크와 실무 적용 사례",
+        "개발 자동화 · CI/CD에 LLM을 붙이는 방법",
+        "Claude / OpenAI / Google 모델 업데이트"
+      ]
+    }
+  ]
+}

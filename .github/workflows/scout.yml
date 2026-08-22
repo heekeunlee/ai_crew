@@ -1,0 +1,51 @@
+name: 리서처 근무
+
+on:
+  schedule:
+    # UTC 기준. 22:00 UTC = 다음날 07:00 KST
+    # GitHub Actions의 cron은 정시를 보장하지 않고 혼잡하면 수십 분 밀립니다.
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+# 기본은 읽기만. 커밋이 필요한 이 잡에서만 write를 준다.
+permissions:
+  contents: read
+
+# 같은 에이전트가 겹쳐 돌면 커밋이 충돌한다.
+concurrency:
+  group: agent-scout
+  cancel-in-progress: false
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: 리서처 실행
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/run-agent.mjs scout
+
+      - name: 결과 커밋
+        run: |
+          git config user.name  "ai_crew[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add work/ agents/scout/memory.md
+          if git diff --staged --quiet; then
+            echo "변경 없음 — 커밋 건너뜀"
+            exit 0
+          fi
+          git commit -m "🔭 리서처: $(date -u -d '+9 hours' +%Y-%m-%d) 리서치"
+          git push

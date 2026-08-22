@@ -1,0 +1,35 @@
+name: 점검
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# 포크 PR에 시크릿이 넘어가지 않도록 pull_request_target은 쓰지 않는다.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+
+      - name: 단위 테스트
+        run: npm test
+
+      - name: 배관 점검 (API 호출 없음)
+        env:
+          DRY_RUN: "1"
+        run: |
+          node scripts/run-agent.mjs scout
+          test -s "work/scout/$(TZ=Asia/Seoul date +%Y-%m-%d).md" \
+            || { echo "산출물이 생성되지 않았습니다"; exit 1; }
+          echo "✓ 산출물 생성 확인"
