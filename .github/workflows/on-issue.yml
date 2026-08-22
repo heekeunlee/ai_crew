@@ -37,22 +37,21 @@ jobs:
         env:
           LABEL: ${{ github.event.label.name }}
         run: |
-          ID="${LABEL#agent:}"
-          FOUND=$(node -e "
-            const crew = require('./crew.json');
-            const a = crew.agents.find(x => x.id === process.env.ID);
-            if (a) console.log(JSON.stringify({ id: a.id, emoji: a.emoji }));
-          " ID="$ID")
-
-          if [ -z "$FOUND" ]; then
-            echo "ok=false" >> "$GITHUB_OUTPUT"
-            echo "crew.json에 '$ID' 에이전트가 없습니다."
-            exit 0
-          fi
-
-          echo "ok=true" >> "$GITHUB_OUTPUT"
-          echo "agent=$(echo "$FOUND" | node -pe 'JSON.parse(require("fs").readFileSync(0)).id')" >> "$GITHUB_OUTPUT"
-          echo "emoji=$(echo "$FOUND" | node -pe 'JSON.parse(require("fs").readFileSync(0)).emoji')" >> "$GITHUB_OUTPUT"
+          # 환경변수는 명령 앞에 붙여야 한다. 뒤에 두면 그냥 인자가 되고
+          # process.env.AGENT_ID는 undefined가 된다.
+          AGENT_ID="${LABEL#agent:}" node -e '
+            const crew = require("./crew.json");
+            const a = crew.agents.find(x => x.id === process.env.AGENT_ID);
+            const out = require("fs").createWriteStream(process.env.GITHUB_OUTPUT, { flags: "a" });
+            if (!a) {
+              out.write("ok=false\n");
+              console.log(`crew.json에 "${process.env.AGENT_ID}" 에이전트가 없습니다.`);
+            } else {
+              out.write(`ok=true\nagent=${a.id}\nemoji=${a.emoji}\n`);
+              console.log(`${a.emoji} ${a.id} 에게 맡깁니다.`);
+            }
+            out.end();
+          '
 
       - name: 모르는 에이전트면 알려주기
         if: steps.pick.outputs.ok != 'true'
