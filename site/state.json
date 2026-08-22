@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T16:12:12.187Z",
+  "generatedAt": "2026-08-22T16:14:19.017Z",
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
   "agents": [
@@ -63,11 +63,18 @@
       "color": "#2F7A5C",
       "desk": 3,
       "schedule": "0 0 * * 1",
-      "status": "working",
-      "startedAt": "2026-08-22T16:12:12.187Z",
-      "lastRunAt": null,
-      "total": 0,
-      "recent": []
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-22T16:14:18Z",
+      "total": 1,
+      "recent": [
+        {
+          "date": "2026-08-23",
+          "summary": "코드와 테스트는 튼튼하지만, README 구조도와 워크플로 권한 두 곳에서 실제와 어긋난 부분을 발견했습니다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-23.md"
+        }
+      ]
     }
   ]
 }
