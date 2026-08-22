@@ -73,8 +73,9 @@ for (const [i, a] of crew.agents.entries()) {
   } else {
     const dir = path.join(ROOT, a.output);
     if (existsSync(dir)) {
+      // 정기 근무는 2026-08-23.md, 이슈 근무는 2026-08-23-i7.md
       for (const f of (await readdir(dir))
-        .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
+        .filter((f) => /^\d{4}-\d{2}-\d{2}(-i\d+)?\.md$/.test(f))
         .sort()
         .reverse()) {
         rels.push(path.posix.join(a.output, f));
@@ -82,18 +83,27 @@ for (const [i, a] of crew.agents.entries()) {
     }
   }
 
-  const lastRunAt = rels.length ? committedAt(rels[0]) : null;
+  // 파일명 정렬 순서와 커밋 순서는 다르다. 같은 날 정기 근무(2026-08-23.md)와
+  // 이슈 근무(2026-08-23-i7.md)가 겹치면 나중에 커밋된 쪽이 앞이 아닐 수 있다.
+  // 상태 판정은 "가장 최근 커밋"을 봐야 하므로 최댓값을 쓴다.
+  const lastRunAt = rels
+    .slice(0, RECENT)
+    .map(committedAt)
+    .filter(Boolean)
+    .sort()
+    .pop() ?? null;
 
   const recent = [];
   for (const rel of rels.slice(0, RECENT)) {
     const md = await readFile(path.join(ROOT, rel), "utf8");
     const { summary, items } = summarizeWork(md);
     const named = path.basename(rel, ".md");
+    const dated = named.match(/^(\d{4}-\d{2}-\d{2})(?:-i(\d+))?$/);
     recent.push({
       // 덮어쓰기형은 파일명에 날짜가 없으므로 커밋 시각에서 뽑는다
-      date: /^\d{4}-\d{2}-\d{2}$/.test(named)
-        ? named
-        : (lastRunAt ? lastRunAt.slice(0, 10) : todayKST),
+      date: dated ? dated[1] : (lastRunAt ? lastRunAt.slice(0, 10) : todayKST),
+      // 이슈로 지시받아 한 근무면 몇 번 이슈였는지 남긴다
+      ...(dated?.[2] ? { issue: Number(dated[2]) } : {}),
       summary,
       items,
       url: repo ? `https://github.com/${repo}/blob/main/${rel}` : rel,

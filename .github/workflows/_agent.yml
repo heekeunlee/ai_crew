@@ -20,6 +20,10 @@ on:
         description: "true면 ===ISSUE=== 블록을 이슈로 올린다. 호출자가 issues:write를 줘야 한다."
         type: boolean
         default: false
+      fromIssue:
+        description: "0이 아니면 그 번호의 이슈를 지시로 읽고, 끝나면 결과를 댓글로 달고 닫는다."
+        type: number
+        default: 0
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN:
         required: true
@@ -58,14 +62,30 @@ jobs:
             git push
           }
 
+      # 이슈 본문을 이번 근무의 지시로 쓴다. 워크플로 입력으로 넘기지 않고
+      # 여기서 직접 읽는 이유는, 따옴표·줄바꿈이 섞인 본문이 표현식을 타고
+      # 흐르면서 깨지는 걸 피하기 위해서다.
+      - name: 지시 읽기
+        if: inputs.fromIssue != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .ci
+          gh issue view "${{ inputs.fromIssue }}" \
+            --json title,body \
+            --template '# {{.title}}{{"\n\n"}}{{.body}}' > .ci/instruction.md
+          echo "--- 지시 ---"; head -20 .ci/instruction.md
+
       - name: 근무
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          AGENT_INSTRUCTION_FILE: ${{ inputs.fromIssue != 0 && '.ci/instruction.md' || '' }}
+          AGENT_SUFFIX: ${{ inputs.fromIssue != 0 && format('-i{0}', inputs.fromIssue) || '' }}
         run: node scripts/run-agent.mjs "${{ inputs.agent }}"
 
       # ---- main에 바로 커밋하는 경우 ----
       - name: 결과 커밋
-        if: inputs.review != 'pull-request'
+        if: inputs.review != 'pull-request' || inputs.fromIssue != 0
         run: |
           git add work/ archive/ "agents/${{ inputs.agent }}/memory.md"
           if git diff --staged --quiet; then
@@ -83,7 +103,7 @@ jobs:
       # 산출물은 사람이 병합해야 main에 들어간다. 그때까지 오피스에는
       # 아직 결과물이 없는 것으로 보이는데, 그게 맞는 표시다.
       - name: PR 생성
-        if: inputs.review == 'pull-request'
+        if: inputs.review == 'pull-request' && inputs.fromIssue == 0
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -129,6 +149,44 @@ jobs:
           gh issue create \
             --title "${{ inputs.emoji }} ${{ inputs.agent }} 점검: $(TZ=Asia/Seoul date +%Y-%m-%d)" \
             --body-file .ci/issue.md
+
+      # ---- 지시받은 이슈에 결과를 돌려준다 ----
+      - name: 이슈에 결과 보고
+        if: inputs.fromIssue != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)
+          FILE=$(ls -1 work/${{ inputs.agent }}/*-i${{ inputs.fromIssue }}.md 2>/dev/null | tail -1)
+          {
+            echo "${{ inputs.emoji }} **${{ inputs.agent }}** 근무를 마쳤습니다."
+            echo
+            if [ -n "$FILE" ]; then
+              echo "산출물: [\`$FILE\`](${{ github.server_url }}/${{ github.repository }}/blob/main/$FILE)"
+              echo
+              echo "<details><summary>미리보기</summary>"
+              echo
+              head -c 3000 "$FILE"
+              echo
+              echo "</details>"
+            else
+              echo "산출물 파일이 생성되지 않았습니다. 실행 로그를 확인해주세요."
+            fi
+            echo
+            echo "[실행 로그](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          } > /tmp/issue-reply.md
+          gh issue comment "${{ inputs.fromIssue }}" --body-file /tmp/issue-reply.md
+          gh issue close "${{ inputs.fromIssue }}" --reason completed
+
+      - name: 실패 시 이슈에 알림
+        if: failure() && inputs.fromIssue != 0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ inputs.fromIssue }}" --body \
+            "${{ inputs.emoji }} **${{ inputs.agent }}** 근무가 실패했습니다. 이슈는 열어둡니다.
+
+          [실행 로그](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
 
       # 근무가 실패해도 "작업 중"으로 굳지 않게 표시를 걷어낸다
       - name: 실패 시 표시 정리

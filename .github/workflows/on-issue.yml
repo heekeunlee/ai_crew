@@ -1,0 +1,79 @@
+name: 이슈 지시
+
+# 이슈에 agent:<id> 라벨을 붙이면 그 에이전트가 집어간다.
+# 이슈 하나가 칸반 카드 한 장이다.
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  prep:
+    # 이슈는 누구나 열 수 있다. 저장소 주인이 연 이슈만 받는다.
+    # 이게 없으면 남이 이슈를 열어 내 Claude 사용량을 태울 수 있다.
+    if: >-
+      startsWith(github.event.label.name, 'agent:') &&
+      github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+      issues: write
+    outputs:
+      agent: ${{ steps.pick.outputs.agent }}
+      emoji: ${{ steps.pick.outputs.emoji }}
+      ok: ${{ steps.pick.outputs.ok }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: pick
+        name: 라벨에서 에이전트 찾기
+        env:
+          LABEL: ${{ github.event.label.name }}
+        run: |
+          ID="${LABEL#agent:}"
+          FOUND=$(node -e "
+            const crew = require('./crew.json');
+            const a = crew.agents.find(x => x.id === process.env.ID);
+            if (a) console.log(JSON.stringify({ id: a.id, emoji: a.emoji }));
+          " ID="$ID")
+
+          if [ -z "$FOUND" ]; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "crew.json에 '$ID' 에이전트가 없습니다."
+            exit 0
+          fi
+
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+          echo "agent=$(echo "$FOUND" | node -pe 'JSON.parse(require("fs").readFileSync(0)).id')" >> "$GITHUB_OUTPUT"
+          echo "emoji=$(echo "$FOUND" | node -pe 'JSON.parse(require("fs").readFileSync(0)).emoji')" >> "$GITHUB_OUTPUT"
+
+      - name: 모르는 에이전트면 알려주기
+        if: steps.pick.outputs.ok != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LABEL: ${{ github.event.label.name }}
+        run: |
+          IDS=$(node -e "console.log(require('./crew.json').agents.map(a=>'agent:'+a.id).join(', '))")
+          gh issue comment "${{ github.event.issue.number }}" --body \
+            "라벨 \`$LABEL\` 에 해당하는 에이전트가 crew.json에 없습니다. 쓸 수 있는 라벨: $IDS"
+
+  work:
+    needs: prep
+    if: needs.prep.outputs.ok == 'true'
+    permissions:
+      contents: write
+      issues: write
+    uses: ./.github/workflows/_agent.yml
+    with:
+      agent: ${{ needs.prep.outputs.agent }}
+      emoji: ${{ needs.prep.outputs.emoji }}
+      fromIssue: ${{ github.event.issue.number }}
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

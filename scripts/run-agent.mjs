@@ -15,6 +15,10 @@
  *   readsRepo   저장소를 직접 훑어야 하는가 (메카닉만 true)
  *   outputMode  "dated"  → work/<id>/YYYY-MM-DD.md
  *               "single" → 고정 파일 하나를 덮어씀
+ *
+ * 정기 근무 외에 이슈로 즉석 지시를 받을 수도 있다.
+ *   AGENT_INSTRUCTION_FILE  이번 근무에만 적용할 지시가 담긴 파일
+ *   AGENT_SUFFIX            산출물 파일명 뒤에 붙일 꼬리 (예: -i7)
  */
 
 import { mergeMemory } from "./lib/memory.mjs";
@@ -88,6 +92,17 @@ async function collectInputs() {
 
 const inputs = await collectInputs();
 
+/* ---------------- 즉석 지시 ---------------- */
+
+// 이슈로 들어온 지시. 정기 근무면 비어 있다.
+let instruction = "";
+const instFile = process.env.AGENT_INSTRUCTION_FILE;
+if (instFile) {
+  if (!existsSync(instFile)) die(`지시 파일이 없습니다: ${instFile}`);
+  instruction = (await readFile(instFile, "utf8")).trim();
+  if (!instruction) die("지시 파일이 비어 있습니다.");
+}
+
 /* ---------------- 프롬프트 ---------------- */
 
 // Claude Code는 코딩 에이전트라 놔두면 파일부터 읽으려 든다. 저장소를 훑어야 하는
@@ -104,8 +119,17 @@ const topicBlock = agent.topics?.length
 
 const system = `${soul}\n\n---\n\n${GUARD}\n\n---\n\n오늘은 ${today} (KST)입니다.${topicBlock}`;
 
+// 즉석 지시는 TASK.md의 "할 일"만 대체한다. 출력 형식과 마지막 블록 규칙은
+// 그대로 지켜야 저장·기억 갱신 파이프라인이 계속 돌아간다.
+const instructionBlock = instruction
+  ? `---\n\n# 이번 근무는 지시가 따로 있습니다\n\n` +
+    `아래 지시가 위의 "할 일"보다 우선한다. 다만 **출력 형식과 마지막 블록 규칙은 그대로 지킨다.**\n` +
+    `지시와 무관한 정기 업무는 이번에 하지 않는다.\n\n${instruction}`
+  : "";
+
 const prompt = [
   task,
+  instructionBlock,
   inputs.length ? `---\n\n# 참고 자료 (${inputs.length}건)\n\n${inputs.join("\n\n")}` : "",
   `---\n\n# 내 기억\n\n${memory}`,
 ].filter(Boolean).join("\n\n");
@@ -178,9 +202,12 @@ if (!note) console.warn(`⚠ ${MARK_MEMORY} 블록이 없어 기억을 갱신하
 // 쓰기만 .ci/dry/ 아래로 돌린다.
 const dest = (rel) => (DRY ? path.join(ROOT, ".ci", "dry", rel) : path.join(ROOT, rel));
 
+// 정기 근무가 이미 오늘 파일을 만들어놨을 수 있으므로, 이슈 근무는 꼬리를 달아
+// 덮어쓰지 않는다. (build-state가 -i<번호> 꼬리를 알아본다)
+const suffix = (process.env.AGENT_SUFFIX ?? "").replace(/[^A-Za-z0-9-]/g, "");
 const outRel = agent.outputMode === "single"
   ? agent.outputFile
-  : path.posix.join(agent.output, `${today}.md`);
+  : path.posix.join(agent.output, `${today}${suffix}.md`);
 const outFile = dest(outRel);
 
 await mkdir(path.dirname(outFile), { recursive: true });
@@ -201,6 +228,7 @@ if (issue && !DRY) {
 
 console.log(`✓ ${agent.emoji} ${agent.name} 근무 완료`);
 console.log(`  → ${path.relative(ROOT, outFile)} (${body.length}자)${DRY ? "  [DRY]" : ""}`);
+if (instruction) console.log(`  ← 즉석 지시 ${instruction.length}자`);
 if (inputs.length) console.log(`  ← 참고 자료 ${inputs.length}건`);
 if (note) console.log(`  → memory.md 갱신`);
 if (issue) console.log(`  → .ci/issue.md (이슈 등록 대상)`);
