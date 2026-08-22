@@ -809,6 +809,25 @@ const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
                 "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 let konami = [];
 
+// 코나미 코드는 휴대폰에서 칠 수 없다. 같은 파티를 손가락으로도 열 수 있게
+// "전원 호출" — 모든 직원을 8초 안에 한 번씩 탭하면 된다. 사무실에서
+// 한 명씩 어깨를 두드려 부르는 것과 같은 동작이라 설명 없이도 이해된다.
+const ROLLCALL_MS = 8000;
+let rollcall = new Map();
+
+function rollcallTap(id) {
+  const now = performance.now();
+  for (const [k, at] of rollcall) if (now - at > ROLLCALL_MS) rollcall.delete(k);
+  rollcall.set(id, now);
+  const need = actors.length;
+  if (rollcall.size >= need && need > 1) {
+    rollcall.clear();
+    startParty();
+    return;
+  }
+  if (rollcall.size > 1) toast(`전원 호출 ${rollcall.size}/${need}`);
+}
+
 window.addEventListener("keydown", (e) => {
   konami.push(e.key.length === 1 ? e.key.toLowerCase() : e.key);
   if (konami.length > KONAMI.length) konami.shift();
@@ -820,6 +839,27 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") $("help").hidden = true;
   if (e.key.toLowerCase() === "c" && !e.metaKey && !e.ctrlKey) coffeeBreak();
 });
+
+// 휴대폰 흔들기. iOS는 사용자 동작에서 권한을 물어야 하므로 도움말에 버튼을 둔다.
+let lastShake = 0, shakeOn = false;
+function onMotion(e) {
+  const a = e.accelerationIncludingGravity;
+  if (!a) return;
+  const g = Math.hypot(a.x ?? 0, a.y ?? 0, a.z ?? 0);
+  const now = performance.now();
+  if (g > 26 && now - lastShake > 1500) { lastShake = now; startParty(); }
+}
+function enableShake() {
+  if (shakeOn) return toast("이미 켜져 있습니다");
+  const DM = window.DeviceMotionEvent;
+  if (!DM) return toast("이 기기는 흔들기를 지원하지 않습니다");
+  const go = () => { window.addEventListener("devicemotion", onMotion); shakeOn = true; toast("📳 흔들기 켜짐"); };
+  if (typeof DM.requestPermission === "function") {
+    DM.requestPermission().then((r) => (r === "granted" ? go() : toast("권한이 거부됐습니다"))).catch(() => toast("권한 요청 실패"));
+  } else {
+    go();
+  }
+}
 
 /* ---------------- 입력 ---------------- */
 
@@ -839,6 +879,7 @@ cv.addEventListener("click", (e) => {
     selected = best;
     paintPanel();
     say(actors[best], lineFor(actors[best]), 4, true);
+    rollcallTap(actors[best].id);
     return;
   }
 
@@ -901,6 +942,9 @@ async function load(first) {
   $("queued").textContent = state.queued ? `· 지시 대기 ${state.queued}` : "";
   $("updated").textContent = `갱신 ${rel(state.generatedAt)}`;
   if (state.repo) { $("repo").href = `https://github.com/${state.repo}`; $("repo").hidden = false; }
+  $("helpbtn").onclick = () => { $("help").hidden = !$("help").hidden; };
+  const sb = $("shakebtn");
+  if (sb) sb.onclick = enableShake;
   applyState(state, first);
   resize();
 }

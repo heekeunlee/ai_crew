@@ -109,6 +109,18 @@
   .queued:hover { text-decoration:underline; }
   #queued { color:#E0A0A0; }
 
+  #helpbtn {
+    margin-left:.4rem; width:1.35rem; height:1.35rem; flex:none; cursor:pointer;
+    background:#2A2838; color:#C9C9E8; border:1px solid #4A4763;
+    font-family:"Gothic A1",sans-serif; font-weight:800; font-size:.78rem; line-height:1;
+  }
+  #helpbtn:hover { background:#3A3750; color:#FFF; }
+  #helpbtn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  #help button {
+    background:#3A3550; color:#EDEAF6; border:1px solid #6A6480;
+    font:inherit; font-size:.78rem; padding:0 .5em; cursor:pointer;
+  }
+
   #error { background:#4A1A1A; color:#FFD9D0; padding:.8rem 1rem; font-size:.85rem; }
   footer { font-size:.78rem; color:var(--muted); border-top:1px solid var(--hairline); padding-top:1rem; }
   footer a { color:var(--accent); }
@@ -130,6 +142,7 @@
         <span>◉ <span id="count">…</span> <span id="queued"></span></span>
         <a id="repo" href="#" hidden target="_blank" rel="noopener">저장소 →</a>
         <span class="right" id="updated"></span>
+        <button id="helpbtn" type="button" aria-label="도움말">?</button>
       </div>
       <div class="stagewrap">
         <canvas id="office" tabindex="0" aria-label="AI 크루 오피스 현황"></canvas>
@@ -139,9 +152,11 @@
           <ul>
             <li><kbd>←</kbd> <kbd>→</kbd> 직원 넘기기</li>
             <li><kbd>C</kbd> 또는 탕비실 클릭 — 커피 타임</li>
+            <li><b>전원 호출</b> — 직원 전원을 8초 안에 한 번씩 탭 (휴대폰용)</li>
             <li>화분 클릭 — 화분이 자랍니다</li>
             <li>벽시계 클릭 — 지금 한국 시각</li>
-            <li>코나미 코드 — ↑↑↓↓←→←→BA</li>
+            <li>코나미 코드 — ↑↑↓↓←→←→BA (키보드용)</li>
+            <li>휴대폰 흔들기 — <button id="shakebtn" type="button">켜기</button></li>
             <li><kbd>?</kbd> 이 창 · <kbd>Esc</kbd> 닫기</li>
           </ul>
         </div>
@@ -187,6 +202,6 @@
   </footer>
 
 </div>
-<script src="office.js?v=243ea485"></script>
+<script src="office.js?v=a62915a5"></script>
 </body>
 </html>
