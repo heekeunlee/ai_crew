@@ -1,0 +1,126 @@
+#!/usr/bin/env node
+/**
+ * 저장소 상태를 화면이 읽을 site/state.json 한 장으로 만든다.
+ *
+ *   node scripts/build-state.mjs                평소 갱신
+ *   node scripts/build-state.mjs --start scout  근무 시작 표시
+ *   node scripts/build-state.mjs --clear        근무 표시 전부 걷어내기
+ *
+ * 화면은 이 파일 하나만 가져간다. 로스터도 여기 같이 실어서 fetch가 한 번이면 끝난다.
+ */
+
+import { summarizeWork, deriveStatus, STALE_MS } from "./lib/state.mjs";
+import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const OUT = path.join(ROOT, "site", "state.json");
+const RECENT = 5;
+
+const args = process.argv.slice(2);
+const startFlag = args.indexOf("--start");
+const startAgent = startFlag === -1 ? null : args[startFlag + 1];
+const clearAll = args.includes("--clear");
+
+const crew = JSON.parse(await readFile(path.join(ROOT, "crew.json"), "utf8"));
+
+/** 이전 state를 읽어 근무 표시를 이어받는다 */
+let prev = { agents: [] };
+if (existsSync(OUT)) {
+  try { prev = JSON.parse(await readFile(OUT, "utf8")); } catch { /* 깨졌으면 새로 만든다 */ }
+}
+const prevOf = (id) => prev.agents?.find((a) => a.id === id) ?? {};
+
+/** 파일이 마지막으로 커밋된 시각. 커밋 전이면 null. */
+function committedAt(relPath) {
+  try {
+    const out = execFileSync("git", ["log", "-1", "--format=%cI", "--", relPath], {
+      cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    return out || null;
+  } catch {
+    return null;
+  }
+}
+
+const repo = (() => {
+  try {
+    const url = execFileSync("git", ["remote", "get-url", "origin"], {
+      cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    const m = url.match(/github\.com[:/](.+?)(?:\.git)?$/);
+    return m ? m[1] : null;
+  } catch {
+    return null;
+  }
+})();
+
+const now = Date.now();
+const agents = [];
+
+for (const [i, a] of crew.agents.entries()) {
+  const dir = path.join(ROOT, a.output);
+  let files = [];
+  if (existsSync(dir)) {
+    files = (await readdir(dir))
+      .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
+      .sort()
+      .reverse();
+  }
+
+  const recent = [];
+  for (const f of files.slice(0, RECENT)) {
+    const rel = path.posix.join(a.output, f);
+    const md = await readFile(path.join(dir, f), "utf8");
+    const { summary, items } = summarizeWork(md);
+    recent.push({
+      date: f.replace(/\.md$/, ""),
+      summary,
+      items,
+      url: repo ? `https://github.com/${repo}/blob/main/${rel}` : rel,
+    });
+  }
+
+  const lastRunAt = files.length
+    ? committedAt(path.posix.join(a.output, files[0]))
+    : null;
+
+  // --start로 켠 표시를 물려받되, 오래된 것은 여기서 정리한다
+  let startedAt = clearAll ? null : (prevOf(a.id).startedAt ?? null);
+  if (startAgent === a.id) startedAt = new Date(now).toISOString();
+  if (startedAt && now - Date.parse(startedAt) >= STALE_MS) startedAt = null;
+  // 근무 시작 이후에 결과물이 커밋됐으면 그 근무는 끝난 것이다
+  if (startedAt && lastRunAt && Date.parse(lastRunAt) >= Date.parse(startedAt)) startedAt = null;
+
+  agents.push({
+    id: a.id,
+    name: a.name,
+    emoji: a.emoji,
+    color: a.color,
+    desk: i,
+    schedule: a.schedule ?? null,
+    status: deriveStatus({ startedAt, lastRunAt }, now),
+    startedAt,
+    lastRunAt,
+    total: files.length,
+    recent,
+  });
+}
+
+const state = {
+  generatedAt: new Date(now).toISOString(),
+  repo,
+  officeTitle: crew.officeTitle ?? "AI CREW",
+  agents,
+};
+
+await mkdir(path.dirname(OUT), { recursive: true });
+await writeFile(OUT, JSON.stringify(state, null, 2) + "\n", "utf8");
+
+console.log(`✓ site/state.json 생성`);
+for (const a of agents) {
+  console.log(`  ${a.emoji} ${a.name.padEnd(6)} ${a.status.padEnd(8)} 산출물 ${a.total}건`);
+}

@@ -2,7 +2,9 @@
 
 GitHub Actions에서 일하는 AI 크루. 서버 없이 저장소 하나로 돌아갑니다.
 
-**현재 1단계** — 리서처(`scout`) 한 명, 화면 없음.
+**현재 2단계** — 리서처(`scout`) 한 명 + 2D 픽셀 오피스 화면.
+
+오피스: https://heekeunlee.github.io/ai_crew/
 
 ## 지금 되는 것
 
@@ -20,10 +22,36 @@ scripts/
   run-agent.mjs            실행기
   lib/memory.mjs           기억 병합 (순수 함수)
   memory.test.mjs          단위 테스트
+  lib/state.mjs            상태 판정 (순수 함수)
+  build-state.mjs          site/state.json 생성기
 work/scout/                산출물이 쌓이는 곳
+site/
+  index.html               오피스 화면
+  office.js                canvas 픽셀 렌더러
+  state.json               자동 생성 — 직접 고치지 않음
 .github/workflows/
   scout.yml                cron 출근 + 수동 실행
   test.yml                 푸시할 때마다 점검
+  pages.yml                오피스 배포
+```
+
+## 오피스 화면
+
+캐릭터가 **서 있는 위치가 곧 상태**입니다.
+
+| 위치 | 뜻 |
+|---|---|
+| 책상 | Actions가 지금 돌고 있음 (모니터 켜짐) |
+| 게시판 앞 | 최근 6시간 안에 결과물을 커밋함 |
+| 소파 | 대기 |
+
+근무 표시는 30분이 지나면 스스로 만료되므로, 워크플로가 중간에 죽어도
+「작업 중」으로 굳지 않습니다. 화면은 `state.json` 하나만 읽고 1분마다 갱신합니다.
+로스터를 그대로 읽어 그리므로 **에이전트를 늘려도 렌더러는 손댈 필요가 없습니다.**
+
+```bash
+npm run state         # state.json 다시 만들기
+cd site && python3 -m http.server 8080    # 로컬에서 화면 보기
 ```
 
 ## 인증 — API 크레딧이 들지 않습니다
@@ -80,6 +108,5 @@ npm run scout
 
 ## 다음 단계
 
-- 2단계 — `state.json` + 2D 픽셀 오피스 화면 (GitHub Pages)
-- 3단계 — 라이터·아키비스트·메카닉 추가
+- 3단계 — 라이터·아키비스트·메카닉 추가 (crew.json에 항목만 추가)
 - 4단계 — 이슈 라벨로 지시 내리기 (칸반)

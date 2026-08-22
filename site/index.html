@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI CREW — AI 오피스</title>
+<meta name="description" content="GitHub Actions에서 일하는 AI 크루의 근무 현황">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🏢</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800&family=Noto+Sans+KR:wght@400;500&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground:#F0F0F5; --surface:#FCFCFE; --recess:#E4E4EE;
+    --ink:#15151F; --ink-soft:#3B3B52; --muted:#64647E;
+    --hairline:#D5D5E2; --firm:#B4B4C8; --accent:#3B36C4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:#101018; --surface:#191922; --recess:#20202C;
+      --ink:#EDEDF4; --ink-soft:#C6C6D6; --muted:#8E8EA8;
+      --hairline:#2B2B39; --firm:#43435A; --accent:#8A85FF;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:"Noto Sans KR", system-ui, -apple-system, sans-serif;
+    font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:60rem; margin:0 auto; padding:clamp(1.4rem,4vw,3rem) clamp(1rem,3vw,2rem) 4rem;
+          display:flex; flex-direction:column; gap:1.4rem; }
+  h1,.n,.zone-n { font-family:"Gothic A1", "Noto Sans KR", sans-serif; }
+  .mono,.d,.chrome,.i,#p-status,#p-total { font-family:"DM Mono", ui-monospace, Menlo, monospace; }
+
+  header { display:flex; flex-direction:column; gap:.25rem; }
+  h1 { margin:0; font-size:clamp(1.5rem,4.5vw,2.1rem); font-weight:800; letter-spacing:-.03em; }
+  header p { margin:0; color:var(--muted); font-size:.9rem; }
+
+  .stage { display:grid; grid-template-columns:1fr; gap:1rem; }
+  @media (min-width:60rem) { .stage { grid-template-columns:1fr 17rem; align-items:start; } }
+
+  .screen { background:#1A1A26; border:4px solid var(--firm); padding:.6rem .6rem .5rem;
+            display:flex; flex-direction:column; gap:.5rem; min-width:0; }
+  .chrome { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap;
+            font-size:.72rem; color:#A9A9C8; padding:0 .15rem; }
+  .chrome a { color:#8A8AB4; text-decoration:none; }
+  .chrome a:hover { color:#C9C9E8; text-decoration:underline; }
+  .chrome .right { margin-left:auto; color:#6F6F92; }
+  canvas { display:block; width:100%; height:auto; image-rendering:pixelated;
+           cursor:pointer; background:#C3B69B; }
+  canvas:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+
+  .panel { background:var(--surface); border:2px solid var(--hairline);
+           padding:1rem 1.05rem; display:flex; flex-direction:column; gap:.7rem; min-width:0; }
+  .head { display:flex; align-items:center; gap:.5rem; }
+  .head .em { font-size:1.5rem; line-height:1; }
+  .head .who { display:flex; flex-direction:column; min-width:0; }
+  .head .n { font-weight:800; font-size:1rem; letter-spacing:-.02em; }
+  .head .i { font-size:.7rem; color:var(--muted); }
+  .statline { display:flex; align-items:center; gap:.4rem; font-size:.75rem; color:var(--ink-soft);
+              padding:.3rem 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); }
+  .dot { width:.55rem; height:.55rem; flex:none; }
+  #p-total { margin-left:auto; color:var(--muted); }
+  .lbl { font-size:.7rem; color:var(--muted); letter-spacing:.1em; }
+
+  .worklist { display:flex; flex-direction:column; }
+  a.work { display:grid; grid-template-columns:2.6rem 1fr auto; gap:0 .5rem; align-items:baseline;
+           padding:.5rem 0; border-bottom:1px solid var(--hairline);
+           text-decoration:none; color:var(--ink-soft); font-size:.8rem; }
+  a.work:hover { color:var(--accent); }
+  a.work:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  .work .d { font-size:.68rem; color:var(--muted); }
+  .work .t { overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+  .work .n { font-size:.68rem; color:var(--muted); }
+  .empty { margin:0; font-size:.82rem; color:var(--muted); }
+  .hint { margin:0; font-size:.75rem; color:var(--muted); }
+
+  .zones { display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+           gap:2px; background:var(--firm); border:2px solid var(--firm); }
+  .zone { background:var(--surface); padding:.75rem .9rem; }
+  .zone-n { font-weight:800; font-size:.88rem; display:flex; align-items:center; gap:.4rem; }
+  .zone-n i { width:.6rem; height:.6rem; display:inline-block; }
+  .zone p { margin:.1rem 0 0; font-size:.78rem; color:var(--muted); }
+
+  #error { background:#4A1A1A; color:#FFD9D0; padding:.8rem 1rem; font-size:.85rem; }
+  footer { font-size:.78rem; color:var(--muted); border-top:1px solid var(--hairline); padding-top:1rem; }
+  footer a { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 id="title">AI CREW</h1>
+    <p>GitHub Actions에서 일하는 AI 크루. 서 있는 위치가 곧 상태입니다.</p>
+  </header>
+
+  <p id="error" hidden></p>
+
+  <div class="stage">
+    <div class="screen">
+      <div class="chrome">
+        <span>◉ <span id="count">…</span></span>
+        <a id="repo" href="#" hidden target="_blank" rel="noopener">저장소 →</a>
+        <span class="right" id="updated"></span>
+      </div>
+      <canvas id="office" tabindex="0" aria-label="AI 크루 오피스 현황"></canvas>
+    </div>
+
+    <aside class="panel">
+      <div class="head">
+        <span class="em" id="p-emoji">🔭</span>
+        <span class="who"><span class="n" id="p-name">…</span><span class="i" id="p-id"></span></span>
+      </div>
+      <div class="statline">
+        <span class="dot" id="p-dot"></span><span id="p-status"></span><span id="p-total"></span>
+      </div>
+      <span class="lbl">최근 산출물</span>
+      <div class="worklist" id="p-work"></div>
+      <p class="hint">캐릭터를 클릭하면 바뀝니다. 항목을 누르면 저장소로 이동합니다.</p>
+    </aside>
+  </div>
+
+  <div class="zones">
+    <div class="zone">
+      <span class="zone-n"><i style="background:#4ADE80"></i>책상</span>
+      <p>지금 Actions가 돌고 있음. 모니터가 켜집니다.</p>
+    </div>
+    <div class="zone">
+      <span class="zone-n"><i style="background:#FBBF24"></i>게시판 앞</span>
+      <p>최근 6시간 안에 결과물을 커밋함.</p>
+    </div>
+    <div class="zone">
+      <span class="zone-n"><i style="background:#94A3B8"></i>소파</span>
+      <p>대기. 다음 근무 시간을 기다리는 중.</p>
+    </div>
+  </div>
+
+  <footer>
+    상태는 <span class="mono">state.json</span> 한 장에서 옵니다. 에이전트가 근무를 마칠 때마다
+    Actions가 이 파일을 다시 만들어 커밋합니다. 페이지는 1분마다 다시 읽습니다.
+  </footer>
+
+</div>
+<script src="office.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-08-22T15:53:15.633Z",
+  "repo": "heekeunlee/ai_crew",
+  "officeTitle": "AI CREW",
+  "agents": [
+    {
+      "id": "scout",
+      "name": "리서처",
+      "emoji": "🔭",
+      "color": "#3B36C4",
+      "desk": 0,
+      "schedule": "0 22 * * *",
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-23T00:45:35+09:00",
+      "total": 1,
+      "recent": [
+        {
+          "date": "2026-08-23",
+          "summary": "개발자 도구는 GitHub Copilot이 협업툴 안으로 파고들고, 미국 증시는 비트코인 랠리가 주간 하락장 속 반짝 반등을 이끌었다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-23.md"
+        }
+      ]
+    }
+  ]
+}
