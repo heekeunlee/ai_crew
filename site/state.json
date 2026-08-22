@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T22:19:58.408Z",
+  "generatedAt": "2026-08-22T22:27:48.218Z",
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
   "agents": [
@@ -10,15 +10,15 @@
       "color": "#3B36C4",
       "desk": 0,
       "schedule": "0 22 * * *",
-      "status": "working",
-      "startedAt": "2026-08-22T22:19:58.408Z",
-      "lastRunAt": "2026-08-23T07:18:35+09:00",
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-22T22:27:48Z",
       "total": 1,
       "recent": [
         {
           "date": "2026-08-23",
-          "summary": "개발자 도구는 GitHub Copilot이 협업툴 안으로 파고들고, 미국 증시는 비트코인 랠리가 주간 하락장 속 반짝 반등을 이끌었다.",
-          "items": 2,
+          "summary": "미국은 개별 실적(BJ's Wholesale)에 기댄 소폭 상승, 한국은 반도체 대형주만 오르고 나머지는 빠진 하루였다.",
+          "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-23.md"
         }
       ]
