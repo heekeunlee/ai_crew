@@ -28,9 +28,14 @@ jobs:
         env:
           DRY_RUN: "1"
         run: |
-          node scripts/run-agent.mjs scout
-          test -s "work/scout/$(TZ=Asia/Seoul date +%Y-%m-%d).md" \
-            || { echo "산출물이 생성되지 않았습니다"; exit 1; }
-          grep -q "$(TZ=Asia/Seoul date +%Y-%m-%d)" agents/scout/memory.md \
-            || { echo "memory.md가 갱신되지 않았습니다"; exit 1; }
-          echo "✓ 산출물 생성 · 기억 갱신 확인"
+          D=$(TZ=Asia/Seoul date +%Y-%m-%d)
+          for a in $(node -e "console.log(require('./crew.json').agents.map(x=>x.id).join(' '))"); do
+            node scripts/run-agent.mjs "$a"
+          done
+          # DRY_RUN은 실제 산출물을 건드리지 않고 .ci/dry/ 아래에만 쓴다
+          test -s ".ci/dry/work/scout/$D.md"        || { echo "리서처 산출물 없음"; exit 1; }
+          test -s ".ci/dry/archive/INDEX.md"        || { echo "아키비스트 산출물 없음"; exit 1; }
+          grep -q "$D" ".ci/dry/agents/scout/memory.md" || { echo "기억 갱신 안 됨"; exit 1; }
+          git diff --quiet -- work/ archive/ agents/ \
+            || { echo "DRY_RUN이 실제 파일을 건드렸습니다"; git diff --stat; exit 1; }
+          echo "✓ 4명 전원 산출물 생성 · 기억 갱신 · 실제 파일 무변경 확인"

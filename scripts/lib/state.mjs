@@ -18,15 +18,26 @@ export const FRESH_MS = 6 * 60 * 60 * 1000;
 export function summarizeWork(markdown) {
   const lines = markdown.split("\n");
 
+  // 문서마다 총평을 다르게 쓴다. 리서처·라이터·메카닉은 인용줄(> ...),
+  // 아키비스트 색인은 이탤릭 부제(*...*)를 쓴다. 둘 다 받는다.
   const quote = lines.find((l) => /^>\s+\S/.test(l));
-  const summary = quote ? quote.replace(/^>\s+/, "").trim() : "";
+  const italic = lines.find((l) => /^\*[^*].*\*\s*$/.test(l.trim()));
+  const summary = quote
+    ? quote.replace(/^>\s+/, "").trim()
+    : italic
+      ? italic.trim().replace(/^\*|\*$/g, "").trim()
+      : "";
 
   // "넘어간 것" 섹션 아래의 목록은 산출물이 아니므로 세지 않는다
   const cutAt = lines.findIndex((l) => /^##\s+.*넘어간/.test(l));
   const body = cutAt === -1 ? lines : lines.slice(0, cutAt);
-  const items = body.filter((l) => /^###\s+\S/.test(l)).length;
 
-  return { summary, items };
+  // 항목을 ### 로 나누는 문서와 목록으로 나누는 문서가 있다.
+  // ### 이 하나도 없을 때만 최상위 불릿을 센다.
+  const headings = body.filter((l) => /^###\s+\S/.test(l)).length;
+  const bullets = body.filter((l) => /^-\s+\S/.test(l)).length;
+
+  return { summary, items: headings || bullets };
 }
 
 /**

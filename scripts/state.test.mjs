@@ -89,3 +89,20 @@ test("미래 시각이나 깨진 값에 속지 않는다", () => {
   assert.equal(deriveStatus({ startedAt: iso(now + 600_000), lastRunAt: null }, now), "idle");
   assert.equal(deriveStatus({ startedAt: "언젠가", lastRunAt: "어제" }, now), "idle");
 });
+
+test("색인 문서의 이탤릭 부제도 총평으로 잡는다", () => {
+  const idx = `# 색인\n\n*2026-08-23 갱신 · 자료 3건 · 항목 7건*\n\n## 개발자 도구\n\n- **A** — 설명\n- **B** — 설명\n`;
+  const { summary, items } = summarizeWork(idx);
+  assert.equal(summary, "2026-08-23 갱신 · 자료 3건 · 항목 7건");
+  assert.equal(items, 2);
+});
+
+test("### 이 있으면 불릿은 세지 않는다", () => {
+  const md = `# 제목\n\n### 항목 하나\n\n- 본문 속 불릿\n- 또 하나\n\n### 항목 둘\n`;
+  assert.equal(summarizeWork(md).items, 2);
+});
+
+test("인용줄이 이탤릭보다 우선한다", () => {
+  const md = `# 제목\n\n> 진짜 총평\n\n*부제*\n`;
+  assert.equal(summarizeWork(md).summary, "진짜 총평");
+});

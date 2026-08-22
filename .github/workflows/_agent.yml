@@ -1,0 +1,136 @@
+name: 에이전트 근무 (공통)
+
+# 네 명 모두 이 워크플로 하나를 쓴다. 에이전트를 늘릴 때는
+# 호출하는 파일 하나만 추가하면 된다.
+on:
+  workflow_call:
+    inputs:
+      agent:
+        description: crew.json의 에이전트 id
+        required: true
+        type: string
+      emoji:
+        required: true
+        type: string
+      review:
+        description: "commit(기본) | pull-request — 산출물을 main에 바로 넣을지 PR로 올릴지"
+        type: string
+        default: commit
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  work:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Claude Code 설치
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: git 설정
+        run: |
+          git config user.name  "ai_crew[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # 오피스 화면에서 "작업 중"으로 보이게 한다. 이 표시는 30분이 지나면
+      # 스스로 만료되므로, 아래 단계가 실패해도 계속 켜져 있지 않는다.
+      - name: 출근 표시
+        run: |
+          node scripts/build-state.mjs --start "${{ inputs.agent }}"
+          git add site/state.json
+          git diff --staged --quiet || {
+            git commit -m "${{ inputs.emoji }} ${{ inputs.agent }} 출근"
+            git push
+          }
+
+      - name: 근무
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: node scripts/run-agent.mjs "${{ inputs.agent }}"
+
+      # ---- main에 바로 커밋하는 경우 ----
+      - name: 결과 커밋
+        if: inputs.review != 'pull-request'
+        run: |
+          git add work/ archive/ "agents/${{ inputs.agent }}/memory.md"
+          if git diff --staged --quiet; then
+            echo "산출물 변경 없음"
+          else
+            git commit -m "${{ inputs.emoji }} ${{ inputs.agent }}: $(TZ=Asia/Seoul date +%Y-%m-%d)"
+          fi
+          # state.json은 산출물이 커밋된 뒤에 만들어야 커밋 시각이 잡힌다
+          node scripts/build-state.mjs
+          git add site/state.json
+          git diff --staged --quiet || git commit -m "${{ inputs.emoji }} ${{ inputs.agent }} 퇴근"
+          git push
+
+      # ---- PR로 올리는 경우 ----
+      # 산출물은 사람이 병합해야 main에 들어간다. 그때까지 오피스에는
+      # 아직 결과물이 없는 것으로 보이는데, 그게 맞는 표시다.
+      - name: PR 생성
+        if: inputs.review == 'pull-request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DATE=$(TZ=Asia/Seoul date +%Y-%m-%d)
+          BRANCH="${{ inputs.agent }}/$DATE"
+
+          git checkout -b "$BRANCH"
+          git add work/ "agents/${{ inputs.agent }}/memory.md"
+          if git diff --staged --quiet; then
+            echo "산출물 변경 없음 — PR을 만들지 않습니다"
+          else
+            git commit -m "${{ inputs.emoji }} ${{ inputs.agent }}: $DATE"
+            git push -u origin "$BRANCH"
+            gh pr create \
+              --title "${{ inputs.emoji }} ${{ inputs.agent }}: $DATE" \
+              --body "$(printf '자동 생성된 초안입니다. 읽어보고 병합하거나 닫아주세요.\n\n- 에이전트: `%s`\n- 실행: [%s](%s/%s/actions/runs/%s)\n' \
+                    "${{ inputs.agent }}" "$DATE" "${{ github.server_url }}" "${{ github.repository }}" "${{ github.run_id }}")" \
+              --base main --head "$BRANCH"
+          fi
+
+          # 근무 표시는 main에서 걷어낸다
+          git checkout main
+          node scripts/build-state.mjs --clear
+          git add site/state.json
+          git diff --staged --quiet || {
+            git commit -m "${{ inputs.emoji }} ${{ inputs.agent }} 퇴근"
+            git push
+          }
+
+      # ---- 점검 결과가 있으면 이슈로 ----
+      - name: 이슈 등록
+        if: hashFiles('.ci/issue.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "${{ inputs.emoji }} ${{ inputs.agent }} 점검: $(TZ=Asia/Seoul date +%Y-%m-%d)" \
+            --body-file .ci/issue.md
+
+      # 근무가 실패해도 "작업 중"으로 굳지 않게 표시를 걷어낸다
+      - name: 실패 시 표시 정리
+        if: failure()
+        run: |
+          git checkout main 2>/dev/null || true
+          node scripts/build-state.mjs --clear || exit 0
+          git add site/state.json
+          git diff --staged --quiet || {
+            git commit -m "${{ inputs.emoji }} ${{ inputs.agent }} 근무 실패 — 상태 정리"
+            git push
+          }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T15:53:15.633Z",
+  "generatedAt": "2026-08-22T16:07:34.827Z",
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
   "agents": [
@@ -22,6 +22,52 @@
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-23.md"
         }
       ]
+    },
+    {
+      "id": "quill",
+      "name": "라이터",
+      "emoji": "✍️",
+      "color": "#CE4A34",
+      "desk": 1,
+      "schedule": "0 0 * * 6",
+      "status": "idle",
+      "startedAt": null,
+      "lastRunAt": null,
+      "total": 0,
+      "recent": []
+    },
+    {
+      "id": "curator",
+      "name": "아키비스트",
+      "emoji": "🗂️",
+      "color": "#B07D0C",
+      "desk": 2,
+      "schedule": "0 14 * * *",
+      "status": "idle",
+      "startedAt": null,
+      "lastRunAt": null,
+      "total": 1,
+      "recent": [
+        {
+          "date": "2026-08-23",
+          "summary": "2026-08-23 갱신 · 산출물 2건",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/archive/INDEX.md"
+        }
+      ]
+    },
+    {
+      "id": "mechanic",
+      "name": "메카닉",
+      "emoji": "🔧",
+      "color": "#2F7A5C",
+      "desk": 3,
+      "schedule": "0 0 * * 1",
+      "status": "idle",
+      "startedAt": null,
+      "lastRunAt": null,
+      "total": 0,
+      "recent": []
     }
   ]
 }

@@ -1,23 +1,23 @@
-name: 리서처 근무
+name: 메카닉 근무
 
 on:
   schedule:
-    # 22:00 UTC = 다음날 07:00 KST
-    - cron: "0 22 * * *"
+    # 00:00 UTC 월 = 09:00 KST 월
+    - cron: "0 0 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: agent-scout
+  group: agent-mechanic
   cancel-in-progress: false
 
 jobs:
   work:
     uses: ./.github/workflows/_agent.yml
     with:
-      agent: scout
-      emoji: "🔭"
+      agent: mechanic
+      emoji: "🔧"
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

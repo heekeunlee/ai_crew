@@ -1,6 +1,7 @@
 {
-  "$comment": "로스터 단일 원본. 워크플로·실행 스크립트·화면이 전부 이 파일만 읽습니다.",
+  "$comment": "로스터 단일 원본. 워크플로·실행 스크립트·오피스 화면이 전부 이 파일만 읽습니다.",
   "auth": "claude-subscription",
+  "officeTitle": "AI CREW",
   "agents": [
     {
       "id": "scout",
@@ -9,13 +10,12 @@
       "color": "#3B36C4",
       "model": "claude-sonnet-5",
       "schedule": "0 22 * * *",
-      "scheduleNote": "UTC 기준. 22:00 UTC = 다음날 07:00 KST",
-      "desk": [2, 1],
+      "scheduleNote": "매일 07:00 KST",
       "output": "work/scout",
+      "outputMode": "dated",
       "tools": ["WebSearch", "WebFetch"],
       "maxSearches": 8,
       "maxBudgetUsd": 3.0,
-      "$maxBudgetUsd": "폭주 방지용 상한. 구독 토큰이면 실제 청구가 아니라 환산 기준입니다.",
 
       "$topics": "◀ 여기만 고치면 수집 주제가 바뀝니다",
       "topics": [
@@ -24,6 +24,56 @@
         "한국 증시·주요 공시 (코스피·코스닥 특이 종목, DART 주요 공시)",
         "소셜에서 화제가 된 AI 활용 '결과물' (Threads·X·레딧에서 사람들이 실제로 만들어 올린 산출물과 프롬프트·워크플로. 플랫폼의 신규 기능 발표나 사용자 수 같은 회사 뉴스는 이 주제가 아니다)"
       ]
+    },
+    {
+      "id": "quill",
+      "name": "라이터",
+      "emoji": "✍️",
+      "color": "#CE4A34",
+      "model": "claude-sonnet-5",
+      "schedule": "0 0 * * 6",
+      "scheduleNote": "토요일 09:00 KST",
+      "output": "work/quill",
+      "outputMode": "dated",
+      "tools": ["WebSearch", "WebFetch"],
+      "maxBudgetUsd": 3.0,
+      "$review": "산출물을 main에 바로 넣지 않고 PR로 올립니다. 사람이 읽고 병합합니다.",
+      "review": "pull-request",
+      "inputs": [{ "dir": "work/scout", "limit": 7 }]
+    },
+    {
+      "id": "curator",
+      "name": "아키비스트",
+      "emoji": "🗂️",
+      "color": "#B07D0C",
+      "model": "claude-haiku-4-5-20251001",
+      "schedule": "0 14 * * *",
+      "scheduleNote": "매일 23:00 KST",
+      "output": "archive",
+      "outputMode": "single",
+      "outputFile": "archive/INDEX.md",
+      "tools": [],
+      "maxBudgetUsd": 1.5,
+      "inputs": [
+        { "dir": "work/scout", "limit": 20 },
+        { "dir": "work/quill", "limit": 10 },
+        { "dir": "work/mechanic", "limit": 5 }
+      ]
+    },
+    {
+      "id": "mechanic",
+      "name": "메카닉",
+      "emoji": "🔧",
+      "color": "#2F7A5C",
+      "model": "claude-sonnet-5",
+      "schedule": "0 0 * * 1",
+      "scheduleNote": "월요일 09:00 KST",
+      "output": "work/mechanic",
+      "outputMode": "dated",
+      "$readsRepo": "저장소를 직접 훑어야 하므로 읽기 도구를 허용합니다. 쓰기는 막혀 있습니다.",
+      "readsRepo": true,
+      "tools": ["Read", "Glob", "Grep", "WebFetch"],
+      "maxBudgetUsd": 3.0
     }
   ]
 }

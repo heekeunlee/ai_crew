@@ -59,34 +59,48 @@ const repo = (() => {
 })();
 
 const now = Date.now();
+const todayKST = new Date(now + 9 * 3600 * 1000).toISOString().slice(0, 10);
 const agents = [];
 
 for (const [i, a] of crew.agents.entries()) {
-  const dir = path.join(ROOT, a.output);
-  let files = [];
-  if (existsSync(dir)) {
-    files = (await readdir(dir))
-      .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
-      .sort()
-      .reverse();
+  // 산출물이 날짜별로 쌓이는 에이전트와, 파일 하나를 계속 덮어쓰는
+  // 에이전트(아키비스트)를 같은 모양으로 맞춘다.
+  const single = a.outputMode === "single";
+  const rels = [];
+
+  if (single) {
+    if (existsSync(path.join(ROOT, a.outputFile))) rels.push(a.outputFile);
+  } else {
+    const dir = path.join(ROOT, a.output);
+    if (existsSync(dir)) {
+      for (const f of (await readdir(dir))
+        .filter((f) => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
+        .sort()
+        .reverse()) {
+        rels.push(path.posix.join(a.output, f));
+      }
+    }
   }
 
+  const lastRunAt = rels.length ? committedAt(rels[0]) : null;
+
   const recent = [];
-  for (const f of files.slice(0, RECENT)) {
-    const rel = path.posix.join(a.output, f);
-    const md = await readFile(path.join(dir, f), "utf8");
+  for (const rel of rels.slice(0, RECENT)) {
+    const md = await readFile(path.join(ROOT, rel), "utf8");
     const { summary, items } = summarizeWork(md);
+    const named = path.basename(rel, ".md");
     recent.push({
-      date: f.replace(/\.md$/, ""),
+      // 덮어쓰기형은 파일명에 날짜가 없으므로 커밋 시각에서 뽑는다
+      date: /^\d{4}-\d{2}-\d{2}$/.test(named)
+        ? named
+        : (lastRunAt ? lastRunAt.slice(0, 10) : todayKST),
       summary,
       items,
       url: repo ? `https://github.com/${repo}/blob/main/${rel}` : rel,
     });
   }
 
-  const lastRunAt = files.length
-    ? committedAt(path.posix.join(a.output, files[0]))
-    : null;
+  const files = rels;
 
   // --start로 켠 표시를 물려받되, 오래된 것은 여기서 정리한다
   let startedAt = clearAll ? null : (prevOf(a.id).startedAt ?? null);

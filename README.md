@@ -2,15 +2,29 @@
 
 GitHub Actions에서 일하는 AI 크루. 서버 없이 저장소 하나로 돌아갑니다.
 
-**현재 2단계** — 리서처(`scout`) 한 명 + 2D 픽셀 오피스 화면.
+**현재 3단계** — 크루 4명 + 2D 픽셀 오피스 화면.
 
 오피스: https://heekeunlee.github.io/ai_crew/
 
-## 지금 되는 것
+## 크루
 
-매일 07:00 KST에 리서처가 깨어나 정해진 주제의 새 소식을 검색하고,
-요약본을 `work/scout/YYYY-MM-DD.md`로 커밋합니다.
-어제 다룬 주제는 `agents/scout/memory.md`를 읽고 건너뜁니다.
+| | 담당 | 근무 | 산출 |
+|---|---|---|---|
+| 🔭 리서처 `scout` | 주제별 새 소식 수집 | 매일 07:00 | `work/scout/날짜.md` |
+| ✍️ 라이터 `quill` | 주간 글 한 편 | 토 09:00 | **PR** (사람이 병합) |
+| 🗂️ 아키비스트 `curator` | 색인 정리 | 매일 23:00 | `archive/INDEX.md` (덮어씀) |
+| 🔧 메카닉 `mechanic` | 저장소 점검 | 월 09:00 | `work/mechanic/날짜.md` + 이슈 |
+
+에이전트마다 다른 것은 전부 `crew.json`에 있습니다. 실행기는 네 명에게
+같은 계약을 줍니다 — 프롬프트를 받고 마크다운을 돌려줍니다.
+
+- `inputs` — 프롬프트에 끼워 넣을 기존 산출물 (라이터는 리서처 7일치를 읽습니다)
+- `readsRepo` — 저장소를 직접 훑어야 하는가 (메카닉만 `true`, 쓰기는 막혀 있음)
+- `outputMode` — `dated`(날짜별) / `single`(파일 하나를 덮어씀)
+- `review` — `pull-request`면 main에 바로 넣지 않고 PR로 올립니다
+
+**라이터만 PR로 나갑니다.** 병합 전까지 오피스에서는 산출물이 없는 것으로
+보이는데, 그게 맞는 표시입니다 — 사람이 승인해야 발행된 것이니까요.
 
 ```
 crew.json                  로스터 단일 원본 — 주제·모델·근무시간
@@ -30,7 +44,9 @@ site/
   office.js                canvas 픽셀 렌더러
   state.json               자동 생성 — 직접 고치지 않음
 .github/workflows/
-  scout.yml                cron 출근 + 수동 실행
+  _agent.yml               공통 근무 워크플로 (네 명이 공유)
+  scout.yml quill.yml      각 에이전트 스케줄
+  curator.yml mechanic.yml
   test.yml                 푸시할 때마다 점검
   pages.yml                오피스 배포
 ```
@@ -67,9 +83,12 @@ Anthropic API 키가 아니라 **Claude 구독**으로 돌아갑니다.
 ## 아무것도 안 쓰고 먼저 확인하기
 
 ```bash
-npm run scout:dry     # Claude 호출 없음. 파일이 제대로 생기는지만 본다
-npm test              # 기억 병합 로직 단위 테스트
+npm run scout:dry     # Claude 호출 없음. 배관만 확인 (.ci/dry/ 아래에만 씀)
+npm test              # 단위 테스트
 ```
+
+`DRY_RUN=1`은 진짜 산출물을 덮어쓰지 않습니다. 코드 경로는 그대로 타되
+쓰기만 `.ci/dry/` 아래로 돌립니다.
 
 ## 실제로 한 번 돌려보기
 
@@ -106,7 +125,14 @@ npm run scout
 - 워크플로 권한은 `contents: read`가 기본이고, 커밋이 필요한 잡에만 `write`를 줍니다.
 - `crew.json`의 `maxBudgetUsd`가 폭주 방지 상한입니다 (환산 기준).
 
+## 에이전트 추가하기
+
+1. `crew.json`에 항목 추가
+2. `agents/<id>/`에 `SOUL.md` · `TASK.md` · `memory.md`
+3. `.github/workflows/<id>.yml` — `_agent.yml`을 부르는 10줄
+
+오피스 화면은 로스터를 읽어 그리므로 **`site/`는 손댈 필요가 없습니다.**
+
 ## 다음 단계
 
-- 3단계 — 라이터·아키비스트·메카닉 추가 (crew.json에 항목만 추가)
 - 4단계 — 이슈 라벨로 지시 내리기 (칸반)
