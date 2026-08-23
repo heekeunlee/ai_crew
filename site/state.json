@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-23T22:19:44.839Z",
+  "generatedAt": "2026-08-23T22:23:50.477Z",
   "totals": {
-    "outputs": 4,
+    "outputs": 5,
     "daily": [
       {
         "date": "2026-08-18",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-24",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-24T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-23T22:19:44.839Z",
-      "lastRunAt": "2026-08-23T14:28:23Z",
-      "total": 2,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-23T22:23:50Z",
+      "total": 3,
       "recent": [
+        {
+          "date": "2026-08-24",
+          "summary": "GitHub는 Copilot을 Teams 회의 안까지 밀어넣었고, 뉴욕 증시는 메타의 아동안전 소송 여진 속에 기술주 약세로 한 주를 마쳤다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-24.md"
+        },
         {
           "date": "2026-08-23",
           "summary": "미국은 개별 실적(BJ's Wholesale)에 기댄 소폭 상승, 한국은 반도체 대형주만 오르고 나머지는 빠진 하루였다.",
