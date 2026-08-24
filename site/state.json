@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-24T01:11:11.432Z",
+  "generatedAt": "2026-08-24T01:12:34.465Z",
   "totals": {
-    "outputs": 5,
+    "outputs": 6,
     "daily": [
       {
         "date": "2026-08-18",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-24",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -122,11 +122,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-08-31T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-24T01:11:11.432Z",
-      "lastRunAt": "2026-08-23T22:23:50Z",
-      "total": 1,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-24T01:12:34Z",
+      "total": 2,
       "recent": [
+        {
+          "date": "2026-08-24",
+          "summary": "README 구조도가 이번 주에도 하나 밀렸습니다 — 새로 생긴 `scripts/lib/schedule.mjs`가 빠졌습니다. 그 외에는 지난주 지적한 workflow 권한 문제가 전부 반영되어 있고 나머지도 깨끗합니다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-24.md"
+        },
         {
           "date": "2026-08-23",
           "summary": "코드와 테스트는 튼튼하지만, README 구조도와 워크플로 권한 두 곳에서 실제와 어긋난 부분을 발견했습니다.",
