@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-25T22:25:11.218Z",
+  "generatedAt": "2026-08-25T22:28:55.457Z",
   "totals": {
-    "outputs": 7,
+    "outputs": 8,
     "daily": [
       {
         "date": "2026-08-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-26T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-25T22:25:11.218Z",
-      "lastRunAt": "2026-08-25T14:53:09Z",
-      "total": 4,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-25T22:28:55Z",
+      "total": 5,
       "recent": [
+        {
+          "date": "2026-08-26",
+          "summary": "국내 반도체주는 하루 만에 급락과 급반등을 오갔고, 그 배경엔 자사주 매입이라는 실탄이 있었다.",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-26.md"
+        },
         {
           "date": "2026-08-25",
           "summary": "삼성전자 실망 매물에 코스피가 하루 만에 6700선을 내줬고, 미국은 엔비디아 가격 인상설에 반도체주가 흔들렸다.",
