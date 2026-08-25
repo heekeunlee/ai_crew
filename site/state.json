@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-25T23:36:05.050Z",
+  "generatedAt": "2026-08-25T23:40:58.796Z",
   "totals": {
-    "outputs": 8,
+    "outputs": 9,
     "daily": [
       {
         "date": "2026-08-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -95,11 +95,19 @@
       "scheduleNote": "토요일 09:00 KST",
       "nextRunAt": "2026-08-29T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-25T23:36:05.050Z",
-      "lastRunAt": null,
-      "total": 0,
-      "recent": []
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-25T23:40:58Z",
+      "total": 1,
+      "recent": [
+        {
+          "date": "2026-08-26",
+          "issue": 5,
+          "summary": "2026-08-26 · 교차 확인한 출처 4곳 기준",
+          "items": 10,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/quill/2026-08-26-i5.md"
+        }
+      ]
     },
     {
       "id": "curator",
