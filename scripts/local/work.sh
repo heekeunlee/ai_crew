@@ -40,20 +40,27 @@ echo "════ $(date '+%Y-%m-%d %H:%M:%S %Z')  $EMOJI $AGENT  이슈=$ISSUE
 # ── 같은 에이전트가 겹쳐 도는 것을 막는다 (Actions의 concurrency 자리) ──
 # 이미 근무 중이라 아무것도 안 하고 물러났음을 알리는 종료 코드
 BUSY=75
-LOCK="/tmp/ai_crew-$AGENT.lock"
+LOCK="${TMPDIR:-/tmp}/ai_crew-$AGENT.lock"
 if ! mkdir "$LOCK" 2>/dev/null; then
-  # 25분을 넘긴 잠금은 죽은 프로세스가 남긴 것으로 본다
-  if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +25 2>/dev/null)" ]; then
-    echo "· 오래된 잠금을 걷어냅니다"; rmdir "$LOCK" 2>/dev/null; mkdir "$LOCK" || exit 1
-  else
+  # 경과 시간만 재면 오래 걸리는 근무를 죽은 것으로 오해해 두 벌이 같이 돈다.
+  # 잠금을 만든 프로세스가 아직 살아 있는지를 본다.
+  OWNER_PID="$(cat "$LOCK/pid" 2>/dev/null || true)"
+  if [ -n "$OWNER_PID" ] && kill -0 "$OWNER_PID" 2>/dev/null; then
     # 75로 나간다. 부른 쪽(poll.sh)이 "아직 안 했다"와 "실패했다"를 갈라야 한다.
-    echo "· 이미 근무 중입니다. 건너뜁니다."; exit $BUSY
+    echo "· 이미 근무 중입니다 (pid $OWNER_PID). 건너뜁니다."; exit $BUSY
   fi
+  # pid를 적기 직전에 끼어든 것일 수 있다. 갓 만들어진 잠금은 살아 있다고 본다.
+  if [ -z "$OWNER_PID" ] && [ -z "$(find "$LOCK" -maxdepth 0 -mmin +1 2>/dev/null)" ]; then
+    echo "· 방금 만들어진 잠금입니다. 건너뜁니다."; exit $BUSY
+  fi
+  echo "· 주인 없는 잠금을 걷어냅니다"
+  rm -rf "$LOCK"; mkdir "$LOCK" || exit 1
 fi
+echo $$ > "$LOCK/pid"
 TICK_PID=""
 cleanup_lock() {
   [ -n "$TICK_PID" ] && kill "$TICK_PID" 2>/dev/null
-  rmdir "$LOCK" 2>/dev/null
+  [ -n "${LOCK:-}" ] && rm -rf "$LOCK" 2>/dev/null
 }
 
 # ── 실패해도 "작업 중"으로 굳지 않게 표시를 걷어낸다 ──
@@ -165,6 +172,7 @@ fi
 if [ "$ISSUE" != "0" ]; then
   FILE="$(cat .ci/last-output.txt 2>/dev/null || true)"
   [ -f "$FILE" ] || FILE=""
+  REPLY="${TMPDIR:-/tmp}/ai_crew-reply-$ISSUE.md"
   {
     echo "$EMOJI **$AGENT** 근무를 마쳤습니다. *(mini)*"
     echo
@@ -180,9 +188,17 @@ if [ "$ISSUE" != "0" ]; then
     else
       echo "산출물 파일이 생성되지 않았습니다."
     fi
-  } > /tmp/ai_crew-reply.md
-  gh issue comment "$ISSUE" --body-file /tmp/ai_crew-reply.md
-  gh issue close "$ISSUE" --reason completed
+  } > "$REPLY"
+  gh issue comment "$ISSUE" --body-file "$REPLY"
+  rm -f "$REPLY"
+
+  # 산출물이 없다는 것은 지시가 이행되지 않았다는 뜻이다. 여기서 닫으면
+  # "완료"로 표시된 채 아무도 손대지 않은 지시가 되어 조용히 묻힌다.
+  if [ -n "$FILE" ]; then
+    gh issue close "$ISSUE" --reason completed
+  else
+    echo "· 산출물이 없어 이슈 #$ISSUE 를 열어둡니다"
+  fi
 fi
 
 echo "✓ $EMOJI $AGENT 근무 완료  $(date '+%H:%M:%S')"

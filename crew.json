@@ -14,7 +14,6 @@
       "output": "work/scout",
       "outputMode": "dated",
       "tools": ["WebSearch", "WebFetch"],
-      "maxSearches": 8,
       "maxBudgetUsd": 3.0,
 
       "$topics": "◀ 여기만 고치면 수집 주제가 바뀝니다",
