@@ -72,6 +72,8 @@
       "outputMode": "dated",
       "$readsRepo": "저장소를 직접 훑어야 하므로 읽기 도구를 허용합니다. 쓰기는 막혀 있습니다.",
       "readsRepo": true,
+      "$issues": "점검 결과를 ===ISSUE=== 블록으로 내놓으면 이슈로 등록합니다.",
+      "issues": true,
       "tools": ["Read", "Glob", "Grep", "WebFetch"],
       "maxBudgetUsd": 3.0
     }

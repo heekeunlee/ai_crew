@@ -50,7 +50,11 @@ if ! mkdir "$LOCK" 2>/dev/null; then
     echo "· 이미 근무 중입니다. 건너뜁니다."; exit $BUSY
   fi
 fi
-cleanup_lock() { rmdir "$LOCK" 2>/dev/null; }
+TICK_PID=""
+cleanup_lock() {
+  [ -n "$TICK_PID" ] && kill "$TICK_PID" 2>/dev/null
+  rmdir "$LOCK" 2>/dev/null
+}
 
 # ── 실패해도 "작업 중"으로 굳지 않게 표시를 걷어낸다 ──
 failed() {
@@ -69,6 +73,11 @@ failed() {
 }
 trap failed ERR
 trap cleanup_lock EXIT
+
+# Actions는 근무마다 저장소를 새로 받아 .ci/가 늘 비어 있다. 여기는 그 폴더가
+# 계속 남는다. 지난 근무의 .ci/issue.md를 치우지 않으면 다음 에이전트가 그걸
+# 자기 것으로 알고 다시 올린다 — 실제로 리서처가 메카닉의 점검을 이슈로 올렸다.
+rm -f .ci/issue.md .ci/last-output.txt .ci/instruction.md
 
 git config user.name  "ai_crew[bot]"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -93,7 +102,26 @@ if [ "$ISSUE" != "0" ]; then
 fi
 
 # ── 근무 ──
-node scripts/run-agent.mjs "$AGENT"
+# claude -p는 답을 다 만들 때까지 한 글자도 내보내지 않는다. 몇 분씩 걸리는데
+# 화면이 조용하면 사람은 멈춘 줄 안다. 살아 있다는 신호를 30초마다 찍는다.
+echo "· 근무 시작 — 모델이 답할 때까지 출력이 없습니다 (보통 2~6분)"
+START=$(date +%s)
+
+node scripts/run-agent.mjs "$AGENT" &
+WORK_PID=$!
+
+{
+  while kill -0 "$WORK_PID" 2>/dev/null; do
+    sleep 30
+    kill -0 "$WORK_PID" 2>/dev/null || break
+    E=$(( $(date +%s) - START ))
+    printf "  … 근무 중 %d분 %02d초\n" $((E / 60)) $((E % 60))
+  done
+} &
+TICK_PID=$!
+
+wait "$WORK_PID"        # 실패하면 ERR 트랩이 받는다
+kill "$TICK_PID" 2>/dev/null; TICK_PID=""
 
 # ── 결과 반영 ──
 if [ "$REVIEW" = "pull-request" ] && [ "$ISSUE" = "0" ]; then
@@ -129,7 +157,7 @@ else
 fi
 
 # ── 점검 결과가 있으면 이슈로 ──
-if [ -s .ci/issue.md ]; then
+if [ -s .ci/issue.md ] && [ "$(meta issues)" = "true" ]; then
   gh issue create --title "$EMOJI $AGENT 점검: $DATE" --body-file .ci/issue.md
 fi
 
