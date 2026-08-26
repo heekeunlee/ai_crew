@@ -54,3 +54,31 @@ test("본문이 비어도 견딘다", () => {
 test("빈 입력을 견딘다", () => {
   assert.deepEqual(splitSections("", [M, I]), { body: "", sections: {} });
 });
+
+// 본문이 표식 이름을 인용해도 거기서 잘리면 안 된다.
+// 메카닉이 이 파이프라인을 점검하다 실제로 자기 보고서를 잘라먹은 적이 있다.
+test("줄 안에 박힌 표식은 표식이 아니다", () => {
+  const text = [
+    "# 점검",
+    "",
+    "`===ISSUE===` 블록이 기억 파일로 흘러듭니다.",
+    "",
+    "===ISSUE===",
+    "진짜 이슈 본문",
+  ].join("\n");
+  const { body, sections } = splitSections(text, ["===MEMORY===", "===ISSUE==="]);
+  assert.match(body, /블록이 기억 파일로 흘러듭니다/);
+  assert.equal(sections["===ISSUE==="], "진짜 이슈 본문");
+});
+
+test("표식 뒤에 공백이 있어도 인식한다", () => {
+  const { sections } = splitSections("본문\n===MEMORY===  \n- 한 줄", ["===MEMORY==="]);
+  assert.equal(sections["===MEMORY==="], "- 한 줄");
+});
+
+test("같은 표식이 두 번 나오면 첫 번째만 센다", () => {
+  const { body, sections } = splitSections(
+    "본문\n===MEMORY===\n첫째\n===MEMORY===\n둘째", ["===MEMORY==="]);
+  assert.equal(body, "본문");
+  assert.equal(sections["===MEMORY==="], "첫째\n===MEMORY===\n둘째");
+});

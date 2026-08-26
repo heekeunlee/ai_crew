@@ -1,6 +1,6 @@
 # ai_crew
 
-GitHub Actions에서 일하는 AI 크루. 서버 없이 저장소 하나로 돌아갑니다.
+GitHub Actions에서 — 또는 집에 있는 맥에서 — 일하는 AI 크루.
 
 **현재 4단계** — 크루 4명 + 2D 픽셀 오피스 + 이슈로 지시 내리기.
 
@@ -38,8 +38,12 @@ scripts/
   lib/memory.mjs           기억 병합 (순수 함수)
   lib/output.mjs           모델 응답 서두 제거 (순수 함수)
   lib/sections.mjs         본문과 ===MEMORY=== / ===ISSUE=== 분리 (순수 함수)
+  lib/schedule.mjs         cron에서 다음 실행 시각 (순수 함수)
   lib/state.mjs            상태 판정·요약 추출 (순수 함수)
-  *.test.mjs               lib/ 모듈별 단위 테스트 4종
+  *.test.mjs               lib/ 모듈별 단위 테스트 5종
+  local/work.sh            에이전트 한 명을 이 기계에서 근무시킨다
+  local/poll.sh            이슈 칸반 폴링 (on-issue.yml 자리)
+  local/install.mjs        crew.json 근무표를 launchd로 옮긴다
 work/scout/                산출물이 쌓이는 곳
 site/
   index.html               오피스 화면
@@ -53,6 +57,38 @@ site/
   test.yml                 푸시할 때마다 점검
   pages.yml                오피스 배포
 ```
+
+## 어디서 도는가 — Actions와 로컬, 둘 다 됩니다
+
+에이전트 실행은 두 경로 중 하나를 고르면 됩니다. **동시에 켜두면 안 됩니다** —
+같은 날 같은 산출물을 두 번 쓰게 됩니다.
+
+| | GitHub Actions | 로컬 (`scripts/local/`) |
+|---|---|---|
+| 예약 | 워크플로 cron (UTC) | launchd (KST) |
+| 인증 | `CLAUDE_CODE_OAUTH_TOKEN` 시크릿 | 그 기계의 `claude` 로그인 세션 |
+| 지시 이슈 | 라벨 이벤트로 즉시 | 2분마다 폴링 |
+| 로그 | Actions 웹 | `~/Library/Logs/ai_crew/` |
+| 죽는 경우 | 거의 없음 | 그 기계가 꺼지면 근무가 빠짐 |
+
+Pages 배포(`pages.yml`)와 테스트(`test.yml`)는 어느 쪽을 쓰든 Actions에 남깁니다.
+로컬에서 돌려도 결과를 밀어 넣으면 오피스는 계속 공개 주소로 열립니다.
+
+### 로컬로 옮기기 (macOS)
+
+```bash
+node scripts/local/install.mjs           # crew.json 근무표 → launchd 등록
+node scripts/local/install.mjs --print   # 등록 전에 내용만 확인
+node scripts/local/install.mjs --remove  # 전부 걷어내기
+
+gh workflow disable scout.yml quill.yml curator.yml mechanic.yml on-issue.yml
+```
+
+`work.sh`는 `_agent.yml`과 같은 일을 합니다 — 출근 표시, 근무, 커밋 또는 PR,
+이슈 등록, 실패 시 표시 정리. 다른 점은 저장소가 이미 그 기계에 있으니
+checkout 대신 `git pull --rebase`로 시작한다는 것뿐입니다.
+
+되돌리려면 `--remove` 하고 `gh workflow enable` 하면 됩니다.
 
 ## 오피스 화면
 
