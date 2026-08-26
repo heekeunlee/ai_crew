@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T13:56:29.403Z",
+  "generatedAt": "2026-08-26T13:58:31.362Z",
   "totals": {
     "outputs": 12,
     "daily": [
@@ -47,15 +47,15 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-26T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-26T13:56:29.403Z",
-      "lastRunAt": "2026-08-25T22:28:55Z",
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-26T22:58:30+09:00",
       "total": 5,
       "recent": [
         {
           "date": "2026-08-26",
-          "summary": "국내 반도체주는 하루 만에 급락과 급반등을 오갔고, 그 배경엔 자사주 매입이라는 실탄이 있었다.",
-          "items": 4,
+          "summary": "인적분할을 마친 한화가 재상장 첫날 급등하며 코스피 훈풍을 이끌었고, 미국 증시는 엔비디아 실적 발표를 앞두고 관망 속에 소폭 상승했다.",
+          "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-26.md"
         },
         {
