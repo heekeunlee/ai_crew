@@ -25,7 +25,8 @@ import { mergeMemory } from "./lib/memory.mjs";
 import { stripPreamble } from "./lib/output.mjs";
 import { splitSections } from "./lib/sections.mjs";
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import { spawn } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -136,6 +137,47 @@ const prompt = [
 
 /* ---------------- 호출 ---------------- */
 
+const FAILDUMP = path.join(os.homedir(), "Library", "Logs", "ai_crew", `${agentId}.last-failure.txt`);
+
+/**
+ * 실패의 전말을 파일로 남긴다.
+ *
+ * claude는 --output-format json 으로 돌 때 오류를 stderr가 아니라 stdout으로
+ * 흘리기도 한다. 한쪽만 보면 "종료 코드 1"만 남고 원인이 사라진다 — 실제로
+ * 2026-08-26 아키비스트 실패가 그랬다. 둘 다 남기고, 크기·모델·도구처럼
+ * 원인을 좁히는 데 필요한 맥락을 함께 적는다.
+ */
+function dumpFailure(reason, out, err, ms) {
+  const body = [
+    // 나머지 로그가 전부 KST다. 여기만 UTC면 어느 근무의 실패인지 헷갈린다.
+    `일시      ${new Date().toLocaleString("sv-SE", { timeZone: "Asia/Seoul" })} KST`,
+    `에이전트  ${agentId} (${agent.name})`,
+    `모델      ${agent.model}`,
+    `도구      ${JSON.stringify(agent.tools ?? [])}`,
+    `예산      ${agent.maxBudgetUsd ? "$" + agent.maxBudgetUsd : "(없음)"}`,
+    `소요      ${(ms / 1000).toFixed(1)}초`,
+    `시스템    ${system.length}자`,
+    `프롬프트  ${prompt.length}자 (참고 자료 ${inputs.length}건${instruction ? `, 지시 ${instruction.length}자` : ""})`,
+    `이유      ${reason}`,
+    "",
+    "───────── stdout ─────────",
+    out.trim() || "(비어 있음)",
+    "",
+    "───────── stderr ─────────",
+    err.trim() || "(비어 있음)",
+    "",
+  ].join("\n");
+  try {
+    mkdirSync(path.dirname(FAILDUMP), { recursive: true });
+    writeFileSync(FAILDUMP, body, "utf8");
+  } catch {
+    // 기록을 못 남기는 것 때문에 근무를 죽이지는 않는다
+  }
+}
+
+/** 여러 줄 출력에서 앞부분만 — 콘솔 로그가 통째로 묻히지 않게 */
+const head = (s, n = 10) => s.trim().split("\n").slice(0, n).join("\n");
+
 function runClaude() {
   const args = [
     "-p",
@@ -147,7 +189,12 @@ function runClaude() {
   ];
   if (agent.maxBudgetUsd) args.push("--max-budget-usd", String(agent.maxBudgetUsd));
 
+  // 실패해도 이 줄은 남는다. 프롬프트가 너무 길어 거절당한 경우를
+  // 크기만 보고 바로 가려낼 수 있다.
+  console.log(`· 호출 ${agent.model} · 시스템 ${system.length}자 · 프롬프트 ${prompt.length}자 · 도구 [${(agent.tools ?? []).join(", ") || "없음"}]`);
+
   return new Promise((resolve, reject) => {
+    const t0 = Date.now();
     const child = spawn("claude", args, { cwd: ROOT, env: process.env, stdio: ["pipe", "pipe", "pipe"] });
     let out = "", err = "";
     child.stdout.on("data", (d) => (out += d));
@@ -158,9 +205,21 @@ function runClaude() {
         : e.message))
     );
     child.on("close", (code) => {
-      if (code !== 0) return reject(new Error(`claude 종료 코드 ${code}\n${err.trim()}`));
+      const ms = Date.now() - t0;
+      if (code !== 0) {
+        dumpFailure(`claude 종료 코드 ${code}`, out, err, ms);
+        return reject(new Error(
+          `claude 종료 코드 ${code} (${(ms / 1000).toFixed(1)}초)\n` +
+          `  stderr: ${head(err) || "(비어 있음)"}\n` +
+          `  stdout: ${head(out) || "(비어 있음)"}\n` +
+          `  전문: ${FAILDUMP}`
+        ));
+      }
       try { resolve(JSON.parse(out)); }
-      catch { reject(new Error(`JSON 파싱 실패. 원본 앞부분:\n${out.slice(0, 400)}`)); }
+      catch {
+        dumpFailure("JSON 파싱 실패", out, err, ms);
+        reject(new Error(`JSON 파싱 실패 — 전문: ${FAILDUMP}\n앞부분:\n${out.slice(0, 400)}`));
+      }
     });
     child.stdin.end(prompt, "utf8");
   });
@@ -184,7 +243,11 @@ try {
   die(String(e.message ?? e));
 }
 
-if (res.is_error) die(`Claude가 오류로 끝났습니다: ${res.result ?? res.subtype ?? "원인 불명"}`);
+// 종료 코드는 0인데 내용이 오류인 경우가 있다. 이쪽도 전말을 남긴다.
+if (res.is_error) {
+  if (!DRY) dumpFailure(`is_error (${res.subtype ?? "종류 불명"})`, JSON.stringify(res, null, 2), "", 0);
+  die(`Claude가 오류로 끝났습니다: ${res.result ?? res.subtype ?? "원인 불명"}\n  전문: ${FAILDUMP}`);
+}
 
 const text = (res.result ?? "").trim();
 if (!text) die("빈 응답을 받았습니다.");

@@ -74,7 +74,10 @@ failed() {
   [ "$ISSUE" != "0" ] && gh issue comment "$ISSUE" --body \
     "$EMOJI **$AGENT** 근무가 실패했습니다. 이슈는 열어둡니다.
 
-로그: \`~/Library/Logs/ai_crew/$AGENT.log\` (mini)"
+- 근무 로그: \`~/Library/Logs/ai_crew/$AGENT.log\`
+- 실패 전문: \`~/Library/Logs/ai_crew/$AGENT.last-failure.txt\`
+
+*(둘 다 mini에 있습니다)*"
   cleanup_lock
   exit 1
 }
