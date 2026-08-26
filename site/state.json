@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T11:48:13.924Z",
+  "generatedAt": "2026-08-26T12:03:31.034Z",
   "totals": {
     "outputs": 11,
     "daily": [
@@ -35,7 +35,7 @@
   },
   "repo": "heekeunlee/ai_crew",
   "officeTitle": "AI CREW",
-  "queued": 0,
+  "queued": 1,
   "agents": [
     {
       "id": "scout",
@@ -148,9 +148,15 @@
       "schedule": "0 0 * * 1",
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-08-31T00:00:00.000Z",
-      "queued": [],
-      "status": "done",
-      "startedAt": null,
+      "queued": [
+        {
+          "number": 10,
+          "title": "이전 후 점검 — Actions에서 mini로",
+          "agent": "mechanic"
+        }
+      ],
+      "status": "working",
+      "startedAt": "2026-08-26T12:03:31.034Z",
       "lastRunAt": "2026-08-26T20:48:13+09:00",
       "total": 3,
       "recent": [
