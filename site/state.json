@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-26T10:59:40.912Z",
+  "generatedAt": "2026-08-26T11:03:55.899Z",
   "totals": {
-    "outputs": 9,
+    "outputs": 10,
     "daily": [
       {
         "date": "2026-08-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 3
+        "count": 4
       }
     ]
   },
@@ -95,11 +95,18 @@
       "scheduleNote": "토요일 09:00 KST",
       "nextRunAt": "2026-08-29T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-26T10:59:40.912Z",
-      "lastRunAt": "2026-08-26T08:42:28+09:00",
-      "total": 1,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-26T11:03:55Z",
+      "total": 2,
       "recent": [
+        {
+          "date": "2026-08-26",
+          "issue": 6,
+          "summary": "⚠️ 결말 포함",
+          "items": 8,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/quill/2026-08-26-i6.md"
+        },
         {
           "date": "2026-08-26",
           "issue": 5,
