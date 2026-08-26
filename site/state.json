@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-26T12:03:31.034Z",
+  "generatedAt": "2026-08-26T12:07:20.355Z",
   "totals": {
-    "outputs": 11,
+    "outputs": 12,
     "daily": [
       {
         "date": "2026-08-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 5
+        "count": 6
       }
     ]
   },
@@ -155,16 +155,23 @@
           "agent": "mechanic"
         }
       ],
-      "status": "working",
-      "startedAt": "2026-08-26T12:03:31.034Z",
-      "lastRunAt": "2026-08-26T20:48:13+09:00",
-      "total": 3,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-26T21:07:19+09:00",
+      "total": 4,
       "recent": [
         {
           "date": "2026-08-26",
           "summary": "문서·설정·테스트는 지난주 지적 사항이 반영돼 전부 정합하고, 이번 주는 워크플로가 참조하는 액션 버전이 여러 메이저 단계 뒤처진 것 하나만 새로 걸렸다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26.md"
+        },
+        {
+          "date": "2026-08-26",
+          "issue": 10,
+          "summary": "Actions → mini 이전 자체는 깔끔하다. 다만 `poll.sh`의 이슈 폴링 경로에 두 가지 구멍이 있고, `work.sh`에 저장소 이름이 하드코딩된 곳과 README에 낡은 문구가 하나 남았다.",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26-i10.md"
         },
         {
           "date": "2026-08-24",
