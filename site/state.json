@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T13:58:31.362Z",
+  "generatedAt": "2026-08-26T14:00:03.503Z",
   "totals": {
     "outputs": 12,
     "daily": [
@@ -124,10 +124,10 @@
       "desk": 2,
       "schedule": "0 14 * * *",
       "scheduleNote": "매일 23:00 KST",
-      "nextRunAt": "2026-08-26T14:00:00.000Z",
+      "nextRunAt": "2026-08-27T14:00:00.000Z",
       "queued": [],
-      "status": "done",
-      "startedAt": null,
+      "status": "working",
+      "startedAt": "2026-08-26T14:00:03.503Z",
       "lastRunAt": "2026-08-26T11:18:12Z",
       "total": 1,
       "recent": [
