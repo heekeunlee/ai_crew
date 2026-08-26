@@ -77,12 +77,18 @@ Pages 배포(`pages.yml`)와 테스트(`test.yml`)는 어느 쪽을 쓰든 Actio
 ### 로컬로 옮기기 (macOS)
 
 ```bash
-node scripts/local/install.mjs           # crew.json 근무표 → launchd 등록
-node scripts/local/install.mjs --print   # 등록 전에 내용만 확인
-node scripts/local/install.mjs --remove  # 전부 걷어내기
+node scripts/local/install.mjs           # crew.json 근무표 → plist 생성
+sudo sh .ci/launchd/install.sh           # /Library/LaunchDaemons에 등록
 
 gh workflow disable scout.yml quill.yml curator.yml mechanic.yml on-issue.yml
 ```
+
+**LaunchAgent가 아니라 LaunchDaemon입니다.** `~/Library/LaunchAgents`의 작업은
+그 사용자가 로그인할 때 뜨는데, 화면 없이 ssh로만 쓰는 기계에는 로그인 세션이
+없어 영영 안 뜹니다. `/Library/LaunchDaemons`는 부팅 시 로그인과 무관하게 뜹니다.
+그래서 설치에만 `sudo`가 한 번 필요합니다.
+
+되돌리기: `sudo sh .ci/launchd/uninstall.sh` + `gh workflow enable ...`
 
 `work.sh`는 `_agent.yml`과 같은 일을 합니다 — 출근 표시, 근무, 커밋 또는 PR,
 이슈 등록, 실패 시 표시 정리. 다른 점은 저장소가 이미 그 기계에 있으니
