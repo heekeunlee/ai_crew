@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T11:45:22.338Z",
+  "generatedAt": "2026-08-26T11:48:13.924Z",
   "totals": {
     "outputs": 11,
     "daily": [
@@ -149,15 +149,15 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-08-31T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-26T11:45:22.338Z",
-      "lastRunAt": "2026-08-26T20:42:54+09:00",
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-26T20:48:13+09:00",
       "total": 3,
       "recent": [
         {
           "date": "2026-08-26",
-          "summary": "이번 주 핵심 발견은 하나입니다 — 하지만 심각합니다. `splitSections`가 마커 문자열을 라인 단위가 아닌 단순 부분 문자열로 찾다 보니, 메카닉 자신의 보고서가 자기 파이프라인(`",
-          "items": 0,
+          "summary": "문서·설정·테스트는 지난주 지적 사항이 반영돼 전부 정합하고, 이번 주는 워크플로가 참조하는 액션 버전이 여러 메이저 단계 뒤처진 것 하나만 새로 걸렸다.",
+          "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26.md"
         },
         {
