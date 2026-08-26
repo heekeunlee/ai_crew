@@ -33,14 +33,26 @@ gh issue list --state open --limit 20 --json number,labels,author,updatedAt \
 
     if ! node -e "process.exit(require('./crew.json').agents.some(a=>a.id==='$ID')?0:1)"; then
       echo "· 이슈 #$NUM: crew.json에 '$ID' 가 없습니다"
+      # 로그에만 남기면 이슈를 연 사람은 무시당한 줄 안다. on-issue.yml처럼 알려준다.
+      IDS="$(node -e "console.log(require('./crew.json').agents.map(a=>'agent:'+a.id).join(', '))")"
+      gh issue comment "$NUM" --body \
+        "라벨 \`agent:$ID\` 에 해당하는 에이전트가 crew.json에 없습니다. 쓸 수 있는 라벨: $IDS"
       echo "$KEY" >> "$SEEN"
       continue
     fi
 
     echo "· 이슈 #$NUM → $ID"
-    # 성공이든 실패든 한 번 집어간 것으로 기록한다. 무한 재시도를 막는다.
-    echo "$KEY" >> "$SEEN"
     "$ROOT/scripts/local/work.sh" "$ID" "$NUM"
+    RC=$?
+
+    # 75는 "그 에이전트가 다른 이슈로 바빠서 손도 못 댔다"는 뜻이다. 기록하면
+    # 안 된다 — 기록하는 순간 그 지시는 아무도 안 한 채 영영 묻힌다.
+    # 그 밖의 실패는 기록한다. 2분마다 같은 실패를 반복하는 게 더 나쁘다.
+    if [ "$RC" -eq 75 ]; then
+      echo "· 이슈 #$NUM: $ID 가 근무 중 — 다음 폴링에서 다시 시도합니다"
+    else
+      echo "$KEY" >> "$SEEN"
+    fi
   done
 
 # 기록이 무한정 자라지 않게 최근 것만 남긴다

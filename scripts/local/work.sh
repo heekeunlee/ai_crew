@@ -38,13 +38,16 @@ exec > >(tee -a "$LOGDIR/$AGENT.log") 2>&1
 echo "════ $(date '+%Y-%m-%d %H:%M:%S %Z')  $EMOJI $AGENT  이슈=$ISSUE ════"
 
 # ── 같은 에이전트가 겹쳐 도는 것을 막는다 (Actions의 concurrency 자리) ──
+# 이미 근무 중이라 아무것도 안 하고 물러났음을 알리는 종료 코드
+BUSY=75
 LOCK="/tmp/ai_crew-$AGENT.lock"
 if ! mkdir "$LOCK" 2>/dev/null; then
   # 25분을 넘긴 잠금은 죽은 프로세스가 남긴 것으로 본다
   if [ -n "$(find "$LOCK" -maxdepth 0 -mmin +25 2>/dev/null)" ]; then
     echo "· 오래된 잠금을 걷어냅니다"; rmdir "$LOCK" 2>/dev/null; mkdir "$LOCK" || exit 1
   else
-    echo "· 이미 근무 중입니다. 건너뜁니다."; exit 0
+    # 75로 나간다. 부른 쪽(poll.sh)이 "아직 안 했다"와 "실패했다"를 갈라야 한다.
+    echo "· 이미 근무 중입니다. 건너뜁니다."; exit $BUSY
   fi
 fi
 cleanup_lock() { rmdir "$LOCK" 2>/dev/null; }
@@ -138,7 +141,8 @@ if [ "$ISSUE" != "0" ]; then
     echo "$EMOJI **$AGENT** 근무를 마쳤습니다. *(mini)*"
     echo
     if [ -n "$FILE" ]; then
-      echo "산출물: [\`$FILE\`](https://github.com/heekeunlee/ai_crew/blob/main/$FILE)"
+      REPO="$(gh repo view --json nameWithOwner --jq .nameWithOwner)"
+      echo "산출물: [\`$FILE\`](https://github.com/$REPO/blob/main/$FILE)"
       echo
       echo "<details><summary>미리보기</summary>"
       echo
