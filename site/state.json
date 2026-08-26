@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-26T11:36:54.767Z",
+  "generatedAt": "2026-08-26T11:42:55.573Z",
   "totals": {
-    "outputs": 10,
+    "outputs": 11,
     "daily": [
       {
         "date": "2026-08-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 4
+        "count": 5
       }
     ]
   },
@@ -149,11 +149,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-08-31T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-26T11:36:54.767Z",
-      "lastRunAt": "2026-08-24T01:12:34Z",
-      "total": 2,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-26T20:42:54+09:00",
+      "total": 3,
       "recent": [
+        {
+          "date": "2026-08-26",
+          "summary": "이번 주 핵심 발견은 하나입니다 — 하지만 심각합니다. `splitSections`가 마커 문자열을 라인 단위가 아닌 단순 부분 문자열로 찾다 보니, 메카닉 자신의 보고서가 자기 파이프라인(`",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26.md"
+        },
         {
           "date": "2026-08-24",
           "summary": "README 구조도가 이번 주에도 하나 밀렸습니다 — 새로 생긴 `scripts/lib/schedule.mjs`가 빠졌습니다. 그 외에는 지난주 지적한 workflow 권한 문제가 전부 반영되어 있고 나머지도 깨끗합니다.",
