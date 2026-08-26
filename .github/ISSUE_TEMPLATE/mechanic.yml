@@ -1,0 +1,26 @@
+name: 🔧 메카닉에게 지시
+description: 저장소에서 조용히 썩어가는 것을 찾습니다
+title: "[메카닉] "
+labels: ["agent:mechanic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        저장소 파일을 읽고 **아직 고장 나지 않았지만 어긋난 곳**을 찾습니다.
+        문서와 실제의 불일치, 죽은 코드, 넓은 권한 같은 것들입니다.
+        발견을 체크리스트 이슈로 따로 올립니다. 평소에는 월요일 09:00 KST.
+
+        ⚠️ **파일을 고치지는 않습니다.** 찾아서 보고만 합니다.
+  - type: textarea
+    id: instruction
+    attributes:
+      label: 지시
+      description: 어디를 볼지. 범위를 좁혀줄수록 깊이 봅니다.
+      placeholder: |
+        평소 주간 점검 대신, 방금 끝난 이전 작업만 점검해라.
+
+        - `work.sh`가 `_agent.yml`의 단계를 빠짐없이 옮겼는지 나란히 놓고 본다
+        - 옛 경로 문자열이 어딘가 살아 있는지 본다
+        - 확인 못 한 건 확인 못 했다고 써라. 발견이 없으면 없다고 써도 된다
+    validations:
+      required: true

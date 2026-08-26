@@ -1,0 +1,26 @@
+name: ✍️ 라이터에게 지시
+description: 주장이 있는 글 한 편을 씁니다
+title: "[라이터] "
+labels: ["agent:quill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        재료를 엮어 **주장이 드러나는 글**을 씁니다. 반대 근거와 한계를 반드시 함께 씁니다.
+        평소에는 토요일 09:00 KST에 그 주 리서처 자료를 묶어 한 편 씁니다.
+
+        정기 근무는 사람이 읽고 병합하도록 PR로 올라가지만,
+        **이슈로 시킨 근무는 바로 커밋됩니다.**
+  - type: textarea
+    id: instruction
+    attributes:
+      label: 지시
+      description: 무엇에 대해, 어떤 형식으로. 출력 형식을 직접 정해주면 그대로 따릅니다.
+      placeholder: |
+        요즘 초등학생에게 인기 있는 책 순위를 뽑고 인기 이유를 분석해라.
+
+        - 만화·학습만화는 제외한다
+        - 최소 두 개 이상의 출처를 교차 확인하고, 항목마다 어느 목록 몇 위인지 밝혀라
+        - 판매 순위와 대출 순위가 어긋나는 책이 있으면 그걸 짚어라
+    validations:
+      required: true

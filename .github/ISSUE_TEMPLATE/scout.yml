@@ -1,0 +1,24 @@
+name: 🔭 리서처에게 지시
+description: 웹을 뒤져 오늘의 리서치를 씁니다
+title: "[리서처] "
+labels: ["agent:scout"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        웹 검색으로 사실을 모아 정리합니다. 출처를 항목마다 붙입니다.
+        평소에는 매일 07:00 KST에 정해진 네 주제를 훑습니다.
+        **이 지시는 그날 정기 업무를 대신합니다.**
+  - type: textarea
+    id: instruction
+    attributes:
+      label: 지시
+      description: 무엇을 언제 기준으로 조사할지. 구체적일수록 결과가 좋습니다.
+      placeholder: |
+        2026년 8월 한 달간 국내 전기차 보조금 정책이 어떻게 바뀌었는지 조사해라.
+
+        - 지자체별로 다르면 서울·경기·부산만 본다
+        - 정부 발표 원문과 언론 보도를 구분해서 표기해라
+        - 확인 못 한 수치는 확인 못 했다고 써라
+    validations:
+      required: true
