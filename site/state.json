@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-27T22:00:02.718Z",
+  "generatedAt": "2026-08-27T22:02:38.017Z",
   "totals": {
-    "outputs": 13,
+    "outputs": 14,
     "daily": [
       {
         "date": "2026-08-22",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-08-23",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-08-24",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-28",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-28T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-27T22:00:02.718Z",
-      "lastRunAt": "2026-08-27T07:02:06+09:00",
-      "total": 6,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-28T07:02:37+09:00",
+      "total": 7,
       "recent": [
+        {
+          "date": "2026-08-28",
+          "summary": "엔비디아 실적 훈풍이 미국과 한국 증시를 동시에 밀어 올렸지만, 한국은행 금리 인상이 상승폭을 눌렀다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-28.md"
+        },
         {
           "date": "2026-08-27",
           "summary": "엔비디아 실적은 시장 기대를 넘었지만, 개발자 도구와 소셜 AI 트렌드 쪽에서는 오늘 새로 쓸 만한 소식이 없었다.",
@@ -75,12 +81,6 @@
           "summary": "GitHub는 Copilot을 Teams 회의 안까지 밀어넣었고, 뉴욕 증시는 메타의 아동안전 소송 여진 속에 기술주 약세로 한 주를 마쳤다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-24.md"
-        },
-        {
-          "date": "2026-08-23",
-          "summary": "미국은 개별 실적(BJ's Wholesale)에 기댄 소폭 상승, 한국은 반도체 대형주만 오르고 나머지는 빠진 하루였다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-23.md"
         }
       ]
     },
