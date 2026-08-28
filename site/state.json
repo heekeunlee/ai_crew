@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-28T22:00:02.365Z",
+  "generatedAt": "2026-08-28T22:03:42.258Z",
   "totals": {
-    "outputs": 14,
+    "outputs": 15,
     "daily": [
       {
         "date": "2026-08-23",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-08-24",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-08-25",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-29",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-29T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-28T22:00:02.365Z",
-      "lastRunAt": "2026-08-28T07:02:37+09:00",
-      "total": 7,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-29T07:03:40+09:00",
+      "total": 8,
       "recent": [
+        {
+          "date": "2026-08-29",
+          "summary": "매파적 잭슨홀 연설과 반도체 관세 우려가 겹치며, 미국·한국 증시 모두 최근 며칠 반도체주 랠리를 일부 반납했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-29.md"
+        },
         {
           "date": "2026-08-28",
           "summary": "엔비디아 실적 훈풍이 미국과 한국 증시를 동시에 밀어 올렸지만, 한국은행 금리 인상이 상승폭을 눌렀다.",
@@ -75,12 +81,6 @@
           "summary": "삼성전자 실망 매물에 코스피가 하루 만에 6700선을 내줬고, 미국은 엔비디아 가격 인상설에 반도체주가 흔들렸다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-25.md"
-        },
-        {
-          "date": "2026-08-24",
-          "summary": "GitHub는 Copilot을 Teams 회의 안까지 밀어넣었고, 뉴욕 증시는 메타의 아동안전 소송 여진 속에 기술주 약세로 한 주를 마쳤다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-24.md"
         }
       ]
     },
