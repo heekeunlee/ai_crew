@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-29T22:01:31.492Z",
+  "generatedAt": "2026-08-30T14:00:02.483Z",
   "totals": {
-    "outputs": 16,
+    "outputs": 17,
     "daily": [
       {
         "date": "2026-08-24",
@@ -25,7 +25,7 @@
       },
       {
         "date": "2026-08-29",
-        "count": 2
+        "count": 3
       },
       {
         "date": "2026-08-30",
@@ -47,7 +47,7 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-30T22:00:00.000Z",
       "queued": [],
-      "status": "done",
+      "status": "idle",
       "startedAt": null,
       "lastRunAt": "2026-08-30T07:01:30+09:00",
       "total": 9,
@@ -96,9 +96,15 @@
       "queued": [],
       "status": "idle",
       "startedAt": null,
-      "lastRunAt": "2026-08-26T20:05:14+09:00",
-      "total": 2,
+      "lastRunAt": "2026-08-29T09:01:23+09:00",
+      "total": 3,
       "recent": [
+        {
+          "date": "2026-08-29",
+          "summary": "2026-08-29 · 리서처 자료 7건 기반",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/quill/2026-08-29.md"
+        },
         {
           "date": "2026-08-26",
           "issue": 6,
@@ -123,10 +129,10 @@
       "desk": 2,
       "schedule": "0 14 * * *",
       "scheduleNote": "매일 23:00 KST",
-      "nextRunAt": "2026-08-30T14:00:00.000Z",
+      "nextRunAt": "2026-08-31T14:00:00.000Z",
       "queued": [],
-      "status": "idle",
-      "startedAt": null,
+      "status": "working",
+      "startedAt": "2026-08-30T14:00:02.483Z",
       "lastRunAt": "2026-08-29T23:01:28+09:00",
       "total": 1,
       "recent": [
