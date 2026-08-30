@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-30T22:00:02.430Z",
+  "generatedAt": "2026-08-30T22:02:29.583Z",
   "totals": {
-    "outputs": 17,
+    "outputs": 18,
     "daily": [
       {
         "date": "2026-08-25",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-08-26",
-        "count": 5
+        "count": 4
       },
       {
         "date": "2026-08-27",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-31",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-08-31T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-30T22:00:02.430Z",
-      "lastRunAt": "2026-08-30T07:01:30+09:00",
-      "total": 9,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-31T07:02:28+09:00",
+      "total": 10,
       "recent": [
+        {
+          "date": "2026-08-31",
+          "summary": "미국·한국 증시는 지난 금요일(8/28) 마감 데이터에서 갱신된 게 없어 스킵, 개발자 도구 쪽에서만 조용한 업데이트 두 건.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-31.md"
+        },
         {
           "date": "2026-08-30",
           "summary": "오늘(일요일)은 미국·한국 증시 모두 휴장이고, 개발자 도구·AI 소셜 트렌드에서도 지난 24~48시간 내 검증 가능한 1차 출처의 새 소식을 찾지 못해 넘어간다.",
@@ -75,12 +81,6 @@
           "summary": "엔비디아 실적은 시장 기대를 넘었지만, 개발자 도구와 소셜 AI 트렌드 쪽에서는 오늘 새로 쓸 만한 소식이 없었다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-27.md"
-        },
-        {
-          "date": "2026-08-26",
-          "summary": "인적분할을 마친 한화가 재상장 첫날 급등하며 코스피 훈풍을 이끌었고, 미국 증시는 엔비디아 실적 발표를 앞두고 관망 속에 소폭 상승했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-26.md"
         }
       ]
     },
