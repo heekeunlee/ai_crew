@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-31T00:00:02.862Z",
+  "generatedAt": "2026-08-31T00:02:11.555Z",
   "totals": {
-    "outputs": 18,
+    "outputs": 19,
     "daily": [
       {
         "date": "2026-08-25",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-08-31",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-09-07T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-08-31T00:00:02.862Z",
-      "lastRunAt": "2026-08-26T21:07:19+09:00",
-      "total": 4,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-08-31T09:02:10+09:00",
+      "total": 5,
       "recent": [
+        {
+          "date": "2026-08-31",
+          "summary": "지난주 지적한 poll.sh·work.sh 버그가 모두 고쳐졌고, 새로 썩기 시작한 것도 없습니다 — 이번 주는 깨끗합니다.",
+          "items": 10,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-31.md"
+        },
         {
           "date": "2026-08-26",
           "summary": "문서·설정·테스트는 지난주 지적 사항이 반영돼 전부 정합하고, 이번 주는 워크플로가 참조하는 액션 버전이 여러 메이저 단계 뒤처진 것 하나만 새로 걸렸다.",
