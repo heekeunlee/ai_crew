@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-02T22:00:02.230Z",
+  "generatedAt": "2026-09-02T22:02:17.470Z",
   "totals": {
-    "outputs": 21,
+    "outputs": 22,
     "daily": [
       {
         "date": "2026-08-28",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-08-29",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-08-30",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-03",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-03T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-02T22:00:02.230Z",
-      "lastRunAt": "2026-09-02T07:01:53+09:00",
-      "total": 12,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-03T07:02:16+09:00",
+      "total": 13,
       "recent": [
+        {
+          "date": "2026-09-03",
+          "summary": "중동발 유가·금리 충격이 코스피를 3%대 끌어내린 하루, 미국 증시는 브로드컴 실적 실망을 엔비디아·델 강세로 상쇄하며 버텼다.",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-03.md"
+        },
         {
           "date": "2026-09-02",
           "summary": "이란발 지정학 리스크에 뉴욕증시는 일제히 밀렸지만, 코스피는 삼성전자·SK하이닉스 반등에 힘입어 나홀로 상승 마감했다.",
@@ -75,12 +81,6 @@
           "summary": "오늘(일요일)은 미국·한국 증시 모두 휴장이고, 개발자 도구·AI 소셜 트렌드에서도 지난 24~48시간 내 검증 가능한 1차 출처의 새 소식을 찾지 못해 넘어간다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-30.md"
-        },
-        {
-          "date": "2026-08-29",
-          "summary": "매파적 잭슨홀 연설과 반도체 관세 우려가 겹치며, 미국·한국 증시 모두 최근 며칠 반도체주 랠리를 일부 반납했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-29.md"
         }
       ]
     },
