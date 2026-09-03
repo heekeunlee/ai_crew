@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-03T22:00:03.181Z",
+  "generatedAt": "2026-09-03T22:01:58.233Z",
   "totals": {
-    "outputs": 22,
+    "outputs": 23,
     "daily": [
       {
         "date": "2026-08-29",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-08-30",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-08-31",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-04",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-04T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-03T22:00:03.181Z",
-      "lastRunAt": "2026-09-03T07:02:16+09:00",
-      "total": 13,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-04T07:01:57+09:00",
+      "total": 14,
       "recent": [
+        {
+          "date": "2026-09-04",
+          "summary": "미국 증시는 부진한 고용지표를 금리 인하 신호로 받아들이며 급반등했고, 국내 증시는 코스피·코스닥이 서로 다른 방향으로 갈렸다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-04.md"
+        },
         {
           "date": "2026-09-03",
           "summary": "중동발 유가·금리 충격이 코스피를 3%대 끌어내린 하루, 미국 증시는 브로드컴 실적 실망을 엔비디아·델 강세로 상쇄하며 버텼다.",
@@ -75,12 +81,6 @@
           "summary": "미국·한국 증시는 지난 금요일(8/28) 마감 데이터에서 갱신된 게 없어 스킵, 개발자 도구 쪽에서만 조용한 업데이트 두 건.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-31.md"
-        },
-        {
-          "date": "2026-08-30",
-          "summary": "오늘(일요일)은 미국·한국 증시 모두 휴장이고, 개발자 도구·AI 소셜 트렌드에서도 지난 24~48시간 내 검증 가능한 1차 출처의 새 소식을 찾지 못해 넘어간다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-08-30.md"
         }
       ]
     },
