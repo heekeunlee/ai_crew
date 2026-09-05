@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-05T22:00:02.669Z",
+  "generatedAt": "2026-09-05T22:01:55.300Z",
   "totals": {
-    "outputs": 24,
+    "outputs": 25,
     "daily": [
       {
         "date": "2026-08-31",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-01",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-02",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-06",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-06T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-05T22:00:02.669Z",
-      "lastRunAt": "2026-09-05T07:01:54+09:00",
-      "total": 15,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-06T07:01:54+09:00",
+      "total": 16,
       "recent": [
+        {
+          "date": "2026-09-06",
+          "summary": "주말이라 국내외 증시는 새로 볼 것이 없고, 개발자 도구 쪽에서만 소소한 업데이트가 있었다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-06.md"
+        },
         {
           "date": "2026-09-05",
           "summary": "어제(9/4) 미국은 깜짝 고용지표에 금리인하 기대가 꺾이며 랠리를 반납했고, 한국은 반대로 반도체 투심 회복에 코스피·코스닥이 동반 급등했다.",
@@ -75,12 +81,6 @@
           "summary": "이란발 지정학 리스크에 뉴욕증시는 일제히 밀렸지만, 코스피는 삼성전자·SK하이닉스 반등에 힘입어 나홀로 상승 마감했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-02.md"
-        },
-        {
-          "date": "2026-09-01",
-          "summary": "미국-이란 충돌 재점화로 국제유가가 뛰고 뉴욕증시는 밀렸지만, 코스피는 장중 2%대 급락 후 반도체 대형주 힘으로 반등에 성공했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-01.md"
         }
       ]
     },
