@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-07T22:00:03.031Z",
+  "generatedAt": "2026-09-07T22:03:34.204Z",
   "totals": {
-    "outputs": 27,
+    "outputs": 28,
     "daily": [
       {
         "date": "2026-09-02",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-03",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-04",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-08",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-08T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-07T22:00:03.031Z",
-      "lastRunAt": "2026-09-07T07:02:38+09:00",
-      "total": 17,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-08T07:03:33+09:00",
+      "total": 18,
       "recent": [
+        {
+          "date": "2026-09-08",
+          "summary": "오픈AI GPT-6 Astra發 AI 반도체 수요 기대감에 코스피가 4%대 급등하며 7,000선을 코앞에 뒀다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-08.md"
+        },
         {
           "date": "2026-09-07",
           "summary": "미국은 노동절 휴장, 한국도 주말 이후 신규 마감이 없어 조용한 날 — 오늘 건질 소식은 개발자 도구 쪽 하나뿐이다.",
@@ -75,12 +81,6 @@
           "summary": "미국 증시는 부진한 고용지표를 금리 인하 신호로 받아들이며 급반등했고, 국내 증시는 코스피·코스닥이 서로 다른 방향으로 갈렸다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-04.md"
-        },
-        {
-          "date": "2026-09-03",
-          "summary": "중동발 유가·금리 충격이 코스피를 3%대 끌어내린 하루, 미국 증시는 브로드컴 실적 실망을 엔비디아·델 강세로 상쇄하며 버텼다.",
-          "items": 4,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-03.md"
         }
       ]
     },
