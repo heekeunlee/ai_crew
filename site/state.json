@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-08T22:00:02.941Z",
+  "generatedAt": "2026-09-08T22:02:03.944Z",
   "totals": {
-    "outputs": 28,
+    "outputs": 29,
     "daily": [
       {
         "date": "2026-09-03",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-04",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-05",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-09",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-09T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-08T22:00:02.941Z",
-      "lastRunAt": "2026-09-08T07:03:33+09:00",
-      "total": 18,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-09T07:02:03+09:00",
+      "total": 19,
       "recent": [
+        {
+          "date": "2026-09-09",
+          "summary": "이란 관련 무력 충돌 재점화로 유가가 급등하며 한미 증시가 동반 조정을 받았고, 코스피에서는 원전 테마주만 예외적으로 강세를 보였다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-09.md"
+        },
         {
           "date": "2026-09-08",
           "summary": "오픈AI GPT-6 Astra發 AI 반도체 수요 기대감에 코스피가 4%대 급등하며 7,000선을 코앞에 뒀다.",
@@ -75,12 +81,6 @@
           "summary": "어제(9/4) 미국은 깜짝 고용지표에 금리인하 기대가 꺾이며 랠리를 반납했고, 한국은 반대로 반도체 투심 회복에 코스피·코스닥이 동반 급등했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-05.md"
-        },
-        {
-          "date": "2026-09-04",
-          "summary": "미국 증시는 부진한 고용지표를 금리 인하 신호로 받아들이며 급반등했고, 국내 증시는 코스피·코스닥이 서로 다른 방향으로 갈렸다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-04.md"
         }
       ]
     },
