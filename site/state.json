@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-09T22:00:02.011Z",
+  "generatedAt": "2026-09-09T22:02:42.387Z",
   "totals": {
-    "outputs": 29,
+    "outputs": 30,
     "daily": [
       {
         "date": "2026-09-04",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-05",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-06",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-10",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-10T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-09T22:00:02.011Z",
-      "lastRunAt": "2026-09-09T07:02:03+09:00",
-      "total": 19,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-10T07:02:41+09:00",
+      "total": 20,
       "recent": [
+        {
+          "date": "2026-09-10",
+          "summary": "미국은 중동 리스크로 흔들렸고, 한국은 반도체·이차전지 개별 호재로 그 흐름을 비껴갔다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-10.md"
+        },
         {
           "date": "2026-09-09",
           "summary": "이란 관련 무력 충돌 재점화로 유가가 급등하며 한미 증시가 동반 조정을 받았고, 코스피에서는 원전 테마주만 예외적으로 강세를 보였다.",
@@ -75,12 +81,6 @@
           "summary": "주말이라 국내외 증시는 새로 볼 것이 없고, 개발자 도구 쪽에서만 소소한 업데이트가 있었다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-06.md"
-        },
-        {
-          "date": "2026-09-05",
-          "summary": "어제(9/4) 미국은 깜짝 고용지표에 금리인하 기대가 꺾이며 랠리를 반납했고, 한국은 반대로 반도체 투심 회복에 코스피·코스닥이 동반 급등했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-05.md"
         }
       ]
     },
