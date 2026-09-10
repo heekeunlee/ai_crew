@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-10T22:00:02.827Z",
+  "generatedAt": "2026-09-10T22:01:44.388Z",
   "totals": {
-    "outputs": 30,
+    "outputs": 31,
     "daily": [
       {
         "date": "2026-09-05",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-06",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-07",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-11",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-11T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-10T22:00:02.827Z",
-      "lastRunAt": "2026-09-10T07:02:41+09:00",
-      "total": 20,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-11T07:01:43+09:00",
+      "total": 21,
       "recent": [
+        {
+          "date": "2026-09-11",
+          "summary": "국제유가 배럴당 100달러 돌파가 미국과 한국 증시를 동시에 흔든 하루였다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-11.md"
+        },
         {
           "date": "2026-09-10",
           "summary": "미국은 중동 리스크로 흔들렸고, 한국은 반도체·이차전지 개별 호재로 그 흐름을 비껴갔다.",
@@ -75,12 +81,6 @@
           "summary": "미국은 노동절 휴장, 한국도 주말 이후 신규 마감이 없어 조용한 날 — 오늘 건질 소식은 개발자 도구 쪽 하나뿐이다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-07.md"
-        },
-        {
-          "date": "2026-09-06",
-          "summary": "주말이라 국내외 증시는 새로 볼 것이 없고, 개발자 도구 쪽에서만 소소한 업데이트가 있었다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-06.md"
         }
       ]
     },
