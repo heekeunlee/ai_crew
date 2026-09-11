@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-11T22:00:02.038Z",
+  "generatedAt": "2026-09-11T22:02:00.521Z",
   "totals": {
-    "outputs": 31,
+    "outputs": 32,
     "daily": [
       {
         "date": "2026-09-06",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-07",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-09-08",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-12",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-12T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-11T22:00:02.038Z",
-      "lastRunAt": "2026-09-11T07:01:43+09:00",
-      "total": 21,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-12T07:01:59+09:00",
+      "total": 22,
       "recent": [
+        {
+          "date": "2026-09-12",
+          "summary": "미국 증시는 유가 상승세가 멈추며 나흘 만에 반등했고, 코스피는 필라델피아반도체지수 급락 여파로 7000선이 다시 무너졌다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-12.md"
+        },
         {
           "date": "2026-09-11",
           "summary": "국제유가 배럴당 100달러 돌파가 미국과 한국 증시를 동시에 흔든 하루였다.",
@@ -75,12 +81,6 @@
           "summary": "오픈AI GPT-6 Astra發 AI 반도체 수요 기대감에 코스피가 4%대 급등하며 7,000선을 코앞에 뒀다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-08.md"
-        },
-        {
-          "date": "2026-09-07",
-          "summary": "미국은 노동절 휴장, 한국도 주말 이후 신규 마감이 없어 조용한 날 — 오늘 건질 소식은 개발자 도구 쪽 하나뿐이다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-07.md"
         }
       ]
     },
