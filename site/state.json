@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-13T22:00:05.836Z",
+  "generatedAt": "2026-09-13T22:04:45.525Z",
   "totals": {
-    "outputs": 33,
+    "outputs": 34,
     "daily": [
       {
         "date": "2026-09-08",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-09",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-10",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-14",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-14T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-13T22:00:05.836Z",
-      "lastRunAt": "2026-09-13T07:01:43+09:00",
-      "total": 23,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-14T07:04:44+09:00",
+      "total": 24,
       "recent": [
+        {
+          "date": "2026-09-14",
+          "summary": "미국·한국 증시는 금요일(9/11) 마감 이후 새 마감 데이터가 없는 조용한 월요일 아침, 대신 GitHub에서는 오픈소스 AI 툴 두 건이 트렌딩 1~2위를 다퉜다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-14.md"
+        },
         {
           "date": "2026-09-13",
           "summary": "미국 증시는 9/12(토)·13(일) 주말 휴장, 한국 증시도 신규 마감이 없어 개발자 도구·AI 소셜 트렌드까지 포함해 오늘은 검증 가능한 새 소식이 없는 날이다.",
@@ -75,12 +81,6 @@
           "summary": "미국은 중동 리스크로 흔들렸고, 한국은 반도체·이차전지 개별 호재로 그 흐름을 비껴갔다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-10.md"
-        },
-        {
-          "date": "2026-09-09",
-          "summary": "이란 관련 무력 충돌 재점화로 유가가 급등하며 한미 증시가 동반 조정을 받았고, 코스피에서는 원전 테마주만 예외적으로 강세를 보였다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-09.md"
         }
       ]
     },
