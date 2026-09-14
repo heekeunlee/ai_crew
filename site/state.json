@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-14T22:00:03.199Z",
+  "generatedAt": "2026-09-14T22:03:21.856Z",
   "totals": {
-    "outputs": 35,
+    "outputs": 36,
     "daily": [
       {
         "date": "2026-09-09",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-10",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-11",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-15",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-15T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-14T22:00:03.199Z",
-      "lastRunAt": "2026-09-14T07:04:44+09:00",
-      "total": 24,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-15T07:03:21+09:00",
+      "total": 25,
       "recent": [
+        {
+          "date": "2026-09-15",
+          "summary": "AI 업계 3대 리더가 \"속도를 늦추자\"고 입을 모으자 반도체주가 미국과 한국에서 동반 급락했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-15.md"
+        },
         {
           "date": "2026-09-14",
           "summary": "미국·한국 증시는 금요일(9/11) 마감 이후 새 마감 데이터가 없는 조용한 월요일 아침, 대신 GitHub에서는 오픈소스 AI 툴 두 건이 트렌딩 1~2위를 다퉜다.",
@@ -75,12 +81,6 @@
           "summary": "국제유가 배럴당 100달러 돌파가 미국과 한국 증시를 동시에 흔든 하루였다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-11.md"
-        },
-        {
-          "date": "2026-09-10",
-          "summary": "미국은 중동 리스크로 흔들렸고, 한국은 반도체·이차전지 개별 호재로 그 흐름을 비껴갔다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-10.md"
         }
       ]
     },
