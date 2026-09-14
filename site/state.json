@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-14T00:00:02.312Z",
+  "generatedAt": "2026-09-14T00:03:18.657Z",
   "totals": {
-    "outputs": 34,
+    "outputs": 35,
     "daily": [
       {
         "date": "2026-09-08",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-14",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-09-21T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-14T00:00:02.312Z",
-      "lastRunAt": "2026-09-07T09:02:43+09:00",
-      "total": 6,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-14T09:03:17+09:00",
+      "total": 7,
       "recent": [
+        {
+          "date": "2026-09-14",
+          "summary": "기억 파이프라인에 실제로 오염된 데이터가 하나 있었고, 원인도 재현 가능하다. 그 외엔 조용하다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-14.md"
+        },
         {
           "date": "2026-09-07",
           "summary": "액션 버전 노후화가 3주째 그대로입니다 — 나머지는 이상 없음.",
@@ -183,12 +189,6 @@
           "summary": "Actions → mini 이전 자체는 깔끔하다. 다만 `poll.sh`의 이슈 폴링 경로에 두 가지 구멍이 있고, `work.sh`에 저장소 이름이 하드코딩된 곳과 README에 낡은 문구가 하나 남았다.",
           "items": 4,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26-i10.md"
-        },
-        {
-          "date": "2026-08-24",
-          "summary": "README 구조도가 이번 주에도 하나 밀렸습니다 — 새로 생긴 `scripts/lib/schedule.mjs`가 빠졌습니다. 그 외에는 지난주 지적한 workflow 권한 문제가 전부 반영되어 있고 나머지도 깨끗합니다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-24.md"
         }
       ]
     }
