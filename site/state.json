@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-15T22:00:02.805Z",
+  "generatedAt": "2026-09-15T22:02:51.233Z",
   "totals": {
-    "outputs": 36,
+    "outputs": 37,
     "daily": [
       {
         "date": "2026-09-10",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-11",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-12",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-16",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-16T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-15T22:00:02.805Z",
-      "lastRunAt": "2026-09-15T07:03:21+09:00",
-      "total": 25,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-16T07:02:50+09:00",
+      "total": 26,
       "recent": [
+        {
+          "date": "2026-09-16",
+          "summary": "국채금리가 5%대로 재진입하며 미국·한국 증시가 나란히 눌렸지만, 코스닥에서는 AI 보안 테마가 나홀로 상한가 랠리를 벌였다.",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-16.md"
+        },
         {
           "date": "2026-09-15",
           "summary": "AI 업계 3대 리더가 \"속도를 늦추자\"고 입을 모으자 반도체주가 미국과 한국에서 동반 급락했다.",
@@ -75,12 +81,6 @@
           "summary": "미국 증시는 유가 상승세가 멈추며 나흘 만에 반등했고, 코스피는 필라델피아반도체지수 급락 여파로 7000선이 다시 무너졌다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-12.md"
-        },
-        {
-          "date": "2026-09-11",
-          "summary": "국제유가 배럴당 100달러 돌파가 미국과 한국 증시를 동시에 흔든 하루였다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-11.md"
         }
       ]
     },
