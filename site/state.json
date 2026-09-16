@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-16T22:00:04.168Z",
+  "generatedAt": "2026-09-16T22:01:58.164Z",
   "totals": {
-    "outputs": 37,
+    "outputs": 38,
     "daily": [
       {
         "date": "2026-09-11",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-12",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-13",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-17",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-17T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-16T22:00:04.168Z",
-      "lastRunAt": "2026-09-16T07:02:50+09:00",
-      "total": 26,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-17T07:01:57+09:00",
+      "total": 27,
       "recent": [
+        {
+          "date": "2026-09-17",
+          "summary": "연준이 2023년 이후 처음으로 기준금리를 올리며 위험자산에 찬물을 끼얹은 하루, 코스피는 반도체 대형주 힘으로 전날 낙폭을 만회했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-17.md"
+        },
         {
           "date": "2026-09-16",
           "summary": "국채금리가 5%대로 재진입하며 미국·한국 증시가 나란히 눌렸지만, 코스닥에서는 AI 보안 테마가 나홀로 상한가 랠리를 벌였다.",
@@ -75,12 +81,6 @@
           "summary": "미국 증시는 9/12(토)·13(일) 주말 휴장, 한국 증시도 신규 마감이 없어 개발자 도구·AI 소셜 트렌드까지 포함해 오늘은 검증 가능한 새 소식이 없는 날이다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-13.md"
-        },
-        {
-          "date": "2026-09-12",
-          "summary": "미국 증시는 유가 상승세가 멈추며 나흘 만에 반등했고, 코스피는 필라델피아반도체지수 급락 여파로 7000선이 다시 무너졌다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-12.md"
         }
       ]
     },
