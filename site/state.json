@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-17T22:00:02.515Z",
+  "generatedAt": "2026-09-17T22:03:02.543Z",
   "totals": {
-    "outputs": 38,
+    "outputs": 39,
     "daily": [
       {
         "date": "2026-09-12",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-13",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-14",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-18",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-18T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-17T22:00:02.515Z",
-      "lastRunAt": "2026-09-17T07:01:57+09:00",
-      "total": 27,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-18T07:03:01+09:00",
+      "total": 28,
       "recent": [
+        {
+          "date": "2026-09-18",
+          "summary": "오늘은 국내 증시가 방산·우주항공 테마로 활기를 띤 하루였고, 미국 증시와 AI 소셜 트렌드는 검증 가능한 새 소식을 찾지 못해 건너뛴다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-18.md"
+        },
         {
           "date": "2026-09-17",
           "summary": "연준이 2023년 이후 처음으로 기준금리를 올리며 위험자산에 찬물을 끼얹은 하루, 코스피는 반도체 대형주 힘으로 전날 낙폭을 만회했다.",
@@ -75,12 +81,6 @@
           "summary": "미국·한국 증시는 금요일(9/11) 마감 이후 새 마감 데이터가 없는 조용한 월요일 아침, 대신 GitHub에서는 오픈소스 AI 툴 두 건이 트렌딩 1~2위를 다퉜다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-14.md"
-        },
-        {
-          "date": "2026-09-13",
-          "summary": "미국 증시는 9/12(토)·13(일) 주말 휴장, 한국 증시도 신규 마감이 없어 개발자 도구·AI 소셜 트렌드까지 포함해 오늘은 검증 가능한 새 소식이 없는 날이다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-13.md"
         }
       ]
     },
