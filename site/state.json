@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-18T22:00:02.049Z",
+  "generatedAt": "2026-09-18T22:02:35.396Z",
   "totals": {
-    "outputs": 39,
+    "outputs": 40,
     "daily": [
       {
         "date": "2026-09-13",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-14",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-09-15",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-19",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-19T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-18T22:00:02.049Z",
-      "lastRunAt": "2026-09-18T07:03:01+09:00",
-      "total": 28,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-19T07:02:34+09:00",
+      "total": 29,
       "recent": [
+        {
+          "date": "2026-09-19",
+          "summary": "코스피가 반도체 대장주 급등에 힘입어 2.66% 뛰며 6,900선에 바짝 다가섰고, 미국 증시는 전날 FOMC 금리인상 불확실성 해소 안도감에 3대 지수가 동반 급등했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-19.md"
+        },
         {
           "date": "2026-09-18",
           "summary": "오늘은 국내 증시가 방산·우주항공 테마로 활기를 띤 하루였고, 미국 증시와 AI 소셜 트렌드는 검증 가능한 새 소식을 찾지 못해 건너뛴다.",
@@ -75,12 +81,6 @@
           "summary": "AI 업계 3대 리더가 \"속도를 늦추자\"고 입을 모으자 반도체주가 미국과 한국에서 동반 급락했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-15.md"
-        },
-        {
-          "date": "2026-09-14",
-          "summary": "미국·한국 증시는 금요일(9/11) 마감 이후 새 마감 데이터가 없는 조용한 월요일 아침, 대신 GitHub에서는 오픈소스 AI 툴 두 건이 트렌딩 1~2위를 다퉜다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-14.md"
         }
       ]
     },
