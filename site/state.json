@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-19T22:00:02.539Z",
+  "generatedAt": "2026-09-19T22:03:33.588Z",
   "totals": {
-    "outputs": 40,
+    "outputs": 41,
     "daily": [
       {
         "date": "2026-09-14",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-15",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-16",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-20",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-20T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-19T22:00:02.539Z",
-      "lastRunAt": "2026-09-19T07:02:34+09:00",
-      "total": 29,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-20T07:03:32+09:00",
+      "total": 30,
       "recent": [
+        {
+          "date": "2026-09-20",
+          "summary": "주말이라 증시는 조용했고, 개발자 도구 쪽에서 작은 소식 하나만 건졌다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-20.md"
+        },
         {
           "date": "2026-09-19",
           "summary": "코스피가 반도체 대장주 급등에 힘입어 2.66% 뛰며 6,900선에 바짝 다가섰고, 미국 증시는 전날 FOMC 금리인상 불확실성 해소 안도감에 3대 지수가 동반 급등했다.",
@@ -75,12 +81,6 @@
           "summary": "국채금리가 5%대로 재진입하며 미국·한국 증시가 나란히 눌렸지만, 코스닥에서는 AI 보안 테마가 나홀로 상한가 랠리를 벌였다.",
           "items": 4,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-16.md"
-        },
-        {
-          "date": "2026-09-15",
-          "summary": "AI 업계 3대 리더가 \"속도를 늦추자\"고 입을 모으자 반도체주가 미국과 한국에서 동반 급락했다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-15.md"
         }
       ]
     },
