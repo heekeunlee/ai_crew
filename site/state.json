@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-20T22:00:03.105Z",
+  "generatedAt": "2026-09-20T22:02:08.898Z",
   "totals": {
-    "outputs": 41,
+    "outputs": 42,
     "daily": [
       {
         "date": "2026-09-15",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-16",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-17",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-21",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-21T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-20T22:00:03.105Z",
-      "lastRunAt": "2026-09-20T07:03:32+09:00",
-      "total": 30,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-21T07:02:08+09:00",
+      "total": 31,
       "recent": [
+        {
+          "date": "2026-09-21",
+          "summary": "오늘은 미국·한국 증시 모두 마감 데이터 공백기라, Claude Code 업데이트 외엔 검증 가능한 새 소식이 마땅치 않은 하루다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-21.md"
+        },
         {
           "date": "2026-09-20",
           "summary": "주말이라 증시는 조용했고, 개발자 도구 쪽에서 작은 소식 하나만 건졌다.",
@@ -75,12 +81,6 @@
           "summary": "연준이 2023년 이후 처음으로 기준금리를 올리며 위험자산에 찬물을 끼얹은 하루, 코스피는 반도체 대형주 힘으로 전날 낙폭을 만회했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-17.md"
-        },
-        {
-          "date": "2026-09-16",
-          "summary": "국채금리가 5%대로 재진입하며 미국·한국 증시가 나란히 눌렸지만, 코스닥에서는 AI 보안 테마가 나홀로 상한가 랠리를 벌였다.",
-          "items": 4,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-16.md"
         }
       ]
     },
