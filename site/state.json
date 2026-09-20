@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T22:03:33.588Z",
+  "generatedAt": "2026-09-20T14:00:02.686Z",
   "totals": {
     "outputs": 41,
     "daily": [
@@ -47,7 +47,7 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-20T22:00:00.000Z",
       "queued": [],
-      "status": "done",
+      "status": "idle",
       "startedAt": null,
       "lastRunAt": "2026-09-20T07:03:32+09:00",
       "total": 30,
@@ -129,10 +129,10 @@
       "desk": 2,
       "schedule": "0 14 * * *",
       "scheduleNote": "매일 23:00 KST",
-      "nextRunAt": "2026-09-20T14:00:00.000Z",
+      "nextRunAt": "2026-09-21T14:00:00.000Z",
       "queued": [],
-      "status": "idle",
-      "startedAt": null,
+      "status": "working",
+      "startedAt": "2026-09-20T14:00:02.686Z",
       "lastRunAt": "2026-09-19T23:03:06+09:00",
       "total": 1,
       "recent": [
