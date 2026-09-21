@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-21T00:00:02.694Z",
+  "generatedAt": "2026-09-21T00:02:14.332Z",
   "totals": {
-    "outputs": 42,
+    "outputs": 43,
     "daily": [
       {
         "date": "2026-09-15",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-21",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-09-28T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-21T00:00:02.694Z",
-      "lastRunAt": "2026-09-14T09:03:17+09:00",
-      "total": 7,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-21T09:02:13+09:00",
+      "total": 8,
       "recent": [
+        {
+          "date": "2026-09-21",
+          "summary": "지난주 지적한 memory.mjs 펜스 버그가 고쳐지지 않았고, 그 사이 실제로 한 번 더 터졌다 — 이번 주 유일하지만 확실한 발견.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-21.md"
+        },
         {
           "date": "2026-09-14",
           "summary": "기억 파이프라인에 실제로 오염된 데이터가 하나 있었고, 원인도 재현 가능하다. 그 외엔 조용하다.",
@@ -182,13 +188,6 @@
           "summary": "문서·설정·테스트는 지난주 지적 사항이 반영돼 전부 정합하고, 이번 주는 워크플로가 참조하는 액션 버전이 여러 메이저 단계 뒤처진 것 하나만 새로 걸렸다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26.md"
-        },
-        {
-          "date": "2026-08-26",
-          "issue": 10,
-          "summary": "Actions → mini 이전 자체는 깔끔하다. 다만 `poll.sh`의 이슈 폴링 경로에 두 가지 구멍이 있고, `work.sh`에 저장소 이름이 하드코딩된 곳과 README에 낡은 문구가 하나 남았다.",
-          "items": 4,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-26-i10.md"
         }
       ]
     }
