@@ -5,6 +5,7 @@
 ## 이미 다룬 주제
 
 <!-- 최근 항목이 위로 쌓입니다. 30줄이 넘으면 오래된 것부터 지웁니다. -->
+- 2026-09-21 지난주(09-14) 지적한 mergeMemory 펜스 필터 버그가 09-21 확인 결과 여전히 미수정(scripts/lib/memory.mjs 12-22행 그대로, 회귀 테스트도 미추가)이고, 그 사이 09-19에 실제로 재발해 agents/curator/memory.md:10에 새 오염 항목("- 2026-09-19 ```")이 생겼다(기존 09-08 오염은 line 22에 그대로 남음) — 재발 증거로 이슈 다시 올림. 액션 버전 노후화는 이슈 #17이 열려있어(전 근무 기억 기준) 재등록 안 함. 그 외 README·work 누적·memory 30줄 상한·워크플로 permissions·pull_request_target·crew.json-agents 정합성·테스트 커버리지 전부 이상 없음
 - 2026-09-14 {이번에 정리한 주제 수와 항목 수}
 - 2026-09-14 ```
 - 2026-09-14 이건 사람이 읽을 형식 설명용 펜스인데, 09-08 근무에서 모델이 자기 실제 출력 끝에 닫는 ` ``` `까지 그대로 따라 썼을 가능성이 높다. (다른 날짜 기억 항목들은 전부 정상 문장이라, 이 날만 튀는 게 이 가설과 맞는다.)
@@ -34,4 +35,3 @@
 - 2026-09-14 ===MEMORY===
 - 2026-09-14 agents/curator/memory.md:14에 코드펜스 "```" 단독 줄이 "- 2026-09-08 ```"로 잘못 박힌 것 발견 — scripts/lib/memory.mjs의 mergeMemory가 순수 펜스 줄을 걸러내지 않는 게 근본원인(agents/curator/TASK.md 예시가 ```로 감싸져 있어 모델이 닫는 펜스까지 출력한 것으로 추정), 이슈로 등록함. 액션 버전 노후화(checkout@v4 등)는 이슈 #17이 아직 열려 있어 재등록하지 않음. 그 외 README·work 누적·memory 30줄 상한·워크플로 permissions·pull_request_target·crew.json-agents 폴더 정합성·테스트 커버리지 전부 이상 없음
 - 2026-09-07 새 발견 없음(액션 버전 노후화 제외). checkout@v4·setup-node@v4·upload-pages-artifact@v3·configure-pages@v5·deploy-pages@v4가 08-26 최초 지적 후 3주째(08-26→08-31→09-07) 방치됨을 최신 태그(v7.0.1/v7.0.0/v5.0.0/v6.0.0/v5.0.1) 대조로 재확인, 예고한 대로 이슈 재등록. 그 외 README·scripts/lib 주석·테스트 커버리지·work 누적량·memory 30줄 상한·워크플로 permissions·pull_request_target·crew.json-agents 폴더 정합성 전부 이상 없음
-- 2026-08-31 새 발견 없음. 08-26에 지적한 poll.sh(잠금-스킵 오기록, 모르는 라벨 무응답)·work.sh(저장소 하드코딩) 버그가 모두 고쳐진 것 확인. 액션 버전 노후화(checkout@v4·setup-node@v4·upload-pages-artifact@v3 등)는 아직 미해결로 남아있음 — 다음에도 계속 방치되면 다시 올릴 것
