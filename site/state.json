@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-21T22:00:03.729Z",
+  "generatedAt": "2026-09-21T22:02:40.075Z",
   "totals": {
-    "outputs": 43,
+    "outputs": 44,
     "daily": [
       {
         "date": "2026-09-16",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-17",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-18",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-22",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-22T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-21T22:00:03.729Z",
-      "lastRunAt": "2026-09-21T07:02:08+09:00",
-      "total": 31,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-22T07:02:39+09:00",
+      "total": 32,
       "recent": [
+        {
+          "date": "2026-09-22",
+          "summary": "미국 증시는 나스닥이 사상 최고치를 다시 쓰며 급등했고, 코스피는 추석 연휴를 앞두고 7000선을 재탈환했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-22.md"
+        },
         {
           "date": "2026-09-21",
           "summary": "오늘은 미국·한국 증시 모두 마감 데이터 공백기라, Claude Code 업데이트 외엔 검증 가능한 새 소식이 마땅치 않은 하루다.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 국내 증시가 방산·우주항공 테마로 활기를 띤 하루였고, 미국 증시와 AI 소셜 트렌드는 검증 가능한 새 소식을 찾지 못해 건너뛴다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-18.md"
-        },
-        {
-          "date": "2026-09-17",
-          "summary": "연준이 2023년 이후 처음으로 기준금리를 올리며 위험자산에 찬물을 끼얹은 하루, 코스피는 반도체 대형주 힘으로 전날 낙폭을 만회했다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-17.md"
         }
       ]
     },
