@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-09-22T22:00:02.019Z",
+  "generatedAt": "2026-09-22T22:02:40.696Z",
   "totals": {
-    "outputs": 44,
+    "outputs": 45,
     "daily": [
       {
         "date": "2026-09-17",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-09-18",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-09-19",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-09-23",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-09-23T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-09-22T22:00:02.019Z",
-      "lastRunAt": "2026-09-22T07:02:39+09:00",
-      "total": 32,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-09-23T07:02:39+09:00",
+      "total": 33,
       "recent": [
+        {
+          "date": "2026-09-23",
+          "summary": "이란의 호르무즈 해협 재개 제안으로 유가가 꺾이면서 미국 증시는 AI주 중심으로 다시 사상최고치를 썼고, 코스피는 PCB·AI서버기판 테마가 반도체 대형주 조정을 상쇄하며 7000선을 지켰다.",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-23.md"
+        },
         {
           "date": "2026-09-22",
           "summary": "미국 증시는 나스닥이 사상 최고치를 다시 쓰며 급등했고, 코스피는 추석 연휴를 앞두고 7000선을 재탈환했다.",
@@ -75,12 +81,6 @@
           "summary": "코스피가 반도체 대장주 급등에 힘입어 2.66% 뛰며 6,900선에 바짝 다가섰고, 미국 증시는 전날 FOMC 금리인상 불확실성 해소 안도감에 3대 지수가 동반 급등했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-19.md"
-        },
-        {
-          "date": "2026-09-18",
-          "summary": "오늘은 국내 증시가 방산·우주항공 테마로 활기를 띤 하루였고, 미국 증시와 AI 소셜 트렌드는 검증 가능한 새 소식을 찾지 못해 건너뛴다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-18.md"
         }
       ]
     },
