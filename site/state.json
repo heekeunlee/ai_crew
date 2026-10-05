@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-05T22:00:04.212Z",
+  "generatedAt": "2026-10-05T22:08:36.355Z",
   "totals": {
-    "outputs": 45,
+    "outputs": 46,
     "daily": [
       {
         "date": "2026-09-30",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-06",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-06T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-05T22:00:04.212Z",
-      "lastRunAt": "2026-09-23T07:02:39+09:00",
-      "total": 33,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-06T07:08:35+09:00",
+      "total": 34,
       "recent": [
+        {
+          "date": "2026-10-06",
+          "summary": "Claude Code 패치 소식 외에는 24~48시간 내 검증 가능한 1차 출처를 찾기 어려웠던 조용한 하루.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-06.md"
+        },
         {
           "date": "2026-09-23",
           "summary": "이란의 호르무즈 해협 재개 제안으로 유가가 꺾이면서 미국 증시는 AI주 중심으로 다시 사상최고치를 썼고, 코스피는 PCB·AI서버기판 테마가 반도체 대형주 조정을 상쇄하며 7000선을 지켰다.",
@@ -75,12 +81,6 @@
           "summary": "주말이라 증시는 조용했고, 개발자 도구 쪽에서 작은 소식 하나만 건졌다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-20.md"
-        },
-        {
-          "date": "2026-09-19",
-          "summary": "코스피가 반도체 대장주 급등에 힘입어 2.66% 뛰며 6,900선에 바짝 다가섰고, 미국 증시는 전날 FOMC 금리인상 불확실성 해소 안도감에 3대 지수가 동반 급등했다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-19.md"
         }
       ]
     },
