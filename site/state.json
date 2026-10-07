@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-07T22:00:04.450Z",
+  "generatedAt": "2026-10-07T22:01:07.901Z",
   "totals": {
-    "outputs": 46,
+    "outputs": 47,
     "daily": [
       {
         "date": "2026-10-02",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-08",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-08T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-07T22:00:04.450Z",
-      "lastRunAt": "2026-10-06T07:08:35+09:00",
-      "total": 34,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-08T07:01:06+09:00",
+      "total": 35,
       "recent": [
+        {
+          "date": "2026-10-08",
+          "summary": "오늘은 모든 주제에서 1차 출처 검증을 통과한 새 소식을 찾지 못했다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-08.md"
+        },
         {
           "date": "2026-10-06",
           "summary": "Claude Code 패치 소식 외에는 24~48시간 내 검증 가능한 1차 출처를 찾기 어려웠던 조용한 하루.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 미국·한국 증시 모두 마감 데이터 공백기라, Claude Code 업데이트 외엔 검증 가능한 새 소식이 마땅치 않은 하루다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-21.md"
-        },
-        {
-          "date": "2026-09-20",
-          "summary": "주말이라 증시는 조용했고, 개발자 도구 쪽에서 작은 소식 하나만 건졌다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-20.md"
         }
       ]
     },
