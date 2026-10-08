@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-08T22:00:04.369Z",
+  "generatedAt": "2026-10-08T22:05:44.592Z",
   "totals": {
-    "outputs": 47,
+    "outputs": 48,
     "daily": [
       {
         "date": "2026-10-03",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-09",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-09T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-08T22:00:04.369Z",
-      "lastRunAt": "2026-10-08T07:01:06+09:00",
-      "total": 35,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-09T07:05:43+09:00",
+      "total": 36,
       "recent": [
+        {
+          "date": "2026-10-09",
+          "summary": "미국은 OpenAI 매출 둔화 보도로 AI 반도체주가 흔들렸고, 한국은 삼성전자가 사상 첫 분기 영업이익 100조원을 돌파했는데도 코스피는 사흘째 밀렸다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-09.md"
+        },
         {
           "date": "2026-10-08",
           "summary": "오늘은 모든 주제에서 1차 출처 검증을 통과한 새 소식을 찾지 못했다.",
@@ -75,12 +81,6 @@
           "summary": "미국 증시는 나스닥이 사상 최고치를 다시 쓰며 급등했고, 코스피는 추석 연휴를 앞두고 7000선을 재탈환했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-22.md"
-        },
-        {
-          "date": "2026-09-21",
-          "summary": "오늘은 미국·한국 증시 모두 마감 데이터 공백기라, Claude Code 업데이트 외엔 검증 가능한 새 소식이 마땅치 않은 하루다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-21.md"
         }
       ]
     },
