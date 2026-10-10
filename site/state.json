@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-10T22:00:04.122Z",
+  "generatedAt": "2026-10-10T22:02:30.210Z",
   "totals": {
-    "outputs": 49,
+    "outputs": 50,
     "daily": [
       {
         "date": "2026-10-05",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-11",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-11T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-10T22:00:04.122Z",
-      "lastRunAt": "2026-10-10T07:01:47+09:00",
-      "total": 37,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-11T07:02:28+09:00",
+      "total": 38,
       "recent": [
+        {
+          "date": "2026-10-11",
+          "summary": "주말이라 증시는 쉬어가고, Claude Code만 조용히 업데이트를 이어갔다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-11.md"
+        },
         {
           "date": "2026-10-10",
           "summary": "미국 증시는 실적 시즌 기대감에 사상 최고치 근처에서 한 주를 마감했고, 그 외 주제는 1차 출처 검증을 통과하지 못해 모두 걸러냈다.",
@@ -75,12 +81,6 @@
           "summary": "Claude Code 패치 소식 외에는 24~48시간 내 검증 가능한 1차 출처를 찾기 어려웠던 조용한 하루.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-06.md"
-        },
-        {
-          "date": "2026-09-23",
-          "summary": "이란의 호르무즈 해협 재개 제안으로 유가가 꺾이면서 미국 증시는 AI주 중심으로 다시 사상최고치를 썼고, 코스피는 PCB·AI서버기판 테마가 반도체 대형주 조정을 상쇄하며 7000선을 지켰다.",
-          "items": 4,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-09-23.md"
         }
       ]
     },
