@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-12T22:00:04.129Z",
+  "generatedAt": "2026-10-12T22:02:35.732Z",
   "totals": {
-    "outputs": 52,
+    "outputs": 53,
     "daily": [
       {
         "date": "2026-10-07",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-08",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-09",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-13",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-13T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-12T22:00:04.129Z",
-      "lastRunAt": "2026-10-12T07:03:20+09:00",
-      "total": 39,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-13T07:02:34+09:00",
+      "total": 40,
       "recent": [
+        {
+          "date": "2026-10-13",
+          "summary": "미국·한국 증시 모두 반도체 업종 차익실현과 외국인 매도가 겹치며 하루 새 동반 조정에 들어갔다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-13.md"
+        },
         {
           "date": "2026-10-12",
           "summary": "미국·한국 증시는 휴장·주말 지나 아직 새 마감치가 없고, 오늘 건진 건 Claude Code 업데이트 하나뿐이다.",
@@ -75,12 +81,6 @@
           "summary": "미국은 OpenAI 매출 둔화 보도로 AI 반도체주가 흔들렸고, 한국은 삼성전자가 사상 첫 분기 영업이익 100조원을 돌파했는데도 코스피는 사흘째 밀렸다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-09.md"
-        },
-        {
-          "date": "2026-10-08",
-          "summary": "오늘은 모든 주제에서 1차 출처 검증을 통과한 새 소식을 찾지 못했다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-08.md"
         }
       ]
     },
