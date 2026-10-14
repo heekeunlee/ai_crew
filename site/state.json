@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-14T22:00:03.866Z",
+  "generatedAt": "2026-10-14T22:03:04.387Z",
   "totals": {
-    "outputs": 54,
+    "outputs": 55,
     "daily": [
       {
         "date": "2026-10-09",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-10",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-11",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-15",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-15T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-14T22:00:03.866Z",
-      "lastRunAt": "2026-10-14T07:02:24+09:00",
-      "total": 41,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-15T07:03:03+09:00",
+      "total": 42,
       "recent": [
+        {
+          "date": "2026-10-15",
+          "summary": "JP모건이 외부 AI 에이전트의 고객 계좌 접근을 공식적으로 차단했고, 앤스로픽은 상장을 염두에 둔 첫 실적 공개에 나섰다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-15.md"
+        },
         {
           "date": "2026-10-14",
           "summary": "중국 CXMT의 메모리 반도체 기술 진전 소식 하나가 미국·한국 증시를 동시에 흔들었다.",
@@ -75,12 +81,6 @@
           "summary": "주말이라 증시는 쉬어가고, Claude Code만 조용히 업데이트를 이어갔다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-11.md"
-        },
-        {
-          "date": "2026-10-10",
-          "summary": "미국 증시는 실적 시즌 기대감에 사상 최고치 근처에서 한 주를 마감했고, 그 외 주제는 1차 출처 검증을 통과하지 못해 모두 걸러냈다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-10.md"
         }
       ]
     },
