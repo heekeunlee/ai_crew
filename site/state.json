@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-15T22:00:05.048Z",
+  "generatedAt": "2026-10-15T22:02:23.279Z",
   "totals": {
-    "outputs": 55,
+    "outputs": 56,
     "daily": [
       {
         "date": "2026-10-10",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-11",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-12",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-16",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-16T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-15T22:00:05.048Z",
-      "lastRunAt": "2026-10-15T07:03:03+09:00",
-      "total": 42,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-16T07:02:22+09:00",
+      "total": 43,
       "recent": [
+        {
+          "date": "2026-10-16",
+          "summary": "미국 9월 CPI 서프라이즈로 월가가 흔들린 다음날, 코스피가 서킷브레이커까지 발동하며 7%대로 폭락했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-16.md"
+        },
         {
           "date": "2026-10-15",
           "summary": "JP모건이 외부 AI 에이전트의 고객 계좌 접근을 공식적으로 차단했고, 앤스로픽은 상장을 염두에 둔 첫 실적 공개에 나섰다.",
@@ -75,12 +81,6 @@
           "summary": "미국·한국 증시는 휴장·주말 지나 아직 새 마감치가 없고, 오늘 건진 건 Claude Code 업데이트 하나뿐이다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-12.md"
-        },
-        {
-          "date": "2026-10-11",
-          "summary": "주말이라 증시는 쉬어가고, Claude Code만 조용히 업데이트를 이어갔다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-11.md"
         }
       ]
     },
