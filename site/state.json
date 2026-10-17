@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-17T22:00:07.361Z",
+  "generatedAt": "2026-10-17T22:02:21.656Z",
   "totals": {
-    "outputs": 56,
+    "outputs": 57,
     "daily": [
       {
         "date": "2026-10-12",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-10-13",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-18",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-18T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-17T22:00:07.361Z",
-      "lastRunAt": "2026-10-16T07:02:22+09:00",
-      "total": 43,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-18T07:02:16+09:00",
+      "total": 44,
       "recent": [
+        {
+          "date": "2026-10-18",
+          "summary": "미국은 AI 버블 경계감에 반도체주가 밀렸고, 한국은 전날 폭락을 딛고 외국인 복귀로 반등했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-18.md"
+        },
         {
           "date": "2026-10-16",
           "summary": "미국 9월 CPI 서프라이즈로 월가가 흔들린 다음날, 코스피가 서킷브레이커까지 발동하며 7%대로 폭락했다.",
@@ -75,12 +81,6 @@
           "summary": "미국·한국 증시 모두 반도체 업종 차익실현과 외국인 매도가 겹치며 하루 새 동반 조정에 들어갔다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-13.md"
-        },
-        {
-          "date": "2026-10-12",
-          "summary": "미국·한국 증시는 휴장·주말 지나 아직 새 마감치가 없고, 오늘 건진 건 Claude Code 업데이트 하나뿐이다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-12.md"
         }
       ]
     },
