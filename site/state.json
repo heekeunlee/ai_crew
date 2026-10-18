@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-18T22:00:08.970Z",
+  "generatedAt": "2026-10-18T22:02:05.307Z",
   "totals": {
-    "outputs": 57,
+    "outputs": 58,
     "daily": [
       {
         "date": "2026-10-13",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-14",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-19",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-19T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-18T22:00:08.970Z",
-      "lastRunAt": "2026-10-18T07:02:16+09:00",
-      "total": 44,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-19T07:02:03+09:00",
+      "total": 45,
       "recent": [
+        {
+          "date": "2026-10-19",
+          "summary": "오늘은 미국·한국 증시 모두 아직 마감 전이고, 개발자 도구도 전일 이후 신규 릴리스가 없어 건질 거리가 마땅치 않은 날이다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-19.md"
+        },
         {
           "date": "2026-10-18",
           "summary": "미국은 AI 버블 경계감에 반도체주가 밀렸고, 한국은 전날 폭락을 딛고 외국인 복귀로 반등했다.",
@@ -75,12 +81,6 @@
           "summary": "중국 CXMT의 메모리 반도체 기술 진전 소식 하나가 미국·한국 증시를 동시에 흔들었다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-14.md"
-        },
-        {
-          "date": "2026-10-13",
-          "summary": "미국·한국 증시 모두 반도체 업종 차익실현과 외국인 매도가 겹치며 하루 새 동반 조정에 들어갔다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-13.md"
         }
       ]
     },
