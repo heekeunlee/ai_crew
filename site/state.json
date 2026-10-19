@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-19T22:00:08.996Z",
+  "generatedAt": "2026-10-19T22:02:28.129Z",
   "totals": {
-    "outputs": 59,
+    "outputs": 60,
     "daily": [
       {
         "date": "2026-10-14",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-15",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-20",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-20T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-19T22:00:08.996Z",
-      "lastRunAt": "2026-10-19T07:02:03+09:00",
-      "total": 45,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-20T07:02:26+09:00",
+      "total": 46,
       "recent": [
+        {
+          "date": "2026-10-20",
+          "summary": "지난주 AI 반도체발 급락을 딛고 미국·한국 증시 모두 메모리·반도체주 중심으로 반등했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-20.md"
+        },
         {
           "date": "2026-10-19",
           "summary": "오늘은 미국·한국 증시 모두 아직 마감 전이고, 개발자 도구도 전일 이후 신규 릴리스가 없어 건질 거리가 마땅치 않은 날이다.",
@@ -75,12 +81,6 @@
           "summary": "JP모건이 외부 AI 에이전트의 고객 계좌 접근을 공식적으로 차단했고, 앤스로픽은 상장을 염두에 둔 첫 실적 공개에 나섰다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-15.md"
-        },
-        {
-          "date": "2026-10-14",
-          "summary": "중국 CXMT의 메모리 반도체 기술 진전 소식 하나가 미국·한국 증시를 동시에 흔들었다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-14.md"
         }
       ]
     },
