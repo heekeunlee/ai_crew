@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-19T00:00:09.660Z",
+  "generatedAt": "2026-10-19T00:07:26.554Z",
   "totals": {
-    "outputs": 58,
+    "outputs": 59,
     "daily": [
       {
         "date": "2026-10-13",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-19",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-10-26T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-19T00:00:09.660Z",
-      "lastRunAt": "2026-10-12T09:06:11+09:00",
-      "total": 9,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-19T09:07:24+09:00",
+      "total": 10,
       "recent": [
+        {
+          "date": "2026-10-19",
+          "summary": "지난 한 달 사이 네 에이전트 전원이 GitHub Actions에서 2주 넘게 연쇄 실패한 사실이 git log에 그대로 남아 있었고, 지난주 보고서의 원인 진단(\"로컬 기계가 꺼져 있던 구간\")은 틀렸다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-19.md"
+        },
         {
           "date": "2026-10-12",
           "summary": "코드·설정은 지난주와 다름없이 안정적이지만, 라이터(quill) PR이 5주째 리뷰되지 않고 쌓이고 있다.",
@@ -182,12 +188,6 @@
           "summary": "액션 버전 노후화가 3주째 그대로입니다 — 나머지는 이상 없음.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-07.md"
-        },
-        {
-          "date": "2026-08-31",
-          "summary": "지난주 지적한 poll.sh·work.sh 버그가 모두 고쳐졌고, 새로 썩기 시작한 것도 없습니다 — 이번 주는 깨끗합니다.",
-          "items": 10,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-08-31.md"
         }
       ]
     }
