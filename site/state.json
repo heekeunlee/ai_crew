@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-20T22:00:08.972Z",
+  "generatedAt": "2026-10-20T22:01:42.455Z",
   "totals": {
-    "outputs": 60,
+    "outputs": 61,
     "daily": [
       {
         "date": "2026-10-15",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-16",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-21",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-21T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-20T22:00:08.972Z",
-      "lastRunAt": "2026-10-20T07:02:26+09:00",
-      "total": 46,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-21T07:01:40+09:00",
+      "total": 47,
       "recent": [
+        {
+          "date": "2026-10-21",
+          "summary": "미국 기술주가 반등하는 와중에도 코스피는 사흘 만에 3%대 급락하며 디커플링을 재확인했다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-21.md"
+        },
         {
           "date": "2026-10-20",
           "summary": "지난주 AI 반도체발 급락을 딛고 미국·한국 증시 모두 메모리·반도체주 중심으로 반등했다.",
@@ -75,12 +81,6 @@
           "summary": "미국 9월 CPI 서프라이즈로 월가가 흔들린 다음날, 코스피가 서킷브레이커까지 발동하며 7%대로 폭락했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-16.md"
-        },
-        {
-          "date": "2026-10-15",
-          "summary": "JP모건이 외부 AI 에이전트의 고객 계좌 접근을 공식적으로 차단했고, 앤스로픽은 상장을 염두에 둔 첫 실적 공개에 나섰다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-15.md"
         }
       ]
     },
