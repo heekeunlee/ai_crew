@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-21T22:00:10.168Z",
+  "generatedAt": "2026-10-21T22:04:36.345Z",
   "totals": {
-    "outputs": 61,
+    "outputs": 62,
     "daily": [
       {
         "date": "2026-10-16",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-17",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-22",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-22T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-21T22:00:10.168Z",
-      "lastRunAt": "2026-10-21T07:01:40+09:00",
-      "total": 47,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-22T07:04:34+09:00",
+      "total": 48,
       "recent": [
+        {
+          "date": "2026-10-22",
+          "summary": "전날 급락을 하루 만에 되돌린 한국 증시, 미국은 SpaceX 급등에 기술주 랠리가 이어졌다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-22.md"
+        },
         {
           "date": "2026-10-21",
           "summary": "미국 기술주가 반등하는 와중에도 코스피는 사흘 만에 3%대 급락하며 디커플링을 재확인했다.",
@@ -75,12 +81,6 @@
           "summary": "미국은 AI 버블 경계감에 반도체주가 밀렸고, 한국은 전날 폭락을 딛고 외국인 복귀로 반등했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-18.md"
-        },
-        {
-          "date": "2026-10-16",
-          "summary": "미국 9월 CPI 서프라이즈로 월가가 흔들린 다음날, 코스피가 서킷브레이커까지 발동하며 7%대로 폭락했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-16.md"
         }
       ]
     },
