@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-22T22:00:08.865Z",
+  "generatedAt": "2026-10-22T22:01:24.264Z",
   "totals": {
-    "outputs": 62,
+    "outputs": 63,
     "daily": [
       {
         "date": "2026-10-17",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-18",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-19",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-23",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-23T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-22T22:00:08.865Z",
-      "lastRunAt": "2026-10-22T07:04:34+09:00",
-      "total": 48,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-23T07:01:22+09:00",
+      "total": 49,
       "recent": [
+        {
+          "date": "2026-10-23",
+          "summary": "검색 인덱스에 어제·오늘자 1차 출처가 아직 반영되지 않아, 모든 주제를 확인했지만 실을 항목이 없었다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-23.md"
+        },
         {
           "date": "2026-10-22",
           "summary": "전날 급락을 하루 만에 되돌린 한국 증시, 미국은 SpaceX 급등에 기술주 랠리가 이어졌다.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 미국·한국 증시 모두 아직 마감 전이고, 개발자 도구도 전일 이후 신규 릴리스가 없어 건질 거리가 마땅치 않은 날이다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-19.md"
-        },
-        {
-          "date": "2026-10-18",
-          "summary": "미국은 AI 버블 경계감에 반도체주가 밀렸고, 한국은 전날 폭락을 딛고 외국인 복귀로 반등했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-18.md"
         }
       ]
     },
