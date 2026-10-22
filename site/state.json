@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T14:00:11.218Z",
+  "generatedAt": "2026-10-22T14:02:28.932Z",
   "totals": {
     "outputs": 62,
     "daily": [
@@ -25,11 +25,11 @@
       },
       {
         "date": "2026-10-21",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-10-22",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -131,15 +131,15 @@
       "scheduleNote": "매일 23:00 KST",
       "nextRunAt": "2026-10-23T14:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-22T14:00:11.218Z",
-      "lastRunAt": "2026-10-21T23:02:36+09:00",
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-22T23:02:27+09:00",
       "total": 1,
       "recent": [
         {
-          "date": "2026-10-21",
-          "summary": "2026-10-21 갱신 · 자료 28건 · 항목 25건",
-          "items": 25,
+          "date": "2026-10-22",
+          "summary": "2026-10-22 갱신 · 자료 28건 · 항목 43건",
+          "items": 43,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/archive/INDEX.md"
         }
       ]
