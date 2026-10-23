@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-23T22:00:09.161Z",
+  "generatedAt": "2026-10-23T22:01:54.601Z",
   "totals": {
-    "outputs": 63,
+    "outputs": 64,
     "daily": [
       {
         "date": "2026-10-18",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-19",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-10-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-24",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-24T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-23T22:00:09.161Z",
-      "lastRunAt": "2026-10-23T07:01:22+09:00",
-      "total": 49,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-24T07:01:50+09:00",
+      "total": 50,
       "recent": [
+        {
+          "date": "2026-10-24",
+          "summary": "유가 급등과 반도체 조정이 뉴욕증시를 끌어내린 사이, 코스피는 SK하이닉스 반등에 힘입어 장중 급락분을 되돌리며 나흘 만에 강보합 마감했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-24.md"
+        },
         {
           "date": "2026-10-23",
           "summary": "검색 인덱스에 어제·오늘자 1차 출처가 아직 반영되지 않아, 모든 주제를 확인했지만 실을 항목이 없었다.",
@@ -75,12 +81,6 @@
           "summary": "지난주 AI 반도체발 급락을 딛고 미국·한국 증시 모두 메모리·반도체주 중심으로 반등했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-20.md"
-        },
-        {
-          "date": "2026-10-19",
-          "summary": "오늘은 미국·한국 증시 모두 아직 마감 전이고, 개발자 도구도 전일 이후 신규 릴리스가 없어 건질 거리가 마땅치 않은 날이다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-19.md"
         }
       ]
     },
