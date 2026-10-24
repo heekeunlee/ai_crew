@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-24T22:00:07.558Z",
+  "generatedAt": "2026-10-24T22:02:25.631Z",
   "totals": {
-    "outputs": 64,
+    "outputs": 65,
     "daily": [
       {
         "date": "2026-10-19",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-20",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-21",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-25",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-25T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-24T22:00:07.558Z",
-      "lastRunAt": "2026-10-24T07:01:50+09:00",
-      "total": 50,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-25T07:02:23+09:00",
+      "total": 51,
       "recent": [
+        {
+          "date": "2026-10-25",
+          "summary": "일요일로 미국·한국 증시 신규 마감 데이터가 없고, 개발자 도구·AI 소셜 트렌드도 검증 가능한 1차 출처를 찾지 못해 오늘은 실을 내용이 없다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-25.md"
+        },
         {
           "date": "2026-10-24",
           "summary": "유가 급등과 반도체 조정이 뉴욕증시를 끌어내린 사이, 코스피는 SK하이닉스 반등에 힘입어 장중 급락분을 되돌리며 나흘 만에 강보합 마감했다.",
@@ -75,12 +81,6 @@
           "summary": "미국 기술주가 반등하는 와중에도 코스피는 사흘 만에 3%대 급락하며 디커플링을 재확인했다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-21.md"
-        },
-        {
-          "date": "2026-10-20",
-          "summary": "지난주 AI 반도체발 급락을 딛고 미국·한국 증시 모두 메모리·반도체주 중심으로 반등했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-20.md"
         }
       ]
     },
