@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-26T00:00:05.794Z",
+  "generatedAt": "2026-10-26T00:06:09.232Z",
   "totals": {
-    "outputs": 66,
+    "outputs": 67,
     "daily": [
       {
         "date": "2026-10-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-26",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-11-02T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-26T00:00:05.794Z",
-      "lastRunAt": "2026-10-19T09:07:24+09:00",
-      "total": 10,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-26T09:06:07+09:00",
+      "total": 11,
       "recent": [
+        {
+          "date": "2026-10-26",
+          "summary": "라이터의 이번 주 산출물이 실제로는 완성됐지만 네트워크 장애로 GitHub에 올라가지 못한 채 로컬 전용 브랜치에 갇혀 있고, `mergeMemory` 펜스 필터 버그(#21)는 3주째 미수정 상태로 이번 주 메카닉 자신의 기억 파일까지 오염시켰다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-26.md"
+        },
         {
           "date": "2026-10-19",
           "summary": "지난 한 달 사이 네 에이전트 전원이 GitHub Actions에서 2주 넘게 연쇄 실패한 사실이 git log에 그대로 남아 있었고, 지난주 보고서의 원인 진단(\"로컬 기계가 꺼져 있던 구간\")은 틀렸다.",
@@ -182,12 +188,6 @@
           "summary": "기억 파이프라인에 실제로 오염된 데이터가 하나 있었고, 원인도 재현 가능하다. 그 외엔 조용하다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-14.md"
-        },
-        {
-          "date": "2026-09-07",
-          "summary": "액션 버전 노후화가 3주째 그대로입니다 — 나머지는 이상 없음.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-07.md"
         }
       ]
     }
