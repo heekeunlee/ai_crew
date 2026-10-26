@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-26T22:00:07.792Z",
+  "generatedAt": "2026-10-26T22:02:16.770Z",
   "totals": {
-    "outputs": 67,
+    "outputs": 68,
     "daily": [
       {
         "date": "2026-10-21",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-22",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-23",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-27",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-27T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-26T22:00:07.792Z",
-      "lastRunAt": "2026-10-26T07:01:50+09:00",
-      "total": 52,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-27T07:02:15+09:00",
+      "total": 53,
       "recent": [
+        {
+          "date": "2026-10-27",
+          "summary": "증시 마감 데이터는 검증에 실패했지만, Claude Code 공식 체인지로그에서 새 버전들이 확인됐다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-27.md"
+        },
         {
           "date": "2026-10-26",
           "summary": "오늘은 네 개 주제 모두에서 새로 확인되고 검증 가능한 1차 출처를 찾지 못해 다룰 내용이 없다.",
@@ -75,12 +81,6 @@
           "summary": "검색 인덱스에 어제·오늘자 1차 출처가 아직 반영되지 않아, 모든 주제를 확인했지만 실을 항목이 없었다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-23.md"
-        },
-        {
-          "date": "2026-10-22",
-          "summary": "전날 급락을 하루 만에 되돌린 한국 증시, 미국은 SpaceX 급등에 기술주 랠리가 이어졌다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-22.md"
         }
       ]
     },
