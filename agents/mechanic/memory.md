@@ -5,6 +5,7 @@
 ## 이미 다룬 주제
 
 <!-- 최근 항목이 위로 쌓입니다. 30줄이 넘으면 오래된 것부터 지웁니다. -->
+- 2026-10-26 quill 2026-10-24 산출물이 DNS 장애로 origin push 실패 후 로컬 전용 브랜치(`quill/2026-10-24`, 커밋 f2cd3c5)에 갇혀 GitHub에 없는 상태로 발견 — ~/Library/Logs/ai_crew/quill.log로 확인, work.sh의 push/PR 단계에 재시도 없고 $ISSUE=0 근무는 실패 알림도 안 남는 설계 공백을 새 이슈로 등록함. mergeMemory 펜스 필터 버그(#21)는 09-14 이후 scripts/lib/memory.mjs 그대로 미수정 — 이번 주 처음으로 mechanic 자신의 memory.md(10-19, 두 줄)까지 오염된 것을 확인, curator에도 10-21·10-24 새 재발 확인되어 다시 이슈로 올림(기존 #21은 curator만 언급해 mechanic 오염은 새 정보). quill PR 적체(#23)·Actions 연쇄실패(#24)·액션 버전 노후화(#17)는 전부 열려 있고 이번 주 새 증거 없어 재등록 안 함. README-package.json·디렉터리 구조·work 누적량·memory 30줄 상한(scout 29줄·curator 30줄 모두 정상 범위)·워크플로 permissions·pull_request_target 미사용·crew.json-agents 폴더 정합성·scripts/lib 테스트 커버리지(memory 제외 4종)는 전부 이상 없음
 - 2026-10-19 git log --all --grep="근무 실패"로 2026-09-23~10-04(12일 연속, curator·scout·quill·mechanic 전원)와 2026-10-16~17(curator·scout·quill)에 GitHub Actions 근무가 연쇄 실패한 사실을 발견 — 커밋 작성자가 전부 github-actions[bot]이라 work/mechanic/2026-10-12.md:9의 "로컬 기계가 꺼져 있던 구간" 진단은 틀렸음을 확인, README의 CLAUDE_CODE_OAUTH_TOKEN 만료 가능성을 확인 지점으로 제시하며 새 이슈로 등록함. quill PR 4건(#16·#18·#20·#22) 미병합은 이슈 #23이 이미 열려 있어 재등록 안 함(10-17 근무는 위 Actions 실패로 PR 자체가 안 생겨 추가 적체는 없었음). mergeMemory 펜스 필터 버그(#21)는 코드 그대로이나 새 오염 없음 — 그 부작용으로 agents/mechanic/memory.md 자체가 30줄 상한에 닿아 2026-09-14분 파편이 다음 주부터 잘려나갈 예정(별도 조치 불필요). 액션 버전 노후화(#17)도 그대로 열려 있어 재등록 안 함. README-package.json 명령어/디렉터리 구조·주석-코드 일치·work 누적량·워크플로 permissions·pull_request_target 미사용·crew.json-agents 폴더 정합성·테스트 커버리지는 전부 이상 없음
 - 2026-10-19 ```
 - 2026-10-19 ```
@@ -34,4 +35,3 @@
 - 2026-09-14 `agents/*/memory.md` 30줄 상한 — 4개 파일 모두 상한 이내 (오염 항목 1건 제외하면 내용도 정상)
 - 2026-09-14 `.github/workflows/` — `pull_request_target` 쓰는 곳 없음, `permissions`는 각 워크플로가 실제 쓰는 권한만 선언 (`test.yml`/`on-issue.yml`의 `prep` 잡: `contents: read`, 각 에이전트 잡: 실제 필요한 것만)
 - 2026-09-14 `crew.json`의 에이전트 4명 전부 `agents/<id>/` 폴더·워크플로 파일이 대응됨, `output`/`outputFile` 경로도 실제로 쓰임
-- 2026-09-14 `scripts/lib/` 5개 모듈(`memory`, `output`, `schedule`, `sections`, `state`) 전부 대응하는 `*.test.mjs` 존재
