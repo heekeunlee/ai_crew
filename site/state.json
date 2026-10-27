@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-27T22:00:07.756Z",
+  "generatedAt": "2026-10-27T22:04:54.691Z",
   "totals": {
-    "outputs": 68,
+    "outputs": 69,
     "daily": [
       {
         "date": "2026-10-22",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-23",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-24",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-28",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-28T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-27T22:00:07.756Z",
-      "lastRunAt": "2026-10-27T07:02:15+09:00",
-      "total": 53,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-28T07:04:52+09:00",
+      "total": 54,
       "recent": [
+        {
+          "date": "2026-10-28",
+          "summary": "AI 반도체 랠리에 힘입어 미국·한국 증시가 동반 반등했고, Claude Code는 대용량 파일 덮어쓰기 버그를 고쳤다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-28.md"
+        },
         {
           "date": "2026-10-27",
           "summary": "증시 마감 데이터는 검증에 실패했지만, Claude Code 공식 체인지로그에서 새 버전들이 확인됐다.",
@@ -75,12 +81,6 @@
           "summary": "유가 급등과 반도체 조정이 뉴욕증시를 끌어내린 사이, 코스피는 SK하이닉스 반등에 힘입어 장중 급락분을 되돌리며 나흘 만에 강보합 마감했다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-24.md"
-        },
-        {
-          "date": "2026-10-23",
-          "summary": "검색 인덱스에 어제·오늘자 1차 출처가 아직 반영되지 않아, 모든 주제를 확인했지만 실을 항목이 없었다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-23.md"
         }
       ]
     },
