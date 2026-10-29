@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-29T22:00:07.380Z",
+  "generatedAt": "2026-10-29T22:03:13.978Z",
   "totals": {
-    "outputs": 70,
+    "outputs": 71,
     "daily": [
       {
         "date": "2026-10-24",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-25",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-26",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-30",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-30T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-29T22:00:07.380Z",
-      "lastRunAt": "2026-10-29T07:01:23+09:00",
-      "total": 55,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-30T07:03:12+09:00",
+      "total": 56,
       "recent": [
+        {
+          "date": "2026-10-30",
+          "summary": "빅테크 실적이 미국 증시와 한국 반도체·전자주를 동시에 흔든 하루였다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-30.md"
+        },
         {
           "date": "2026-10-29",
           "summary": "오늘은 24~48시간 내 새 소식 중 1차 출처로 검증 가능한 항목을 찾지 못해 전 주제를 건너뛴다.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 네 개 주제 모두에서 새로 확인되고 검증 가능한 1차 출처를 찾지 못해 다룰 내용이 없다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-26.md"
-        },
-        {
-          "date": "2026-10-25",
-          "summary": "일요일로 미국·한국 증시 신규 마감 데이터가 없고, 개발자 도구·AI 소셜 트렌드도 검증 가능한 1차 출처를 찾지 못해 오늘은 실을 내용이 없다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-25.md"
         }
       ]
     },
