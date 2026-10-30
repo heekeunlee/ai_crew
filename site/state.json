@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-30T22:00:05.607Z",
+  "generatedAt": "2026-10-30T22:03:59.938Z",
   "totals": {
-    "outputs": 71,
+    "outputs": 72,
     "daily": [
       {
         "date": "2026-10-25",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-26",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-10-27",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-10-31",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-10-31T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-30T22:00:05.607Z",
-      "lastRunAt": "2026-10-30T07:03:12+09:00",
-      "total": 56,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-10-31T07:03:59+09:00",
+      "total": 57,
       "recent": [
+        {
+          "date": "2026-10-31",
+          "summary": "아마존·인텔 실적 쇼크로 나스닥이 6월 이후 최악의 하루를 보내며 AI 버블 우려가 재부각됐다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-31.md"
+        },
         {
           "date": "2026-10-30",
           "summary": "빅테크 실적이 미국 증시와 한국 반도체·전자주를 동시에 흔든 하루였다.",
@@ -75,12 +81,6 @@
           "summary": "증시 마감 데이터는 검증에 실패했지만, Claude Code 공식 체인지로그에서 새 버전들이 확인됐다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-27.md"
-        },
-        {
-          "date": "2026-10-26",
-          "summary": "오늘은 네 개 주제 모두에서 새로 확인되고 검증 가능한 1차 출처를 찾지 못해 다룰 내용이 없다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-26.md"
         }
       ]
     },
