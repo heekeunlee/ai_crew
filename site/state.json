@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-31T22:00:06.660Z",
+  "generatedAt": "2026-10-31T22:01:16.687Z",
   "totals": {
-    "outputs": 72,
+    "outputs": 73,
     "daily": [
       {
         "date": "2026-10-26",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-27",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-28",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-01",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-01T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-31T22:00:06.660Z",
-      "lastRunAt": "2026-10-31T07:03:59+09:00",
-      "total": 57,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-01T07:01:15+09:00",
+      "total": 58,
       "recent": [
+        {
+          "date": "2026-11-01",
+          "summary": "일요일이라 미국·한국 증시 신규 마감이 없고, 개발자 도구·AI 소셜 트렌드도 24~48시간 내 검증 가능한 1차 출처를 찾지 못해 오늘은 통째로 건너간다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-01.md"
+        },
         {
           "date": "2026-10-31",
           "summary": "아마존·인텔 실적 쇼크로 나스닥이 6월 이후 최악의 하루를 보내며 AI 버블 우려가 재부각됐다.",
@@ -75,12 +81,6 @@
           "summary": "AI 반도체 랠리에 힘입어 미국·한국 증시가 동반 반등했고, Claude Code는 대용량 파일 덮어쓰기 버그를 고쳤다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-28.md"
-        },
-        {
-          "date": "2026-10-27",
-          "summary": "증시 마감 데이터는 검증에 실패했지만, Claude Code 공식 체인지로그에서 새 버전들이 확인됐다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-27.md"
         }
       ]
     },
