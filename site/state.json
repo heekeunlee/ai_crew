@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T00:00:05.046Z",
+  "generatedAt": "2026-10-31T00:01:30.525Z",
   "totals": {
     "outputs": 72,
     "daily": [
@@ -94,8 +94,8 @@
       "scheduleNote": "토요일 09:00 KST",
       "nextRunAt": "2026-11-07T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-10-31T00:00:05.046Z",
+      "status": "idle",
+      "startedAt": null,
       "lastRunAt": "2026-08-29T09:01:23+09:00",
       "total": 3,
       "recent": [
