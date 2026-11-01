@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T22:00:05.739Z",
+  "generatedAt": "2026-11-01T22:02:07.191Z",
   "totals": {
-    "outputs": 73,
+    "outputs": 74,
     "daily": [
       {
         "date": "2026-10-27",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-28",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-29",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-02",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-02T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-01T22:00:05.739Z",
-      "lastRunAt": "2026-11-01T07:01:15+09:00",
-      "total": 58,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-02T07:02:06+09:00",
+      "total": 59,
       "recent": [
+        {
+          "date": "2026-11-02",
+          "summary": "주말을 지나며 미국·한국 증시 모두 신규 마감 데이터가 없고, 개발자 도구·AI 소셜 트렌드도 검증 가능한 1차 출처를 찾지 못해 오늘은 다룰 내용이 없다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-02.md"
+        },
         {
           "date": "2026-11-01",
           "summary": "일요일이라 미국·한국 증시 신규 마감이 없고, 개발자 도구·AI 소셜 트렌드도 24~48시간 내 검증 가능한 1차 출처를 찾지 못해 오늘은 통째로 건너간다.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 24~48시간 내 새 소식 중 1차 출처로 검증 가능한 항목을 찾지 못해 전 주제를 건너뛴다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-29.md"
-        },
-        {
-          "date": "2026-10-28",
-          "summary": "AI 반도체 랠리에 힘입어 미국·한국 증시가 동반 반등했고, Claude Code는 대용량 파일 덮어쓰기 버그를 고쳤다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-28.md"
         }
       ]
     },
