@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-03T22:00:05.059Z",
+  "generatedAt": "2026-11-03T22:03:13.610Z",
   "totals": {
-    "outputs": 76,
+    "outputs": 77,
     "daily": [
       {
         "date": "2026-10-29",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-30",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-10-31",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-04",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-04T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-03T22:00:05.059Z",
-      "lastRunAt": "2026-11-03T07:01:12+09:00",
-      "total": 60,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-04T07:03:11+09:00",
+      "total": 61,
       "recent": [
+        {
+          "date": "2026-11-04",
+          "summary": "팔란티어가 분기 매출 20억 달러를 처음 넘기며 가이던스를 올렸고, Claude Code는 훅 실패 시 작업을 막는 안전장치를 추가했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-04.md"
+        },
         {
           "date": "2026-11-03",
           "summary": "",
@@ -75,12 +81,6 @@
           "summary": "아마존·인텔 실적 쇼크로 나스닥이 6월 이후 최악의 하루를 보내며 AI 버블 우려가 재부각됐다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-31.md"
-        },
-        {
-          "date": "2026-10-30",
-          "summary": "빅테크 실적이 미국 증시와 한국 반도체·전자주를 동시에 흔든 하루였다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-30.md"
         }
       ]
     },
