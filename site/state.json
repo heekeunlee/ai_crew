@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-04T22:00:05.420Z",
+  "generatedAt": "2026-11-04T22:02:53.029Z",
   "totals": {
-    "outputs": 77,
+    "outputs": 78,
     "daily": [
       {
         "date": "2026-10-30",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-10-31",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-01",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-05",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-05T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-04T22:00:05.420Z",
-      "lastRunAt": "2026-11-04T07:03:11+09:00",
-      "total": 61,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-05T07:02:51+09:00",
+      "total": 62,
       "recent": [
+        {
+          "date": "2026-11-05",
+          "summary": "미국은 중간선거 결과에 안도 랠리, 한국은 반도체 대형주 약세 속에서도 지수는 소폭 올랐다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-05.md"
+        },
         {
           "date": "2026-11-04",
           "summary": "팔란티어가 분기 매출 20억 달러를 처음 넘기며 가이던스를 올렸고, Claude Code는 훅 실패 시 작업을 막는 안전장치를 추가했다.",
@@ -75,12 +81,6 @@
           "summary": "일요일이라 미국·한국 증시 신규 마감이 없고, 개발자 도구·AI 소셜 트렌드도 24~48시간 내 검증 가능한 1차 출처를 찾지 못해 오늘은 통째로 건너간다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-01.md"
-        },
-        {
-          "date": "2026-10-31",
-          "summary": "아마존·인텔 실적 쇼크로 나스닥이 6월 이후 최악의 하루를 보내며 AI 버블 우려가 재부각됐다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-10-31.md"
         }
       ]
     },
