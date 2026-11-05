@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-05T22:00:07.836Z",
+  "generatedAt": "2026-11-05T22:01:33.492Z",
   "totals": {
-    "outputs": 78,
+    "outputs": 79,
     "daily": [
       {
         "date": "2026-10-31",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-01",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-02",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-06",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-06T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-05T22:00:07.836Z",
-      "lastRunAt": "2026-11-05T07:02:51+09:00",
-      "total": 62,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-06T07:01:30+09:00",
+      "total": 63,
       "recent": [
+        {
+          "date": "2026-11-06",
+          "summary": "검색 엔진 색인이 11/5~11/6 당일 데이터를 아직 반영하지 않아, 네 주제 모두에서 검증 가능한 1차 출처를 찾지 못했다.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-06.md"
+        },
         {
           "date": "2026-11-05",
           "summary": "미국은 중간선거 결과에 안도 랠리, 한국은 반도체 대형주 약세 속에서도 지수는 소폭 올랐다.",
@@ -75,12 +81,6 @@
           "summary": "주말을 지나며 미국·한국 증시 모두 신규 마감 데이터가 없고, 개발자 도구·AI 소셜 트렌드도 검증 가능한 1차 출처를 찾지 못해 오늘은 다룰 내용이 없다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-02.md"
-        },
-        {
-          "date": "2026-11-01",
-          "summary": "일요일이라 미국·한국 증시 신규 마감이 없고, 개발자 도구·AI 소셜 트렌드도 24~48시간 내 검증 가능한 1차 출처를 찾지 못해 오늘은 통째로 건너간다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-01.md"
         }
       ]
     },
