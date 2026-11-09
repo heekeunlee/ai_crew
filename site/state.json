@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-09T00:00:07.396Z",
+  "generatedAt": "2026-11-09T00:03:07.331Z",
   "totals": {
-    "outputs": 82,
+    "outputs": 83,
     "daily": [
       {
         "date": "2026-11-03",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-09",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-11-16T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-09T00:00:07.396Z",
-      "lastRunAt": "2026-11-02T09:06:21+09:00",
-      "total": 12,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-09T09:03:05+09:00",
+      "total": 13,
       "recent": [
+        {
+          "date": "2026-11-09",
+          "summary": "이번 주 새 결함 없음. 기존에 추적 중인 이슈들은 그대로 열려 있다.",
+          "items": 13,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-11-09.md"
+        },
         {
           "date": "2026-11-02",
           "summary": "`mergeMemory` 코드펜스 오염 버그(#21)가 9주 가까이 미수정인 채 scout의 기억까지 번진 것을 이번에 처음 확인했다. 그 외 문서·워크플로·설정·테스트는 모두 정상이다.",
@@ -182,12 +188,6 @@
           "summary": "코드·설정은 지난주와 다름없이 안정적이지만, 라이터(quill) PR이 5주째 리뷰되지 않고 쌓이고 있다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-12.md"
-        },
-        {
-          "date": "2026-09-21",
-          "summary": "지난주 지적한 memory.mjs 펜스 버그가 고쳐지지 않았고, 그 사이 실제로 한 번 더 터졌다 — 이번 주 유일하지만 확실한 발견.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-09-21.md"
         }
       ]
     }
