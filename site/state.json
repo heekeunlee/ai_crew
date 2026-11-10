@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-10T22:00:06.951Z",
+  "generatedAt": "2026-11-10T22:06:14.903Z",
   "totals": {
-    "outputs": 84,
+    "outputs": 85,
     "daily": [
       {
         "date": "2026-11-05",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-06",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-07",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-11",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-11T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-10T22:00:06.951Z",
-      "lastRunAt": "2026-11-10T07:04:52+09:00",
-      "total": 67,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-11T07:06:13+09:00",
+      "total": 68,
       "recent": [
+        {
+          "date": "2026-11-11",
+          "summary": "미국 CPI 서프라이즈로 뉴욕 3대 지수가 동반 하락했고, 그 하루 전 3일 연속 급락했던 코스피·코스닥은 반도체 반등과 유가 급락에 힘입어 4%대 반등했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-11.md"
+        },
         {
           "date": "2026-11-10",
           "summary": "미국 증시는 전주 AI 버블 우려發 급락분을 하루 만에 대부분 되돌렸지만, 한국 증시는 같은 재료로 여전히 짓눌려 있다.",
@@ -75,12 +81,6 @@
           "summary": "미국 중간선거 이후 AI 데이터센터 규제·투자둔화 우려가 반도체주를 이틀째 흔들었다 — 미국은 금요일 반등했지만 한국은 하루 더 급락했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-07.md"
-        },
-        {
-          "date": "2026-11-06",
-          "summary": "검색 엔진 색인이 11/5~11/6 당일 데이터를 아직 반영하지 않아, 네 주제 모두에서 검증 가능한 1차 출처를 찾지 못했다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-06.md"
         }
       ]
     },
