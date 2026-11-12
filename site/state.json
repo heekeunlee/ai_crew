@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-12T22:00:07.354Z",
+  "generatedAt": "2026-11-12T22:03:38.135Z",
   "totals": {
-    "outputs": 86,
+    "outputs": 87,
     "daily": [
       {
         "date": "2026-11-07",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-08",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-09",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-13",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-13T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-12T22:00:07.354Z",
-      "lastRunAt": "2026-11-12T07:04:31+09:00",
-      "total": 69,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-13T07:03:36+09:00",
+      "total": 70,
       "recent": [
+        {
+          "date": "2026-11-13",
+          "summary": "미국·한국 증시 모두 전일 급등분을 소폭 되돌리며 쉬어갔고, 다른 주제는 검증 가능한 1차 출처를 찾지 못해 이번 호는 증시 중심으로 짧게 간다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-13.md"
+        },
         {
           "date": "2026-11-12",
           "summary": "코어위브 실적 호조와 앤트로픽 IPO 기대감이 미국과 한국 반도체·AI 관련주를 동시에 끌어올렸다.",
@@ -75,12 +81,6 @@
           "summary": "월요일 개장 전 새 마감 데이터가 없는 데다, 다른 주제도 1차 출처 검증을 통과한 새 소식이 없어 오늘은 전 주제를 건너뛴다.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-09.md"
-        },
-        {
-          "date": "2026-11-08",
-          "summary": "오늘은 일요일이라 미국·한국 증시 신규 마감이 없고, 개발자 도구·AI 소셜 트렌드도 검증 가능한 신규 1차 출처를 찾지 못해 전 주제를 건너뛴다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-08.md"
         }
       ]
     },
