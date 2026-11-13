@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-13T22:00:07.445Z",
+  "generatedAt": "2026-11-13T22:04:54.280Z",
   "totals": {
-    "outputs": 87,
+    "outputs": 88,
     "daily": [
       {
         "date": "2026-11-08",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-09",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-11-10",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-14",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-14T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-13T22:00:07.445Z",
-      "lastRunAt": "2026-11-13T07:03:36+09:00",
-      "total": 70,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-14T07:04:52+09:00",
+      "total": 71,
       "recent": [
+        {
+          "date": "2026-11-14",
+          "summary": "엔비디아 CEO 전격 교체 발표가 미국·한국 증시를 동시에 흔들었다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-14.md"
+        },
         {
           "date": "2026-11-13",
           "summary": "미국·한국 증시 모두 전일 급등분을 소폭 되돌리며 쉬어갔고, 다른 주제는 검증 가능한 1차 출처를 찾지 못해 이번 호는 증시 중심으로 짧게 간다.",
@@ -75,12 +81,6 @@
           "summary": "미국 증시는 전주 AI 버블 우려發 급락분을 하루 만에 대부분 되돌렸지만, 한국 증시는 같은 재료로 여전히 짓눌려 있다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-10.md"
-        },
-        {
-          "date": "2026-11-09",
-          "summary": "월요일 개장 전 새 마감 데이터가 없는 데다, 다른 주제도 1차 출처 검증을 통과한 새 소식이 없어 오늘은 전 주제를 건너뛴다.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-09.md"
         }
       ]
     },
