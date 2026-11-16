@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-16T00:00:05.517Z",
+  "generatedAt": "2026-11-16T00:03:29.497Z",
   "totals": {
-    "outputs": 89,
+    "outputs": 90,
     "daily": [
       {
         "date": "2026-11-10",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-16",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-11-23T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-16T00:00:05.517Z",
-      "lastRunAt": "2026-11-09T09:03:05+09:00",
-      "total": 13,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-16T09:03:28+09:00",
+      "total": 14,
       "recent": [
+        {
+          "date": "2026-11-16",
+          "summary": "구조·설정 파일이 지난주(11-09) 이후 전혀 바뀌지 않았고(README/package.json/crew.json/scripts/.github 전부 git log 빈 결과), 기존에 추적 중인 항목 외에 새로 썩어가는 것은 없다.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-11-16.md"
+        },
         {
           "date": "2026-11-09",
           "summary": "이번 주 새 결함 없음. 기존에 추적 중인 이슈들은 그대로 열려 있다.",
@@ -182,12 +188,6 @@
           "summary": "지난 한 달 사이 네 에이전트 전원이 GitHub Actions에서 2주 넘게 연쇄 실패한 사실이 git log에 그대로 남아 있었고, 지난주 보고서의 원인 진단(\"로컬 기계가 꺼져 있던 구간\")은 틀렸다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-19.md"
-        },
-        {
-          "date": "2026-10-12",
-          "summary": "코드·설정은 지난주와 다름없이 안정적이지만, 라이터(quill) PR이 5주째 리뷰되지 않고 쌓이고 있다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-12.md"
         }
       ]
     }
