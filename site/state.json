@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-17T22:00:06.715Z",
+  "generatedAt": "2026-11-17T22:03:31.771Z",
   "totals": {
-    "outputs": 91,
+    "outputs": 92,
     "daily": [
       {
         "date": "2026-11-12",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-13",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-18",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-18T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-17T22:00:06.715Z",
-      "lastRunAt": "2026-11-17T07:04:37+09:00",
-      "total": 73,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-18T07:03:30+09:00",
+      "total": 74,
       "recent": [
+        {
+          "date": "2026-11-18",
+          "summary": "AI 버블 셀오프 여진이 미국 증시를 사흘째 흔들었고, 그 그림자가 코스피·코스닥에도 그대로 번졌다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-18.md"
+        },
         {
           "date": "2026-11-17",
           "summary": "미국 AI·반도체주가 사흘째 흔들리며 다우·S&P·나스닥이 동반 급락했고, 그 충격이 월요일 국내 증시에서도 코스피·코스닥 동반 급락으로 번졌다.",
@@ -75,12 +81,6 @@
           "summary": "미국·한국 증시 모두 전일 급등분을 소폭 되돌리며 쉬어갔고, 다른 주제는 검증 가능한 1차 출처를 찾지 못해 이번 호는 증시 중심으로 짧게 간다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-13.md"
-        },
-        {
-          "date": "2026-11-12",
-          "summary": "코어위브 실적 호조와 앤트로픽 IPO 기대감이 미국과 한국 반도체·AI 관련주를 동시에 끌어올렸다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-12.md"
         }
       ]
     },
