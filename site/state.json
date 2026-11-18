@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-18T22:00:05.420Z",
+  "generatedAt": "2026-11-18T22:05:04.143Z",
   "totals": {
-    "outputs": 92,
+    "outputs": 93,
     "daily": [
       {
         "date": "2026-11-13",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-14",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-19",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-19T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-18T22:00:05.420Z",
-      "lastRunAt": "2026-11-18T07:03:30+09:00",
-      "total": 74,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-19T07:05:02+09:00",
+      "total": 75,
       "recent": [
+        {
+          "date": "2026-11-19",
+          "summary": "엔비디아의 분기 매출이 전년대비 두 배 넘게 늘면서 미국 기술주와 한국 반도체주의 투자심리를 동시에 되돌렸다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-19.md"
+        },
         {
           "date": "2026-11-18",
           "summary": "AI 버블 셀오프 여진이 미국 증시를 사흘째 흔들었고, 그 그림자가 코스피·코스닥에도 그대로 번졌다.",
@@ -75,12 +81,6 @@
           "summary": "엔비디아 CEO 전격 교체 발표가 미국·한국 증시를 동시에 흔들었다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-14.md"
-        },
-        {
-          "date": "2026-11-13",
-          "summary": "미국·한국 증시 모두 전일 급등분을 소폭 되돌리며 쉬어갔고, 다른 주제는 검증 가능한 1차 출처를 찾지 못해 이번 호는 증시 중심으로 짧게 간다.",
-          "items": 2,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-13.md"
         }
       ]
     },
