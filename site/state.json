@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-22T22:00:06.458Z",
+  "generatedAt": "2026-11-22T22:02:06.730Z",
   "totals": {
-    "outputs": 96,
+    "outputs": 97,
     "daily": [
       {
         "date": "2026-11-17",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-18",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-19",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-23",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-23T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-22T22:00:06.458Z",
-      "lastRunAt": "2026-11-22T07:02:03+09:00",
-      "total": 78,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-23T07:02:03+09:00",
+      "total": 79,
       "recent": [
+        {
+          "date": "2026-11-23",
+          "summary": "월요일 KST 아침 기준 신규 증시 마감이 없고, 개발자 도구·AI 소셜 트렌드도 건질 새 소식이 없어 넘어가는 날.",
+          "items": 0,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-23.md"
+        },
         {
           "date": "2026-11-22",
           "summary": "오늘은 개발자 도구 쪽에서만 건질 게 있었고, 증시·소셜 트렌드는 모두 공회전했다.",
@@ -75,12 +81,6 @@
           "summary": "엔비디아의 분기 매출이 전년대비 두 배 넘게 늘면서 미국 기술주와 한국 반도체주의 투자심리를 동시에 되돌렸다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-19.md"
-        },
-        {
-          "date": "2026-11-18",
-          "summary": "AI 버블 셀오프 여진이 미국 증시를 사흘째 흔들었고, 그 그림자가 코스피·코스닥에도 그대로 번졌다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-18.md"
         }
       ]
     },
