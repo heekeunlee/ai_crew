@@ -5,6 +5,7 @@
 ## 이미 다룬 주제
 
 <!-- 최근 항목이 위로 쌓입니다. 30줄이 넘으면 오래된 것부터 지웁니다. -->
+- 2026-11-23 mergeMemory 펜스 오염(#21)이 scout/memory.md:12(2026-11-21, 커밋 e95cd3b)에 새로 재발 — 근본원인(scripts/lib/memory.mjs:12-22 필터 누락, memory.test.mjs 회귀테스트 부재)은 9월부터 그대로 미수정, 지난 두 달 재발 횟수 최소 5회(09-14·09-19·10-19·10-27·11-21)로 누적. README/package.json/crew.json/scripts/.github 전부 11-16 점검 이후 무변경(git log 빈 결과). quill PR 적체(#23, quill/2026-11-21 신규 브랜치로 계속 누적, 08-29(#15) 이후 merge 0건 재확인)·10-24 로컬전용 브랜치(origin에 여전히 없음, remotes/origin 목록에서 재확인)·액션 버전 노후화(#17)는 전부 열려 있고 새 증거 없어 재등록 안 함. work/scout 78개(전주 72개)로 계속 증가 중이나 아직 급하지 않음. 11-16 이후 GitHub Actions 근무 실패 0건. 워크플로 permissions·pull_request_target 미사용·crew.json-agents 폴더-워크플로 정합성·scripts/lib 테스트 커버리지·memory 30줄 상한(전부 정상 범위)은 이상 없음
 - 2026-11-16 이번 주 새 발견 없음. README/package.json/crew.json/scripts/.github 전부 11-09 점검 이후 무변경(git log 빈 결과). work/scout 72개(전주 66개)로 계속 증가 중이나 아직 급하지 않음. memory 펜스 오염(#21)은 새 발생 없음(기존 오염 줄만 그대로). quill PR 적체(#23, quill/2026-11-14 신규 브랜치로 계속 누적)·10-24 로컬전용 브랜치 미복구·액션 버전 노후화(#17)는 전부 열려 있고 새 증거 없어 재등록 안 함. 11-16 07:00 scout 근무 1회 실패(1000b78)는 마감 시점까지 재시도 흔적 없어 지켜볼 것(연쇄실패로 확정되면 재검토). 워크플로 permissions·pull_request_target 미사용·crew.json-agents 폴더-워크플로 정합성·scripts/lib 테스트 커버리지·memory 30줄 상한(scout만 31줄로 1줄 초과, 다음 근무에 트림 예상)은 전부 이상 없음
 - 2026-11-16 ```
 - 2026-11-09 이번 주 새 발견 없음. scripts/.github/crew.json/package.json/README.md 전부 10-26~11-02 점검 이후 무변경 확인(git log 빈 결과). 기존 추적 이슈(mergeMemory 펜스 오염 #21 — 새 오염 없음, quill PR 적체 #23 — quill/2026-11-07 신규 브랜치 추가로 계속 누적·08-29(#15) 이후 merge 0건 재확인, quill 2026-10-24 로컬전용 브랜치 — 여전히 origin에 없음, Actions 버전 노후화 #17)는 전부 열려 있고 새 증거 없어 재등록 안 함. 2026-11-02 07:02 scout 근무 1회 실패(1c9f4e7)는 같은 날 재시도로 정상 완료돼 연쇄실패(#24)로 안 이어진 단발성이라 새 이슈 등록 안 함. work/scout 66개(전주 59개)로 주당 7개씩 계속 증가 중 — 100개 근처(12월 중순 예상) 되면 재검토. README-package.json·디렉터리 구조·워크플로 permissions·pull_request_target 미사용·crew.json-agents 폴더 정합성·scripts/lib 테스트 커버리지(memory 제외 4종)·memory 30줄 상한(31줄로 살짝 넘었으나 mergeMemory가 다음 근무에 정상 트림)은 전부 이상 없음
@@ -34,4 +35,3 @@
 - 2026-09-14 근본적으로는 `agents/*/TASK.md`의 마지막 블록 예시들이 전부 ` ``` ` 펜스로 감싸져 있어 같은 일이 다른 에이전트에서도 날 수 있다 — scout/quill/mechanic의 memory.md는 이번에 확인한 바로는 깨끗하지만, 필터를 고치는 게 TASK.md 네 개를 전부 고치는 것보다 싸고 확실하다.
 - 2026-09-14 ## 이상 없음이 아니라 "이미 추적 중"인 것
 - 2026-09-14 GitHub Actions 버전 노후화(`checkout@v4`→v7.0.1, `setup-node@v4`→v7.0.0, `deploy-pages@v4`→v5.0.1 등)는 08-26 최초 지적 이후 09-07까지 3주 연속 미해결이라 이슈 #17로 재등록했었다. 오늘 확인해보니 **#17이 아직 열려 있다** — 사람이 아직 처리하지 않은 것뿐, 추적이 끊긴 게 아니다. 같은 문제로 새 이슈를 또 올리지 않는다. 처리되거나 #17이 닫히는데도 버전이 그대로면 그때 다시 올린다.
-- 2026-09-14 ## 이상 없던 것
