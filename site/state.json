@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-23T22:00:07.024Z",
+  "generatedAt": "2026-11-23T22:04:18.278Z",
   "totals": {
-    "outputs": 98,
+    "outputs": 99,
     "daily": [
       {
         "date": "2026-11-18",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-19",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-20",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-24",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-24T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-23T22:00:07.024Z",
-      "lastRunAt": "2026-11-23T07:02:03+09:00",
-      "total": 79,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-24T07:04:16+09:00",
+      "total": 80,
       "recent": [
+        {
+          "date": "2026-11-24",
+          "summary": "간밤 뉴욕증시는 젠슨 황의 전격 복귀로 2025년來 최대 폭 반등했지만, 한국 증시는 그 소식이 뜨기도 전에 이미 하루 먼저 하락분을 늘리며 마감했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-24.md"
+        },
         {
           "date": "2026-11-23",
           "summary": "월요일 KST 아침 기준 신규 증시 마감이 없고, 개발자 도구·AI 소셜 트렌드도 건질 새 소식이 없어 넘어가는 날.",
@@ -75,12 +81,6 @@
           "summary": "미국은 AI 밸류에이션 경계감에 3대 지수가 동반 급락했고, 한국은 같은 날 오전 그 충격을 받고도 오후 반도체 저가매수로 반등하며 디커플링했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-20.md"
-        },
-        {
-          "date": "2026-11-19",
-          "summary": "엔비디아의 분기 매출이 전년대비 두 배 넘게 늘면서 미국 기술주와 한국 반도체주의 투자심리를 동시에 되돌렸다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-19.md"
         }
       ]
     },
