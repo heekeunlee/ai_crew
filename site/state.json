@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-23T00:00:07.485Z",
+  "generatedAt": "2026-11-23T00:02:50.849Z",
   "totals": {
-    "outputs": 97,
+    "outputs": 98,
     "daily": [
       {
         "date": "2026-11-17",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-23",
-        "count": 1
+        "count": 2
       }
     ]
   },
@@ -154,11 +154,17 @@
       "scheduleNote": "월요일 09:00 KST",
       "nextRunAt": "2026-11-30T00:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-23T00:00:07.485Z",
-      "lastRunAt": "2026-11-16T09:03:28+09:00",
-      "total": 14,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-23T09:02:48+09:00",
+      "total": 15,
       "recent": [
+        {
+          "date": "2026-11-23",
+          "summary": "mergeMemory 펜스 필터 버그(#21)가 scout/memory.md에 다시 재발했다. 그 외 구조·설정·워크플로·테스트는 전부 지난주(11-16) 이후 무변경.",
+          "items": 1,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-11-23.md"
+        },
         {
           "date": "2026-11-16",
           "summary": "구조·설정 파일이 지난주(11-09) 이후 전혀 바뀌지 않았고(README/package.json/crew.json/scripts/.github 전부 git log 빈 결과), 기존에 추적 중인 항목 외에 새로 썩어가는 것은 없다.",
@@ -182,12 +188,6 @@
           "summary": "라이터의 이번 주 산출물이 실제로는 완성됐지만 네트워크 장애로 GitHub에 올라가지 못한 채 로컬 전용 브랜치에 갇혀 있고, `mergeMemory` 펜스 필터 버그(#21)는 3주째 미수정 상태로 이번 주 메카닉 자신의 기억 파일까지 오염시켰다.",
           "items": 2,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-26.md"
-        },
-        {
-          "date": "2026-10-19",
-          "summary": "지난 한 달 사이 네 에이전트 전원이 GitHub Actions에서 2주 넘게 연쇄 실패한 사실이 git log에 그대로 남아 있었고, 지난주 보고서의 원인 진단(\"로컬 기계가 꺼져 있던 구간\")은 틀렸다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/mechanic/2026-10-19.md"
         }
       ]
     }
