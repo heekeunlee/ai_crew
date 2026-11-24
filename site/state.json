@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-24T22:00:08.802Z",
+  "generatedAt": "2026-11-24T22:03:13.759Z",
   "totals": {
-    "outputs": 99,
+    "outputs": 100,
     "daily": [
       {
         "date": "2026-11-19",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-20",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-21",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-25",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-25T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-24T22:00:08.802Z",
-      "lastRunAt": "2026-11-24T07:04:16+09:00",
-      "total": 80,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-25T07:03:11+09:00",
+      "total": 81,
       "recent": [
+        {
+          "date": "2026-11-25",
+          "summary": "미국 AI주 랠리 열기가 하루 만에 식은 사이, 한국 증시는 그 전날 미국 급등분을 하루 늦게 따라가며 급반등했다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-25.md"
+        },
         {
           "date": "2026-11-24",
           "summary": "간밤 뉴욕증시는 젠슨 황의 전격 복귀로 2025년來 최대 폭 반등했지만, 한국 증시는 그 소식이 뜨기도 전에 이미 하루 먼저 하락분을 늘리며 마감했다.",
@@ -75,12 +81,6 @@
           "summary": "간밤 미국 3대 지수가 나란히 \"correction\"(고점 대비 10%↓) 영역에 진입하며 AI 밸류에이션 우려가 코스피·코스닥 급락으로 그대로 옮겨붙었다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-21.md"
-        },
-        {
-          "date": "2026-11-20",
-          "summary": "미국은 AI 밸류에이션 경계감에 3대 지수가 동반 급락했고, 한국은 같은 날 오전 그 충격을 받고도 오후 반도체 저가매수로 반등하며 디커플링했다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-20.md"
         }
       ]
     },
