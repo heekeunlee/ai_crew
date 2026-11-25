@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-25T22:00:08.722Z",
+  "generatedAt": "2026-11-25T22:04:21.887Z",
   "totals": {
-    "outputs": 100,
+    "outputs": 101,
     "daily": [
       {
         "date": "2026-11-20",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-21",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-22",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-26",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-26T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-25T22:00:08.722Z",
-      "lastRunAt": "2026-11-25T07:03:11+09:00",
-      "total": 81,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-26T07:04:20+09:00",
+      "total": 82,
       "recent": [
+        {
+          "date": "2026-11-26",
+          "summary": "미국 반도체주 조정이 하루 늦게 한국 증시를 6% 급락시켰고, 미국 장은 관세·물가 우려 속에서도 장중 저점을 딛고 지수별로 엇갈려 마감했다.",
+          "items": 3,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-26.md"
+        },
         {
           "date": "2026-11-25",
           "summary": "미국 AI주 랠리 열기가 하루 만에 식은 사이, 한국 증시는 그 전날 미국 급등분을 하루 늦게 따라가며 급반등했다.",
@@ -75,12 +81,6 @@
           "summary": "오늘은 개발자 도구 쪽에서만 건질 게 있었고, 증시·소셜 트렌드는 모두 공회전했다.",
           "items": 1,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-22.md"
-        },
-        {
-          "date": "2026-11-21",
-          "summary": "간밤 미국 3대 지수가 나란히 \"correction\"(고점 대비 10%↓) 영역에 진입하며 AI 밸류에이션 우려가 코스피·코스닥 급락으로 그대로 옮겨붙었다.",
-          "items": 3,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-21.md"
         }
       ]
     },
