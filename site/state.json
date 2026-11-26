@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-26T22:00:10.995Z",
+  "generatedAt": "2026-11-26T22:04:17.212Z",
   "totals": {
-    "outputs": 101,
+    "outputs": 102,
     "daily": [
       {
         "date": "2026-11-21",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-22",
-        "count": 1
+        "count": 0
       },
       {
         "date": "2026-11-23",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-27",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-27T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-26T22:00:10.995Z",
-      "lastRunAt": "2026-11-26T07:04:20+09:00",
-      "total": 82,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-27T07:04:14+09:00",
+      "total": 83,
       "recent": [
+        {
+          "date": "2026-11-27",
+          "summary": "한국은행이 기준금리를 3.25%로 올리며 반도체 호황에 베팅했고, 코스피·코스닥은 전일 급락분을 소폭 되돌렸다.",
+          "items": 2,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-27.md"
+        },
         {
           "date": "2026-11-26",
           "summary": "미국 반도체주 조정이 하루 늦게 한국 증시를 6% 급락시켰고, 미국 장은 관세·물가 우려 속에서도 장중 저점을 딛고 지수별로 엇갈려 마감했다.",
@@ -75,12 +81,6 @@
           "summary": "월요일 KST 아침 기준 신규 증시 마감이 없고, 개발자 도구·AI 소셜 트렌드도 건질 새 소식이 없어 넘어가는 날.",
           "items": 0,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-23.md"
-        },
-        {
-          "date": "2026-11-22",
-          "summary": "오늘은 개발자 도구 쪽에서만 건질 게 있었고, 증시·소셜 트렌드는 모두 공회전했다.",
-          "items": 1,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-22.md"
         }
       ]
     },
