@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-27T22:00:07.811Z",
+  "generatedAt": "2026-11-27T22:06:12.983Z",
   "totals": {
-    "outputs": 102,
+    "outputs": 103,
     "daily": [
       {
         "date": "2026-11-22",
@@ -9,7 +9,7 @@
       },
       {
         "date": "2026-11-23",
-        "count": 2
+        "count": 1
       },
       {
         "date": "2026-11-24",
@@ -29,7 +29,7 @@
       },
       {
         "date": "2026-11-28",
-        "count": 0
+        "count": 1
       }
     ]
   },
@@ -47,11 +47,17 @@
       "scheduleNote": "매일 07:00 KST",
       "nextRunAt": "2026-11-28T22:00:00.000Z",
       "queued": [],
-      "status": "working",
-      "startedAt": "2026-11-27T22:00:07.811Z",
-      "lastRunAt": "2026-11-27T07:04:14+09:00",
-      "total": 83,
+      "status": "done",
+      "startedAt": null,
+      "lastRunAt": "2026-11-28T07:06:09+09:00",
+      "total": 84,
       "recent": [
+        {
+          "date": "2026-11-28",
+          "summary": "",
+          "items": 4,
+          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-28.md"
+        },
         {
           "date": "2026-11-27",
           "summary": "한국은행이 기준금리를 3.25%로 올리며 반도체 호황에 베팅했고, 코스피·코스닥은 전일 급락분을 소폭 되돌렸다.",
@@ -75,12 +81,6 @@
           "summary": "간밤 뉴욕증시는 젠슨 황의 전격 복귀로 2025년來 최대 폭 반등했지만, 한국 증시는 그 소식이 뜨기도 전에 이미 하루 먼저 하락분을 늘리며 마감했다.",
           "items": 3,
           "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-24.md"
-        },
-        {
-          "date": "2026-11-23",
-          "summary": "월요일 KST 아침 기준 신규 증시 마감이 없고, 개발자 도구·AI 소셜 트렌드도 건질 새 소식이 없어 넘어가는 날.",
-          "items": 0,
-          "url": "https://github.com/heekeunlee/ai_crew/blob/main/work/scout/2026-11-23.md"
         }
       ]
     },
